@@ -22530,52 +22530,28 @@ export const getCheckins = async () => {
     })
 }
 
-export const getCities = async () => {
-    // const checkins = [{
-    //     "id": 1,
-    //     "venue": {
-    //         "location": {
-    //             "city": "New York",
-    //         },
-    //     },
-    // }, {
-    //     "id": 2,
-    //     "venue": {
-    //         "location": {
-    //             "city": "Brooklyn",
-    //         },
-    //     },
-    // }, {
-    //     "id": 3,
-    //     "venue": {
-    //         "location": {
-    //             "city": "Medellin",
-    //         },
-    //     },
-    // }, {
-    //     "id": 4,
-    //     "venue": {
-    //         "location": {
-    //             "city": "Paris",
-    //         },
-    //     },
-    // }, {
-    //     "id": 5,
-    //     "venue": {
-    //         "location": {
-    //             "city": "New York",
-    //         },
-    //     },
-    // }]
-
+export const getCitiesByCountry = async () => {
     const checkins = await getCheckins()
-    console.log(checkins.items)
-    const cities = _.groupBy(checkins.items, checkin => {
-        const city = _.get(checkin, 'venue.location.city')
-        console.log(city)
-        return city
-    })
-    console.log(cities)
+    const countries = {}
 
-    return cities
+    for (let checkIn of checkins.items) {
+        const location = checkIn.venue.location
+        const countryName = location.country
+        const country = countries[countryName] || { name: countryName, cities: {} }
+
+        const city = location.city
+        if(country.cities[city]) {
+            country.cities[city].items.push(checkIn)
+        } else {
+            country.cities[city] = {
+                name: city,
+                items: [checkIn]
+            }
+        }
+
+        countries[countryName] = country
+    }
+    console.log(countries)
+
+    return countries
 }

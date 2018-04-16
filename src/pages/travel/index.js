@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Container, Column } from 'rebass'
-import { getCheckins, getCities } from './api'
+import { getCheckins, getCitiesByCountry } from './api'
 import CheckInRow from './CheckInRow'
 import Map from './map'
 import styled from 'styled-components'
@@ -24,7 +24,7 @@ const Overlay = styled.div`
 `
 
 const CheckInsContainer = styled.div`
-  position: relatiee;
+  position: relative;
   right: 0;
   width: 50%;
   left: 0;
@@ -39,9 +39,46 @@ const Content = styled(Column).attrs({
   margin-left: auto;
 `
 
+const CountryTitle = styled.h3`
+  text-transform: uppercase;
+  font-weight: normal;
+  letter-spacing: 1.1px;
+  font-family: 'Open Sans', sans-serif;
+`
+
+const CityHeader = styled.div`
+  font-size: 20px;
+  letter-spacing: 1.1px;
+  padding: 10px;
+`
+
+class CityContainer extends Component {
+  state = { active: false }
+
+  toggle = () => {
+    this.setState({
+      active: !this.state.active
+    })
+  }
+
+  render() {
+    return (
+      <div>
+        <CityHeader onClick={this.toggle}>
+          {this.props.city.name}
+        </CityHeader>
+        {this.state.active && this.props.city.items.map(checkIn => (
+          <CheckInRow key={checkIn.id} checkIn={checkIn} />
+        ))}
+      </div>
+    )
+  }
+}
+
 class LocationMap extends React.Component {
   state = {
-    checkIns: []
+    checkIns: [],
+    countries: {}
   }
 
   componentDidMount() {
@@ -50,9 +87,10 @@ class LocationMap extends React.Component {
 
   async renderCheckins() {
     const checkIns = await getCheckins()
-    const cities = await getCities()
+    const countries = await getCitiesByCountry()
     this.setState({
-      checkIns: checkIns.items
+      checkIns: checkIns.items,
+      countries
     })
   }
 
@@ -65,9 +103,19 @@ class LocationMap extends React.Component {
         {/* <Overlay /> */}
         <CheckInsContainer>
           <Content>
-            {this.state.checkIns.map(checkIn => (
-                <CheckInRow key={checkIn.id} checkIn={checkIn} />
-              ))}
+            {Object.keys(this.state.countries).map((countryName, i) => {
+              const country = this.state.countries[countryName]
+
+              return (
+                <div key={countryName}>
+                  <CountryTitle>{country.name}</CountryTitle>
+                  {Object.keys(country.cities).map(cityKey => {
+                    const city = country.cities[cityKey]
+                    return <CityContainer key={cityKey} city={city} />
+                  })}
+                </div>
+              )
+            })}
           </Content>
         </CheckInsContainer>
       </div>
