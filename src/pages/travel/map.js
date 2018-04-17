@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
-import ReactMapGL, { Marker } from 'react-map-gl'
+import ReactMapGL, { Marker, LinearInterpolator, FlyToInterpolator } from 'react-map-gl'
+import DeckGL, {IconLayer, WebMercatorViewport } from 'deck.gl'
+import rbush from 'rbush'
+import { easeCubic } from 'd3-ease'
 import styled from 'styled-components'
 
 import '../../../node_modules/mapbox-gl/dist/mapbox-gl.css'
@@ -17,10 +20,27 @@ class Map extends Component {
       width: 0,
       height: 0,
       latitude: 6.208922918834555,
-      longitude: -75.56700488331215,
+      longitude:  -75.56700488331215,
       zoom: 10
     }
-  };
+  }
+
+  componentWillReceiveProps(newProps) {
+    const { selectedCheckIn } = newProps
+    if (!selectedCheckIn) return
+
+    this.setState({
+      viewport: {
+        ...this.state.viewport,
+        latitude: selectedCheckIn.venue.location.lat,
+        longitude: selectedCheckIn.venue.location.lng,
+        zoom: 15,
+        transitionDuration: 3000,
+        transitionInterpolator: new FlyToInterpolator(),
+        transitionEasing: easeCubic
+      }
+    })
+  }
 
   componentDidMount() {
     this.updateWindowDimensions()

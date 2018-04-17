@@ -42,14 +42,16 @@ const Content = styled(Column).attrs({
 const CountryTitle = styled.h3`
   text-transform: uppercase;
   font-weight: normal;
-  letter-spacing: 1.1px;
-  font-family: 'Open Sans', sans-serif;
+  letter-spacing: 4px;
+  font-family: George, Helvetica, sans-serif;
 `
 
 const CityHeader = styled.div`
+  font-family: 'Open Sans', sans-serif;
   font-size: 20px;
   letter-spacing: 1.1px;
   padding: 10px;
+  color: gray;
 `
 
 class CityContainer extends Component {
@@ -68,7 +70,7 @@ class CityContainer extends Component {
           {this.props.city.name}
         </CityHeader>
         {this.state.active && this.props.city.items.map(checkIn => (
-          <CheckInRow key={checkIn.id} checkIn={checkIn} />
+          <CheckInRow key={checkIn.id} checkIn={checkIn} onClick={() => this.props.onCheckInSelected(checkIn)} />
         ))}
       </div>
     )
@@ -78,7 +80,8 @@ class CityContainer extends Component {
 class LocationMap extends React.Component {
   state = {
     checkIns: [],
-    countries: {}
+    countries: {},
+    selectedCheckIn: null
   }
 
   componentDidMount() {
@@ -94,11 +97,17 @@ class LocationMap extends React.Component {
     })
   }
 
+  onCheckInSelected = (checkIn) => {
+    this.setState({
+      selectedCheckIn: checkIn
+    })
+  }
+
   render() {
     return (
       <div>
         <MapWrapper>
-          <Map checkIns={this.state.checkIns} />
+          <Map checkIns={this.state.checkIns} selectedCheckIn={this.state.selectedCheckIn} />
         </MapWrapper>
         {/* <Overlay /> */}
         <CheckInsContainer>
@@ -111,7 +120,7 @@ class LocationMap extends React.Component {
                   <CountryTitle>{country.name}</CountryTitle>
                   {Object.keys(country.cities).map(cityKey => {
                     const city = country.cities[cityKey]
-                    return <CityContainer key={cityKey} city={city} />
+                    return <CityContainer key={cityKey} city={city} onCheckInSelected={this.onCheckInSelected} />
                   })}
                 </div>
               )

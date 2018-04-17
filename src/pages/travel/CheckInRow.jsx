@@ -6,7 +6,7 @@ const Row = styled.div`
   padding: 20px;
   border-width: 0px;
   border-bottom: 1px;
-  border-color: white;
+  border-color: gray;
   border-style: solid;
 `
 
@@ -47,7 +47,7 @@ const CheckInRow = (props) => {
   const { id, venue } = props.checkIn;
 
   return (
-  <Row key={id}>
+  <Row key={id} onClick={props.onClick}>
     <Name>{venue.name}</Name>
     <Categories>
       {(venue.categories || []).map(category => (

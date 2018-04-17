@@ -4,13 +4,16 @@
   "version": "1.0.0",
   "author": "Luc Succes <l2succes@gmail.com>",
   "dependencies": {
+    "d3-ease": "^1.0.3",
     "datamaps": "^0.5.8",
+    "deck.gl": "^5.1.4",
     "gatsby": "^1.9.223",
     "gatsby-link": "^1.6.38",
     "gatsby-plugin-react-helmet": "^2.0.6",
     "gatsby-source-filesystem": "^1.5.30",
     "lodash": "^4.17.5",
     "moment": "^2.21.0",
+    "rbush": "^2.0.2",
     "react-helmet": "^5.2.0",
     "react-map-gl": "^3.2.5",
     "rebass": "^1.0.7",
@@ -23,8 +26,8 @@
   "license": "MIT",
   "main": "index.js",
   "scripts": {
-    "build": "dotenv gatsby build",
-    "start": "dotenv gatsby develop",
+    "build": "gatsby build",
+    "start": "gatsby develop",
     "format": "prettier --trailing-comma es5 --no-semi --single-quote --write \"src/**/*.js\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
