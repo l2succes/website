@@ -8,10 +8,20 @@ import styled from 'styled-components'
 import '../../../node_modules/mapbox-gl/dist/mapbox-gl.css'
 
 const Dot = styled(Marker)`
-  width: 10px;
-  height: 10px;
+  width: ${p => p.selected ? "20px" : "10px"};
+  height: ${p => p.selected ? "20px" : "10px"};
   background-color: #FF8900;
   border-radius: 10px;
+  /* transition: all 0.5s; */
+  font-size: 13px;
+  line-height: 20px;
+  text-align: center;
+  ${p => p.selected && 'z-index: 9999'};
+`
+
+const DotLabel = styled.text`
+  color: white;
+  font-size: 12px;
 `
 
 class Map extends Component {
@@ -62,6 +72,7 @@ class Map extends Component {
   }
 
   render() {
+    const selectedCheckInId = (this.props.selectedCheckIn || {}).id
     return (
       <ReactMapGL
         {...this.state.viewport}
@@ -70,8 +81,14 @@ class Map extends Component {
         {
           this.props.checkIns.map((checkIn) => {
             const { location } = checkIn.venue
+            const selected = checkIn.id === selectedCheckInId
             return (
-              <Dot key={checkIn.id} latitude={location.lat} longitude={location.lng}>
+              <Dot 
+                key={checkIn.id} 
+                latitude={location.lat}
+                longitude={location.lng}
+                selected={selected}>
+                {selected && <DotLabel>{checkIn.index}.</DotLabel>}
               </Dot>
             )
           })

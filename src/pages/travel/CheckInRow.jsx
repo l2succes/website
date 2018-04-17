@@ -8,10 +8,24 @@ const Row = styled.div`
   border-bottom: 1px;
   border-color: gray;
   border-style: solid;
+  background: ${p => p.selected ? 'rgba(100,100,100,0.3)' : 'transparent'};
 `
 
 const Categories = styled.div`
   margin: 5px 0;
+`
+
+const IndexLabel = styled.span`
+  display: inline-block;
+  background-color: ${p => p.selected ? '#FF8900' : 'transparent'};
+  width: 20px;
+  height: 20px;
+  color: ${p => p.selected ? 'white' : '#FF8900'};
+  font-size: 13px;
+  border-radius: 40px;
+  margin-right: 10px;
+  line-height: 20px;
+  text-align: center;
 `
 
 const Name = styled.div`
@@ -21,6 +35,7 @@ const Name = styled.div`
   margin-bottom: 2px;
   font-weight: normal;
   font-size: 16px;
+  vertical-align: middle;
 `
 
 const Address = styled.div`
@@ -44,11 +59,12 @@ const CategoryLabel = styled.span`
 `
 
 const CheckInRow = (props) => {
-  const { id, venue } = props.checkIn;
+  const { id, venue, index } = props.checkIn;
+  const selected = props.selected || false
 
   return (
-  <Row key={id} onClick={props.onClick}>
-    <Name>{venue.name}</Name>
+  <Row key={id} onClick={props.onClick} selected={selected}>
+    <Name><IndexLabel selected={selected}>{index}.</IndexLabel>{venue.name}</Name>
     <Categories>
       {(venue.categories || []).map(category => (
         <CategoryLabel key={category.id}>{category.name}</CategoryLabel>

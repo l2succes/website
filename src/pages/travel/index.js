@@ -55,12 +55,19 @@ const CityHeader = styled.div`
 `
 
 class CityContainer extends Component {
-  state = { active: false }
+  state = { active: false, selected: null }
 
   toggle = () => {
     this.setState({
       active: !this.state.active
     })
+  }
+
+  onSelected(checkIn) {
+    this.setState({
+      selected: checkIn
+    })
+    this.props.onCheckInSelected(checkIn)
   }
 
   render() {
@@ -70,7 +77,11 @@ class CityContainer extends Component {
           {this.props.city.name}
         </CityHeader>
         {this.state.active && this.props.city.items.map(checkIn => (
-          <CheckInRow key={checkIn.id} checkIn={checkIn} onClick={() => this.props.onCheckInSelected(checkIn)} />
+          <CheckInRow 
+            key={checkIn.id}
+            checkIn={checkIn}
+            onClick={this.onSelected.bind(this, checkIn)}
+            selected={(this.state.selected || {}).id === checkIn.id} />
         ))}
       </div>
     )

@@ -1,8 +1,7 @@
-import _ from 'lodash'
 
 export const getCheckins = async () => {
     return new Promise((resolve, reject) => {
-        resolve({
+        const data = {
             "count": 1189,
             "items": [
                 {
@@ -22526,7 +22525,11 @@ export const getCheckins = async () => {
                     }
                 }
             ]
-        })
+        }
+
+        data.items.forEach((item, i) => item.index = i + 1)
+
+        resolve(data)
     })
 }
 
@@ -22551,7 +22554,6 @@ export const getCitiesByCountry = async () => {
 
         countries[countryName] = country
     }
-    console.log(countries)
 
     return countries
 }
