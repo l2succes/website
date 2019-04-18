@@ -8,13 +8,12 @@ import styled from 'styled-components'
 import '../../../node_modules/mapbox-gl/dist/mapbox-gl.css'
 
 const Dot = styled(Marker)`
-  width: ${p => p.selected ? "20px" : "10px"};
-  height: ${p => p.selected ? "20px" : "10px"};
+  width: ${p => p.selected ? "25px" : "10px"};
+  height: ${p => p.selected ? "25px" : "10px"};
   background-color: #FF8900;
-  border-radius: 10px;
-  /* transition: all 0.5s; */
+  border-radius: ${p => p.selected ? "25px" : "10px"};;
   font-size: 13px;
-  line-height: 20px;
+  line-height: ${p => p.selected ? "25px" : "10px"};;
   text-align: center;
   ${p => p.selected && 'z-index: 9999'};
 `

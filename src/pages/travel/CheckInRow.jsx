@@ -15,19 +15,6 @@ const Categories = styled.div`
   margin: 5px 0;
 `
 
-const IndexLabel = styled.span`
-  display: inline-block;
-  background-color: ${p => p.selected ? '#FF8900' : 'transparent'};
-  width: 20px;
-  height: 20px;
-  color: ${p => p.selected ? 'white' : '#FF8900'};
-  font-size: 13px;
-  border-radius: 40px;
-  margin-right: 10px;
-  line-height: 20px;
-  text-align: center;
-`
-
 const Name = styled.div`
   font-family: George, Helvetica, sans-serif;
   color: #FF8900;
@@ -64,7 +51,7 @@ const CheckInRow = (props) => {
 
   return (
   <Row key={id} onClick={props.onClick} selected={selected}>
-    <Name><IndexLabel selected={selected}>{index}.</IndexLabel>{venue.name}</Name>
+    <Name>{index}. {venue.name}</Name>
     <Categories>
       {(venue.categories || []).map(category => (
         <CategoryLabel key={category.id}>{category.name}</CategoryLabel>

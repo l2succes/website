@@ -24,26 +24,31 @@ const LogoContainer = styled.img`
 `
 
 const menuItems = [
-  { name: "Home", path: "/", exact: true },
-  { name: "Travel", path: "/travel/", exact: false },
-  { name: "About", path: "/about/", exact: true },
-  { name: "Blog", path: "/blog/", exact: false },
+  { name: 'Home', path: '/', exact: true },
+  { name: 'Travel', path: '/travel/', exact: false },
+  { name: 'About', path: '/about/', exact: true },
+  { name: 'Blog', path: '/blog/', exact: false },
 ]
+
+const LanguageSwitcher = () => {
+  return <span>🇺🇸</span>
+}
 
 const Header = () => (
   <Menu width={1}>
     <LogoContainer src={Logo} />
     <div>
-      {menuItems.map(({path, name}) => (
-        <MenuItem 
-          key={path}
-          onClick={ () => navigateTo(path)}>
-            {name}
+      {menuItems.map(({ path, name }) => (
+        <MenuItem key={path} onClick={() => navigateTo(path)}>
+          {name}
         </MenuItem>
       ))}
     </div>
+    <div style={{ marginLeft: 'auto' }}>
+      <LanguageSwitcher />
+    </div>
   </Menu>
 )
-Header.displayName = "Header"
+Header.displayName = 'Header'
 
 export default Header

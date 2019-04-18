@@ -5,7 +5,7 @@ import { Provider } from 'rebass'
 import theme from './theme'
 import { injectGlobal } from 'styled-components'
 
-import Header from '../components/Header'
+import Header from '../Header'
 import './fonts.css'
 
 injectGlobal`
@@ -23,7 +23,7 @@ injectGlobal`
   }
 `
 
-const TemplateWrapper = ({ children }) => (
+export const Layout = ({ children }) => (
   <Provider theme={theme}>
     <div>
       <Helmet
@@ -34,15 +34,11 @@ const TemplateWrapper = ({ children }) => (
         ]}
       />
       <Header />
-      <div>
-        {children()}
-      </div>
+      <div>{children}</div>
     </div>
   </Provider>
 )
 
-TemplateWrapper.propTypes = {
+Layout.propTypes = {
   children: PropTypes.func,
 }
-
-export default TemplateWrapper

@@ -1,0 +1,31 @@
+[
+  {
+    "name": "Yieldmo",
+    "screenshot": "",
+    "description": ""
+  },
+  {
+    "backgroundColor": "#F7F7F7",
+    "textColor": "#000",
+    "icon": "drizzy-icon.png",
+    "name": "Drizzy",
+    "screenshot": "",
+    "description": ""
+  },
+  {
+    "icon": "october-icon.png",
+    "name": "October",
+    "screenshot": "",
+    "description": ""
+  },
+  {
+    "name": "Sundial",
+    "screenshot": "",
+    "description": ""
+  },
+  {
+    "name": "Often",
+    "screenshot": "",
+    "description": ""
+  }
+]
