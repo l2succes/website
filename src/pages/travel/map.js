@@ -1,19 +1,17 @@
 import React, { Component } from 'react'
-import ReactMapGL, { Marker, LinearInterpolator, FlyToInterpolator } from 'react-map-gl'
-import DeckGL, {IconLayer, WebMercatorViewport } from 'deck.gl'
-import rbush from 'rbush'
+import ReactMapGL, { Marker, FlyToInterpolator } from 'react-map-gl'
 import { easeCubic } from 'd3-ease'
 import styled from 'styled-components'
 
 import '../../../node_modules/mapbox-gl/dist/mapbox-gl.css'
 
 const Dot = styled(Marker)`
-  width: ${p => p.selected ? "25px" : "10px"};
-  height: ${p => p.selected ? "25px" : "10px"};
-  background-color: #FF8900;
-  border-radius: ${p => p.selected ? "25px" : "10px"};;
+  width: ${p => (p.selected ? '25px' : '10px')};
+  height: ${p => (p.selected ? '25px' : '10px')};
+  background-color: #ff8900;
+  border-radius: ${p => (p.selected ? '25px' : '10px')};
   font-size: 13px;
-  line-height: ${p => p.selected ? "25px" : "10px"};;
+  line-height: ${p => (p.selected ? '25px' : '10px')};
   text-align: center;
   ${p => p.selected && 'z-index: 9999'};
 `
@@ -29,9 +27,9 @@ class Map extends Component {
       width: 0,
       height: 0,
       latitude: 6.208922918834555,
-      longitude:  -75.56700488331215,
-      zoom: 10
-    }
+      longitude: -75.56700488331215,
+      zoom: 10,
+    },
   }
 
   componentWillReceiveProps(newProps) {
@@ -46,8 +44,8 @@ class Map extends Component {
         zoom: 15,
         transitionDuration: 3000,
         transitionInterpolator: new FlyToInterpolator(),
-        transitionEasing: easeCubic
-      }
+        transitionEasing: easeCubic,
+      },
     })
   }
 
@@ -62,12 +60,12 @@ class Map extends Component {
 
   updateWindowDimensions = () => {
     this.setState({
-      viewport: { 
+      viewport: {
         ...this.state.viewport,
         width: window.innerWidth / 2,
-        height: window.innerHeight
-      }
-    });
+        height: window.innerHeight,
+      },
+    })
   }
 
   render() {
@@ -75,23 +73,22 @@ class Map extends Component {
     return (
       <ReactMapGL
         {...this.state.viewport}
-        onViewportChange={(viewport) => this.setState({viewport})}
+        onViewportChange={viewport => this.setState({ viewport })}
       >
-        {
-          this.props.checkIns.map((checkIn) => {
-            const { location } = checkIn.venue
-            const selected = checkIn.id === selectedCheckInId
-            return (
-              <Dot 
-                key={checkIn.id} 
-                latitude={location.lat}
-                longitude={location.lng}
-                selected={selected}>
-                {selected && <DotLabel>{checkIn.index}.</DotLabel>}
-              </Dot>
-            )
-          })
-        }
+        {this.props.checkIns.map(checkIn => {
+          const { location } = checkIn.venue
+          const selected = checkIn.id === selectedCheckInId
+          return (
+            <Dot
+              key={checkIn.id}
+              latitude={location.lat}
+              longitude={location.lng}
+              selected={selected}
+            >
+              {selected && <DotLabel>{checkIn.index}.</DotLabel>}
+            </Dot>
+          )
+        })}
       </ReactMapGL>
     )
   }

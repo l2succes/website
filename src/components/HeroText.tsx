@@ -1,7 +1,7 @@
-import React from "react";
-import Typist from "react-typist";
+import React from 'react'
+import Typist from 'react-typist'
 
-export class HeroText extends React.Component {
+export class HeroText extends React.Component<any> {
   render() {
     return (
       <h1>
@@ -13,6 +13,6 @@ export class HeroText extends React.Component {
           Hola!
         </Typist>
       </h1>
-    );
+    )
   }
 }

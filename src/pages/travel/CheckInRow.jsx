@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 
 const Row = styled.div`
@@ -8,7 +8,7 @@ const Row = styled.div`
   border-bottom: 1px;
   border-color: gray;
   border-style: solid;
-  background: ${p => p.selected ? 'rgba(100,100,100,0.3)' : 'transparent'};
+  background: ${p => (p.selected ? 'rgba(100,100,100,0.3)' : 'transparent')};
 `
 
 const Categories = styled.div`
@@ -17,7 +17,7 @@ const Categories = styled.div`
 
 const Name = styled.div`
   font-family: George, Helvetica, sans-serif;
-  color: #FF8900;
+  color: #ff8900;
   letter-spacing: 1.1px;
   margin-bottom: 2px;
   font-weight: normal;
@@ -45,24 +45,26 @@ const CategoryLabel = styled.span`
   text-transform: uppercase;
 `
 
-const CheckInRow = (props) => {
-  const { id, venue, index } = props.checkIn;
+const CheckInRow = props => {
+  const { id, venue, index } = props.checkIn
   const selected = props.selected || false
 
   return (
-  <Row key={id} onClick={props.onClick} selected={selected}>
-    <Name>{index}. {venue.name}</Name>
-    <Categories>
-      {(venue.categories || []).map(category => (
-        <CategoryLabel key={category.id}>{category.name}</CategoryLabel>
-      ))}
-    </Categories>
-    <Address>
-      {(venue.location.formattedAddress || []).map((line, i) => (
-        <span key={i}>{line}</span>
-      ))}
-    </Address>
-  </Row>
+    <Row key={id} onClick={props.onClick} selected={selected}>
+      <Name>
+        {index}. {venue.name}
+      </Name>
+      <Categories>
+        {(venue.categories || []).map(category => (
+          <CategoryLabel key={category.id}>{category.name}</CategoryLabel>
+        ))}
+      </Categories>
+      <Address>
+        {(venue.location.formattedAddress || []).map((line, i) => (
+          <span key={i}>{line}</span>
+        ))}
+      </Address>
+    </Row>
   )
 }
 

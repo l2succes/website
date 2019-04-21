@@ -23,7 +23,7 @@ injectGlobal`
   }
 `
 
-export const Layout = ({ children }) => (
+export const Layout: React.SFC<any> = ({ children }) => (
   <Provider theme={theme}>
     <div>
       <Helmet

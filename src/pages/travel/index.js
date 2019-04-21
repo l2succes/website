@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Container, Column } from 'rebass'
+import { Column } from 'rebass'
 import { getCheckins, getCitiesByCountry } from './api'
 import CheckInRow from './CheckInRow'
 import Map from './map'
@@ -14,15 +14,6 @@ const MapWrapper = styled.div`
   z-index: 0;
 `
 
-const Overlay = styled.div`
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  left: 0;
-  top: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-`
-
 const CheckInsContainer = styled.div`
   position: relative;
   right: 0;
@@ -33,7 +24,7 @@ const CheckInsContainer = styled.div`
 `
 
 const Content = styled(Column).attrs({
-  width: 1
+  width: 1,
 })`
   max-width: 512px;
   margin-left: auto;
@@ -59,13 +50,13 @@ class CityContainer extends Component {
 
   toggle = () => {
     this.setState({
-      active: !this.state.active
+      active: !this.state.active,
     })
   }
 
   onSelected(checkIn) {
     this.setState({
-      selected: checkIn
+      selected: checkIn,
     })
     this.props.onCheckInSelected(checkIn)
   }
@@ -73,16 +64,16 @@ class CityContainer extends Component {
   render() {
     return (
       <div>
-        <CityHeader onClick={this.toggle}>
-          {this.props.city.name}
-        </CityHeader>
-        {this.state.active && this.props.city.items.map(checkIn => (
-          <CheckInRow 
-            key={checkIn.id}
-            checkIn={checkIn}
-            onClick={this.onSelected.bind(this, checkIn)}
-            selected={(this.state.selected || {}).id === checkIn.id} />
-        ))}
+        <CityHeader onClick={this.toggle}>{this.props.city.name}</CityHeader>
+        {this.state.active &&
+          this.props.city.items.map(checkIn => (
+            <CheckInRow
+              key={checkIn.id}
+              checkIn={checkIn}
+              onClick={this.onSelected.bind(this, checkIn)}
+              selected={(this.state.selected || {}).id === checkIn.id}
+            />
+          ))}
       </div>
     )
   }
@@ -92,7 +83,7 @@ class LocationMap extends React.Component {
   state = {
     checkIns: [],
     countries: {},
-    selectedCheckIn: null
+    selectedCheckIn: null,
   }
 
   componentDidMount() {
@@ -104,13 +95,13 @@ class LocationMap extends React.Component {
     const countries = await getCitiesByCountry()
     this.setState({
       checkIns: checkIns.items,
-      countries
+      countries,
     })
   }
 
-  onCheckInSelected = (checkIn) => {
+  onCheckInSelected = checkIn => {
     this.setState({
-      selectedCheckIn: checkIn
+      selectedCheckIn: checkIn,
     })
   }
 
@@ -118,7 +109,10 @@ class LocationMap extends React.Component {
     return (
       <div>
         <MapWrapper>
-          <Map checkIns={this.state.checkIns} selectedCheckIn={this.state.selectedCheckIn} />
+          <Map
+            checkIns={this.state.checkIns}
+            selectedCheckIn={this.state.selectedCheckIn}
+          />
         </MapWrapper>
         {/* <Overlay /> */}
         <CheckInsContainer>
@@ -131,7 +125,13 @@ class LocationMap extends React.Component {
                   <CountryTitle>{country.name}</CountryTitle>
                   {Object.keys(country.cities).map(cityKey => {
                     const city = country.cities[cityKey]
-                    return <CityContainer key={cityKey} city={city} onCheckInSelected={this.onCheckInSelected} />
+                    return (
+                      <CityContainer
+                        key={cityKey}
+                        city={city}
+                        onCheckInSelected={this.onCheckInSelected}
+                      />
+                    )
                   })}
                 </div>
               )

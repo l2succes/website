@@ -1,7 +1,7 @@
 const theme = {
-  font: "George, Helvetica, sans-serif",
+  font: 'Open Sans, Helvetica, sans-serif',
   fonts: {
-    sans: "George, Helvetica, sans-serif",
+    sans: "'Open Sans', Helvetica, sans-serif",
   },
 }
 
