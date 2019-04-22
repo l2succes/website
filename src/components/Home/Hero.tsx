@@ -28,7 +28,8 @@ const Container = styled.div`
   align-items: flex-end;
   flex-direction: row;
   max-width: 1024px;
-  margin: 0 auto;
+  margin: 40px auto;
+  padding-top: 40px;
 `
 
 const Content = styled.div`

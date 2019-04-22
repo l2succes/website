@@ -27,16 +27,6 @@ class IndexPage extends React.Component<any> {
       <Layout>
         <Page>
           <Hero />
-          <Section style={{ background: 'white', color: 'black' }}>
-            <Container>
-              <h2>Travel</h2>
-              <h3>
-                I spent the past few years traveling and working around the
-                world. Here's a map of all the places I've been with my personal
-                recommendations
-              </h3>
-            </Container>
-          </Section>
           <WorkSection>
             <WorkSection.Item
               backgroundColor="black"
@@ -103,6 +93,16 @@ class IndexPage extends React.Component<any> {
               images={[require('../images/artsy/artsy-1.png')]}
             />
           </WorkSection>
+          <Section style={{ background: 'white', color: 'black' }}>
+            <Container>
+              <h2>Travel</h2>
+              <h3>
+                I spent the past few years traveling and working around the
+                world. Here's a map of all the places I've been with my personal
+                recommendations
+              </h3>
+            </Container>
+          </Section>
         </Page>
       </Layout>
     )

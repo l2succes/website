@@ -9,7 +9,8 @@ const Header = styled.div`
 
   > h2 {
     display: inline-block;
-    margin: 0 10px 0;
+    margin: 20px 10px 0;
+    /* font-size: 32px; */
   }
 `
 
@@ -24,15 +25,24 @@ const Icon = styled.div<{ active?: boolean; src: string }>`
   border-radius: 15px;
   vertical-align: center;
   border: 5px solid;
-  border-color: ${p => (p.active ? 'white' : 'black')};
+  border-color: ${p => (p.active ? 'yellow' : 'white')};
 `
 
 const IconContainer = styled.div`
   margin: 0 auto;
   text-align: center;
+  background: white;
 `
 
-export class WorkSection extends React.Component<any, any> {
+interface Props {
+  children: WorkSectionItem[]
+}
+
+interface State {
+  activeItem: number
+}
+
+export class WorkSection extends React.Component<Props, State> {
   static Item = WorkSectionItem
 
   state = {
@@ -47,7 +57,8 @@ export class WorkSection extends React.Component<any, any> {
   }
 
   renderIconBar() {
-    const { activeItem, children } = this.props
+    const { children } = this.props
+    const { activeItem } = this.state
 
     const items = React.Children.map(children, (child: JSX.Element, i) => {
       return (
@@ -75,9 +86,9 @@ export class WorkSection extends React.Component<any, any> {
       <div style={{ backgroundColor, color }}>
         <Header>
           <h2>Work</h2>
-          {this.renderIconBar()}
         </Header>
         {current}
+        {this.renderIconBar()}
       </div>
     )
   }
