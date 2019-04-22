@@ -29,7 +29,7 @@ class IndexPage extends React.Component<any> {
             <WorkSection.Item
               backgroundColor="#242424"
               color="white"
-              deviceColor="white"
+              deviceColor="silver"
               title="Spotify"
               description="I designed and developed an app named Drizzy. This was one of the
           first successful keyboard apps in the app store."
@@ -58,7 +58,7 @@ class IndexPage extends React.Component<any> {
               backgroundColor="#F7F7F7"
               color="#000"
               title="Often"
-              description=""
+              description="Create your very own keyboard with Photos, GIFS & Quotes"
               icon={require('../images/often/icon.png')}
               images={[require('../images/often/often-1.png')]}
             />
@@ -72,8 +72,9 @@ class IndexPage extends React.Component<any> {
               images={[require('../images/sundial/sundial-1.png')]}
             />
             <WorkSection.Item
-              backgroundColor="#F7F7F7"
-              color="#000"
+              backgroundColor="#242424"
+              deviceColor="silver"
+              color="#F7F7F7"
               title="Artsy"
               description="Artsy is the best way to buy and discover art."
               body={

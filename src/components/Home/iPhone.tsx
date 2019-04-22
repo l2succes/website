@@ -4,7 +4,7 @@ import '../../styles/devices.css'
 
 interface IPhoneProps {
   device?: 'iphone5s'
-  color?: 'white' | 'black'
+  color?: 'silver' | 'black'
 }
 
 export const IPhone: React.SFC<IPhoneProps> = ({ color, children, device }) => {
