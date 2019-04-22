@@ -5,7 +5,6 @@ import { Provider } from 'rebass'
 import theme from './theme'
 import { injectGlobal } from 'styled-components'
 
-import Header from '../Header'
 import './fonts.css'
 
 injectGlobal`
@@ -27,17 +26,13 @@ export const Layout: React.SFC<any> = ({ children }) => (
   <Provider theme={theme}>
     <div>
       <Helmet
-        title="Luc Succes"
+        title="Luc Succès"
         meta={[
-          { name: 'description', content: 'Sample' },
-          { name: 'keywords', content: 'sample, something' },
+          { name: 'description', content: 'Luc Succès - Blog' },
+          { name: 'keywords', content: '' },
         ]}
       />
-      <div>{children}</div>
+      {children}
     </div>
   </Provider>
 )
-
-Layout.propTypes = {
-  children: PropTypes.func,
-}

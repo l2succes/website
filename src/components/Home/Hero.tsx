@@ -14,8 +14,11 @@ export class Hero extends React.Component<any> {
           </Box>
           <Box width={1 / 2}>
             <HeroText />
-            <h2>my name is Luc</h2>
-            <h2>Software engineer from Paris, based in New York.</h2>
+            <h2>My name is Luc Succès</h2>
+            <h3>
+              I'm a Software engineer & entrepreneur from Paris, based in New
+              York.
+            </h3>
           </Box>
         </Flex>
       </Container>

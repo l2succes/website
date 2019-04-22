@@ -1,10 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Box, Flex } from 'rebass'
 import { Layout } from '../components/Layout'
 import { Hero } from '../components/Home/hero'
 
-import { IPhone } from '../components/Home/iPhone'
 import { WorkSection } from '../components/WorkSection'
 
 const Page = styled.div`
@@ -29,7 +27,7 @@ class IndexPage extends React.Component<any> {
           <Hero />
           <WorkSection>
             <WorkSection.Item
-              backgroundColor="black"
+              backgroundColor="#242424"
               color="white"
               deviceColor="white"
               title="Spotify"

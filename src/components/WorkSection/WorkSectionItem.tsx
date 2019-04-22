@@ -14,34 +14,37 @@ export const Container = styled.div<{
   min-height: 500px;
 
   .icon {
-    width: 152px;
-    height: 152px;
-    overflow: hidden;
-    border-radius: 30px;
-
     img {
       width: inherit;
-      height: inherit;
+      height: 152px;
+      border-radius: 30px;
+      box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.2);
     }
-  }
 
-  .icon,
-  .title {
     margin: 0 20px;
   }
 
   .description {
     padding: 20px;
   }
-
-  .title {
-    font-size: 24px;
-  }
 `
 
 const Inner = styled(Flex)`
   max-width: 1024px;
   margin: 0 auto;
+`
+
+const Title = styled.h3`
+  width: inherit;
+  text-align: center;
+  font-size: 24px;
+  margin: 10px 0;
+`
+
+const Description = styled.div`
+  font-style: italic;
+  font-size: 20px;
+  margin-bottom: 40px;
 `
 
 interface WorkSectionProps {
@@ -71,12 +74,16 @@ export const WorkSectionItem: React.SFC<WorkSectionProps> = props => {
     <Container background={backgroundColor} color={color}>
       <Inner py={4}>
         <Box p={2} width={[1, 1, 3 / 4]}>
-          <div className="icon">
-            <img src={icon} />
-          </div>
-          <h3 className="title">{title}</h3>
-          <div className="description">{description}</div>
-          {body && <div className="body">{body}</div>}
+          <Flex>
+            <div className="icon">
+              <img src={icon} />
+              <Title>{title}</Title>
+            </div>
+            <Box p={3}>
+              <Description>{description}</Description>
+              {body && <div className="body">{body}</div>}
+            </Box>
+          </Flex>
         </Box>
         <Box width={[1, 1, 1 / 4]}>
           <IPhone color={deviceColor}>

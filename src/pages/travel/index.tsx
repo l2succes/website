@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import { Column } from 'rebass'
-import { getCheckins, getCitiesByCountry } from './api'
-import CheckInRow from './CheckInRow'
-import Map from './map'
+import { getCheckins, getCitiesByCountry } from '../../data/checkins/api'
+import CheckInRow from '../../components/Travel/CheckInRow'
+import Map from '../../components/Travel/map'
 import styled from 'styled-components'
+import { Layout } from '../../components/Layout'
 
 const MapWrapper = styled.div`
   position: fixed;
@@ -45,7 +46,7 @@ const CityHeader = styled.div`
   color: gray;
 `
 
-class CityContainer extends Component {
+class CityContainer extends Component<any> {
   state = { active: false, selected: null }
 
   toggle = () => {
@@ -107,7 +108,7 @@ class LocationMap extends React.Component {
 
   render() {
     return (
-      <div>
+      <Layout>
         <MapWrapper>
           <Map
             checkIns={this.state.checkIns}
@@ -138,7 +139,7 @@ class LocationMap extends React.Component {
             })}
           </Content>
         </CheckInsContainer>
-      </div>
+      </Layout>
     )
   }
 }

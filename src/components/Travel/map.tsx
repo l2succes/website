@@ -5,7 +5,7 @@ import styled from 'styled-components'
 
 import '../../../node_modules/mapbox-gl/dist/mapbox-gl.css'
 
-const Dot = styled(Marker)`
+const Dot = styled(Marker)<{ selected?: boolean }>`
   width: ${p => (p.selected ? '25px' : '10px')};
   height: ${p => (p.selected ? '25px' : '10px')};
   background-color: #ff8900;
@@ -21,7 +21,7 @@ const DotLabel = styled.text`
   font-size: 12px;
 `
 
-class Map extends Component {
+class Map extends Component<any> {
   state = {
     viewport: {
       width: 0,

@@ -16,7 +16,7 @@ const Header = styled.div`
 
 const Icon = styled.div<{ active?: boolean; src: string }>`
   background: url(${p => p.src}) no-repeat center white;
-  background-size: 100%;
+  background-size: cover;
   display: inline-block;
   width: 64px;
   height: 64px;
@@ -24,14 +24,22 @@ const Icon = styled.div<{ active?: boolean; src: string }>`
   overflow: hidden;
   border-radius: 15px;
   vertical-align: center;
-  border: 5px solid;
-  border-color: ${p => (p.active ? 'yellow' : 'white')};
+  box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.3);
+
+  &::after {
+    display: block;
+    width: 5px;
+    height: 5px;
+    border-radius: 100%;
+    margin: 10px auto;
+    background-color: blue;
+  }
 `
 
 const IconContainer = styled.div`
   margin: 0 auto;
   text-align: center;
-  background: white;
+  background: rgba(0, 0, 0, 0.3);
 `
 
 interface Props {
@@ -61,9 +69,12 @@ export class WorkSection extends React.Component<Props, State> {
     const { activeItem } = this.state
 
     const items = React.Children.map(children, (child: JSX.Element, i) => {
+      const isActive = i === activeItem
+
       return (
         <Icon
-          active={i === activeItem}
+          active={isActive}
+          className={isActive ? 'active' : ''}
           src={child.props.icon}
           onClick={() => this.onPressIcon(i)}
         />
