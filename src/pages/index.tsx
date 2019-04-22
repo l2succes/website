@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Layout } from '../components/Layout'
-import { Hero } from '../components/Home/hero'
+import { Hero } from '../components/Home/Hero'
 
 import { WorkSection } from '../components/WorkSection'
 
