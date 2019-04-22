@@ -3,6 +3,12 @@
   "description": "Travel website and portfolio",
   "version": "1.0.0",
   "author": "Luc Succes <l2succes@gmail.com>",
+  "scripts": {
+    "build": "gatsby build",
+    "start": "gatsby develop",
+    "format": "prettier --trailing-comma es5 --no-semi --single-quote --write \"src/**/*.js\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
   "dependencies": {
     "@types/react-helmet": "^5.0.8",
     "d3-ease": "^1.0.3",
@@ -37,12 +43,6 @@
   ],
   "license": "MIT",
   "main": "index.js",
-  "scripts": {
-    "build": "gatsby build",
-    "start": "gatsby develop",
-    "format": "prettier --trailing-comma es5 --no-semi --single-quote --write \"src/**/*.js\"",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "devDependencies": {
     "@types/react-typist": "^2.0.0",
     "@types/rebass": "^3.0.3",

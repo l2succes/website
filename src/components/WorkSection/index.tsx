@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { WorkSectionItem } from './WorkSectionItem'
 import styled from 'styled-components'
+import { useSpring, useTransition, animated } from 'react-spring'
 
 const Header = styled.div`
   max-width: 1024px;
@@ -42,6 +43,12 @@ const IconContainer = styled.div`
   background: rgba(0, 0, 0, 0.3);
 `
 
+const SectionContainer = styled.div`
+  position: relative;
+  height: 850px;
+  max-width: 1024px;
+  margin: 0 auto;
+`
 interface Props {
   children: WorkSectionItem[]
 }
@@ -50,57 +57,46 @@ interface State {
   activeItem: number
 }
 
-export class WorkSection extends React.Component<Props, State> {
-  static Item = WorkSectionItem
+export function WorkSection({ children }: Props) {
+  const [activeItem, updateActiveItem] = useState(0)
+  const transitions = useTransition(activeItem, null, {
+    from: { position: 'absolute', opacity: 0 },
+    enter: { opacity: 1 },
+    leave: { opacity: 0 },
+  })
 
-  state = {
-    activeItem: 0,
-    count: React.Children.count(this.props.children),
-  }
+  const current = children[activeItem]
+  const { backgroundColor, color } = current.props
+  const styles = useSpring({ backgroundColor, color })
 
-  onPressIcon = (index: number) => {
-    this.setState({
-      activeItem: index,
-    })
-  }
-
-  renderIconBar() {
-    const { children } = this.props
-    const { activeItem } = this.state
-
-    const items = React.Children.map(children, (child: JSX.Element, i) => {
-      const isActive = i === activeItem
-
-      return (
-        <Icon
-          active={isActive}
-          className={isActive ? 'active' : ''}
-          src={child.props.icon}
-          onClick={() => this.onPressIcon(i)}
-        />
-      )
-    })
-
-    return <IconContainer>{items}</IconContainer>
-  }
-
-  get current() {
-    const { children } = this.props
-    return children[this.state.activeItem]
-  }
-
-  render() {
-    const current = this.current
-    const { backgroundColor, color } = this.current.props
+  const items = React.Children.map(children, (child: JSX.Element, i) => {
+    const isActive = i === activeItem
 
     return (
-      <div style={{ backgroundColor, color }}>
-        <Header>
-          <h2>Work</h2>
-        </Header>
-        {current}
-        {this.renderIconBar()}
-      </div>
+      <Icon
+        active={isActive}
+        className={isActive ? 'active' : ''}
+        src={child.props.icon}
+        onClick={() => updateActiveItem(i)}
+      />
     )
-  }
+  })
+
+  return (
+    <animated.div style={styles}>
+      <Header>
+        <h2>Work</h2>
+      </Header>
+
+      <SectionContainer>
+        {transitions.map(({ item, props }) => {
+          return <animated.div style={props}>{children[item]}</animated.div>
+        })}
+      </SectionContainer>
+
+      <IconContainer>{items}</IconContainer>
+    </animated.div>
+  )
 }
+
+WorkSection.Item = WorkSectionItem

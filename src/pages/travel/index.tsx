@@ -45,7 +45,6 @@ const CityHeader = styled.div`
   padding: 10px;
   color: gray;
 `
-
 class CityContainer extends Component<any> {
   state = { active: false, selected: null }
 

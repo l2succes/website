@@ -9,7 +9,6 @@ export const Container = styled.div<{
 }>`
   width: 100%;
   padding: space(1);
-  background: ${p => p.background};
   color: ${p => p.color};
   min-height: 500px;
 
