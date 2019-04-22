@@ -33,7 +33,6 @@ export const Layout: React.SFC<any> = ({ children }) => (
           { name: 'keywords', content: 'sample, something' },
         ]}
       />
-      <Header />
       <div>{children}</div>
     </div>
   </Provider>

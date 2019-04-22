@@ -1,11 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Box, Flex } from 'rebass'
-import { graphql } from 'gatsby'
-import { Layout } from '../components/layout'
+import { Layout } from '../components/Layout'
 import { Hero } from '../components/Home/hero'
 
 import { IPhone } from '../components/Home/iPhone'
+import { WorkSection } from '../components/WorkSection'
 
 const Page = styled.div`
   margin-top: -40px;
@@ -21,53 +21,12 @@ const Container = styled.div`
   margin: 0 auto;
 `
 
-const WorkSection = styled.div<{ background?: string; color?: string }>`
-  width: 100%;
-  padding: space(1);
-  background: ${p => p.background};
-  color: ${p => p.color};
-  min-height: 500px;
-
-  .icon {
-    width: 152px;
-    height: 152px;
-    overflow: hidden;
-    border-radius: 30px;
-
-    img {
-      width: inherit;
-      height: inherit;
-    }
-  }
-
-  .icon,
-  .title {
-    margin: 0 20px;
-  }
-
-  .description {
-    padding: 20px;
-  }
-
-  .title {
-    font-size: 24px;
-  }
-`
-
-const IPhoneContent = styled.div`
-  img {
-    width: 100%;
-  }
-`
-
 class IndexPage extends React.Component<any> {
   render() {
     return (
       <Layout>
         <Page>
-          <Section>
-            <Hero />
-          </Section>
+          <Hero />
           <Section style={{ background: 'white', color: 'black' }}>
             <Container>
               <h2>Travel</h2>
@@ -78,11 +37,8 @@ class IndexPage extends React.Component<any> {
               </h3>
             </Container>
           </Section>
-          <Section>
-            <Container>
-              <h2>Work</h2>
-            </Container>
-            <WorkSectionContainer
+          <WorkSection>
+            <WorkSection.Item
               backgroundColor="black"
               color="white"
               deviceColor="white"
@@ -92,7 +48,7 @@ class IndexPage extends React.Component<any> {
               icon={require('../images/spotify/icon.png')}
               images={[require('../images/spotify/spotify-1.png')]}
             />
-            <WorkSectionContainer
+            <WorkSection.Item
               backgroundColor="#FFC538"
               color="#FFF"
               title="Drizzy"
@@ -101,7 +57,7 @@ class IndexPage extends React.Component<any> {
               icon={require('../images/drizzy/icon.png')}
               images={[require('../images/drizzy/screenshots/drizzy-4.png')]}
             />
-            <WorkSectionContainer
+            <WorkSection.Item
               backgroundColor="black"
               color="#FFF"
               title="October"
@@ -110,7 +66,7 @@ class IndexPage extends React.Component<any> {
               icon={require('../images/october/icon.png')}
               images={[require('../images/october/october-2.png')]}
             />
-            <WorkSectionContainer
+            <WorkSection.Item
               backgroundColor="#F7F7F7"
               color="#000"
               title="Often"
@@ -118,7 +74,7 @@ class IndexPage extends React.Component<any> {
               icon={require('../images/often/icon.png')}
               images={[require('../images/often/often-1.png')]}
             />
-            <WorkSectionContainer
+            <WorkSection.Item
               backgroundColor="#FFF"
               color="#000"
               title="Sundial"
@@ -127,7 +83,7 @@ class IndexPage extends React.Component<any> {
               icon={require('../images/sundial/icon.png')}
               images={[require('../images/sundial/sundial-1.png')]}
             />
-            <WorkSectionContainer
+            <WorkSection.Item
               backgroundColor="#F7F7F7"
               color="#000"
               title="Artsy"
@@ -146,65 +102,11 @@ class IndexPage extends React.Component<any> {
               icon={require('../images/artsy/icon.jpg')}
               images={[require('../images/artsy/artsy-1.png')]}
             />
-          </Section>
+          </WorkSection>
         </Page>
       </Layout>
     )
   }
-}
-
-interface WorkSectionContainerProps {
-  title: string
-  description: string
-  body?: string | JSX.Element
-  icon: string
-  images: string[]
-  backgroundColor?: string
-  deviceColor?: 'white' | 'black'
-  color?: string
-}
-
-const WorkSectionContainer: React.SFC<WorkSectionContainerProps> = props => {
-  const {
-    backgroundColor,
-    body,
-    color,
-    deviceColor,
-    icon,
-    title,
-    description,
-    images,
-  } = props
-
-  return (
-    <WorkSection background={backgroundColor} color={color}>
-      <Container>
-        <Flex py={4}>
-          <Box p={2} width={[1, 1, 3 / 4]}>
-            <div className="icon">
-              <img src={icon} />
-            </div>
-            <h3 className="title">{title}</h3>
-            <div className="description">{description}</div>
-            {body && <div className="body">{body}</div>}
-          </Box>
-          <Box width={[1, 1, 1 / 4]}>
-            <IPhone color={deviceColor}>
-              <IPhoneContent>
-                <img src={images[0]} />
-              </IPhoneContent>
-            </IPhone>
-          </Box>
-        </Flex>
-      </Container>
-    </WorkSection>
-  )
-}
-
-WorkSectionContainer.defaultProps = {
-  backgroundColor: '#FFF',
-  color: '#000',
-  deviceColor: 'black',
 }
 
 export default IndexPage
