@@ -23,5 +23,13 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-plugin-typescript`,
     `gatsby-plugin-styled-components`,
+    {
+      resolve: `gatsby-plugin-favicon`,
+      options: {
+        logo: `./src/images/ls-icon-solid.png`,
+        appName: 'Luc Succès',
+        background: '#000',
+      },
+    },
   ],
 }
