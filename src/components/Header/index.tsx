@@ -34,9 +34,13 @@ const LanguageSwitcher = () => {
   return <span>🇺🇸</span>
 }
 
-const Header = () => (
+interface HeaderProps {
+  hideLogo?: boolean
+}
+
+export const Header = ({ hideLogo }: HeaderProps) => (
   <Menu width={1}>
-    <LogoContainer src={Logo} />
+    {!hideLogo && <LogoContainer src={Logo} />}
     <div>
       {menuItems.map(({ path, name }) => (
         <MenuItem key={path} onClick={() => navigateTo(path)}>
@@ -50,5 +54,3 @@ const Header = () => (
   </Menu>
 )
 Header.displayName = 'Header'
-
-export default Header
