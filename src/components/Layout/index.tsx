@@ -1,9 +1,9 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { Provider } from 'rebass'
 import theme from './theme'
 import { injectGlobal } from 'styled-components'
+import { MediaContextProvider, createMediaStyle } from './Responsive'
 
 import './fonts.css'
 
@@ -24,15 +24,17 @@ injectGlobal`
 
 export const Layout: React.SFC<any> = ({ children }) => (
   <Provider theme={theme}>
-    <div>
+    <MediaContextProvider>
       <Helmet
         title="Luc Succès"
         meta={[
           { name: 'description', content: 'Luc Succès - Blog' },
           { name: 'keywords', content: '' },
         ]}
-      />
+      >
+        <style>{createMediaStyle()}</style>
+      </Helmet>
       {children}
-    </div>
+    </MediaContextProvider>
   </Provider>
 )

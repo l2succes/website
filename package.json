@@ -10,6 +10,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "@artsy/react-responsive-media": "^2.0.0",
     "@types/react-helmet": "^5.0.8",
     "d3-ease": "^1.0.3",
     "datamaps": "^0.5.8",
@@ -30,9 +31,11 @@
     "rbush": "^2.0.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-flexbox-grid": "^2.1.2",
     "react-helmet": "^5.2.0",
     "react-map-gl": "^3.2.5",
     "react-spring": "^8.0.19",
+    "react-sticky-header": "^0.2.0",
     "react-typist": "^2.0.5",
     "rebass": "^1.0.7",
     "styled-components": "^3.2.3",

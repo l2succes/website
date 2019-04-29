@@ -2,16 +2,15 @@ import React, { useState } from 'react'
 import { WorkSectionItem } from './WorkSectionItem'
 import styled from 'styled-components'
 import { useSpring, useTransition, animated } from 'react-spring'
+import { media } from '../Layout/Responsive'
+import { Grid } from 'react-flexbox-grid'
 
-const Header = styled.div`
-  max-width: 1024px;
-  margin: 0 auto;
+const Header = styled(Grid)`
   vertical-align: center;
 
   > h2 {
     display: inline-block;
-    margin: 20px 10px 0;
-    /* font-size: 32px; */
+    margin: 20px 10px 10px;
   }
 `
 
@@ -35,20 +34,31 @@ const Icon = styled.div<{ active?: boolean; src: string }>`
     margin: 10px auto;
     background-color: blue;
   }
+
+  ${media.sm`
+    width: 32px;
+    height: 32px;
+    border-radius: 7.5px;
+  `};
 `
 
 const IconContainer = styled.div`
   margin: 0 auto;
   text-align: center;
   background: rgba(0, 0, 0, 0.3);
+  position: relative;
+  z-index: 5;
 `
 
-const SectionContainer = styled.div`
+const SectionContainer = styled(Grid)`
   position: relative;
   height: 850px;
-  max-width: 1024px;
-  margin: 0 auto;
+
+  ${media.sm`
+    height: 980px;
+  `};
 `
+
 interface Props {
   children: WorkSectionItem[]
 }
@@ -60,8 +70,8 @@ interface State {
 export function WorkSection({ children }: Props) {
   const [activeItem, updateActiveItem] = useState(0)
   const transitions = useTransition(activeItem, null, {
-    from: { position: 'absolute', opacity: 0 },
-    enter: { opacity: 1 },
+    from: { position: 'absolute', opacity: 0, width: '100%' },
+    enter: { opacity: 1, width: '100%' },
     leave: { opacity: 0 },
   })
 

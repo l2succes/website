@@ -1,7 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Flex, Box } from 'rebass'
+import { Grid, Row, Col } from 'react-flexbox-grid'
 import { IPhone } from '../Home/iPhone'
+import { media } from '../Layout/Responsive'
 
 export const Container = styled.div<{
   background?: string
@@ -20,17 +21,12 @@ export const Container = styled.div<{
       box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.2);
     }
 
-    margin: 0 20px;
+    text-align: center;
   }
 
   .description {
     padding: 20px;
   }
-`
-
-const Inner = styled(Flex)`
-  max-width: 1024px;
-  margin: 0 auto;
 `
 
 const Title = styled.h3`
@@ -44,6 +40,18 @@ const Description = styled.div`
   font-style: italic;
   font-size: 20px;
   margin-bottom: 40px;
+
+  ${media.md`
+    text-align: center;
+  `}
+`
+
+const PhoneContainer = styled.div`
+  ${media.md`
+    margin-top: -142px;
+    transform: scale(0.7);
+    text-align: center;
+  `}
 `
 
 interface WorkSectionProps {
@@ -53,7 +61,7 @@ interface WorkSectionProps {
   icon: string
   images: string[]
   backgroundColor?: string
-  deviceColor?: 'white' | 'black'
+  deviceColor?: 'silver' | 'black'
   color?: string
 }
 
@@ -71,27 +79,35 @@ export const WorkSectionItem: React.SFC<WorkSectionProps> = props => {
 
   return (
     <Container background={backgroundColor} color={color}>
-      <Inner py={4}>
-        <Box p={2} width={[1, 1, 3 / 4]}>
-          <Flex>
-            <div className="icon">
-              <img src={icon} />
-              <Title>{title}</Title>
-            </div>
-            <Box p={3}>
-              <Description>{description}</Description>
-              {body && <div className="body">{body}</div>}
-            </Box>
-          </Flex>
-        </Box>
-        <Box width={[1, 1, 1 / 4]}>
-          <IPhone color={deviceColor}>
-            <IPhoneContent>
-              <img src={images[0]} />
-            </IPhoneContent>
-          </IPhone>
-        </Box>
-      </Inner>
+      <Grid>
+        <Row>
+          <Col sm={12} lg={8}>
+            <Grid fluid>
+              <Row>
+                <Col sm={12} lg={3}>
+                  <div className="icon">
+                    <img src={icon} />
+                    <Title>{title}</Title>
+                  </div>
+                </Col>
+                <Col sm={12} lg={9}>
+                  <Description>{description}</Description>
+                  {body && <div className="body">{body}</div>}
+                </Col>
+              </Row>
+            </Grid>
+          </Col>
+          <Col xs={12} lg={4}>
+            <PhoneContainer>
+              <IPhone color={deviceColor}>
+                <IPhoneContent>
+                  <img src={images[0]} />
+                </IPhoneContent>
+              </IPhone>
+            </PhoneContainer>
+          </Col>
+        </Row>
+      </Grid>
     </Container>
   )
 }

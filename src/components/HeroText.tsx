@@ -6,11 +6,11 @@ export class HeroText extends React.Component<any> {
     return (
       <h1>
         <Typist>
-          Hello!
-          <Typist.Backspace count={6} delay={2000} />
-          Bonjour!
-          <Typist.Backspace count={8} delay={2000} />
-          Hola!
+          Hola! Soy Luc Succès
+          <Typist.Backspace count={20} delay={2000} />
+          Bonjour! Je suis Luc Succès
+          <Typist.Backspace count={27} delay={2000} />
+          Hello! I'm Luc Succès
         </Typist>
       </h1>
     )

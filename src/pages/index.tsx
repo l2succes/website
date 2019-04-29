@@ -2,23 +2,22 @@ import React from 'react'
 import styled from 'styled-components'
 import { Layout } from '../components/Layout'
 import { Hero } from '../components/Home/Hero'
-
 import { WorkSection } from '../components/WorkSection'
+import { Header } from '../components/Header'
+import { Grid } from 'react-flexbox-grid'
 
 const Section = styled.div`
   min-height: 700px;
   overflow: hidden;
 `
 
-const Container = styled.div`
-  max-width: 1024px;
-  margin: 0 auto;
-`
+const Container = styled(Grid)``
 
 class IndexPage extends React.Component<any> {
   render() {
     return (
       <Layout>
+        <Header />
         <Hero />
         <WorkSection>
           <WorkSection.Item
@@ -26,8 +25,9 @@ class IndexPage extends React.Component<any> {
             color="white"
             deviceColor="silver"
             title="Spotify"
-            description="I designed and developed an app named Drizzy. This was one of the
-          first successful keyboard apps in the app store."
+            description="I worked at Spotify for two years starting in 2013 where I joined 
+            the discover team which built features like Radio and 
+            the now infamous Discover Weekly playlist."
             icon={require('../images/spotify/icon.png')}
             images={[require('../images/spotify/spotify-1.png')]}
           />
@@ -35,7 +35,7 @@ class IndexPage extends React.Component<any> {
             backgroundColor="#FFC538"
             color="#FFF"
             title="Drizzy"
-            description="I designed and developed an app named Drizzy. This was one of the
+            description="I designed and developed an app named Drizzy along with my friend and partner Regy Perlera. This was one of the
             first successful keyboard apps in the app store."
             icon={require('../images/drizzy/icon.png')}
             images={[require('../images/drizzy/screenshots/drizzy-4.png')]}
@@ -44,8 +44,8 @@ class IndexPage extends React.Component<any> {
             backgroundColor="black"
             color="#FFF"
             title="October"
-            description="I designed and developed an app named Drizzy. This was one of the
-          first successful keyboard apps in the app store."
+            description="October is essentially Drizzy v2. Instead of just having Drake lyrics in the keyboard
+            app, we figured a natural evolution would be to open it up to multiple artists"
             icon={require('../images/october/icon.png')}
             images={[require('../images/october/october-2.png')]}
           />
@@ -53,7 +53,7 @@ class IndexPage extends React.Component<any> {
             backgroundColor="#F7F7F7"
             color="#000"
             title="Often"
-            description="Create your very own keyboard with Photos, GIFS & Quotes"
+            description="Create your very own keyboard with Photos, GIFS & Quotes."
             icon={require('../images/often/icon.png')}
             images={[require('../images/often/often-1.png')]}
           />

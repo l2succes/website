@@ -5,6 +5,7 @@ import CheckInRow from '../../components/Travel/CheckInRow'
 import Map from '../../components/Travel/map'
 import styled from 'styled-components'
 import { Layout } from '../../components/Layout'
+import { Header } from '../../components/Header'
 
 const MapWrapper = styled.div`
   position: fixed;
@@ -108,6 +109,7 @@ class LocationMap extends React.Component {
   render() {
     return (
       <Layout>
+        <Header />
         <MapWrapper>
           <Map
             checkIns={this.state.checkIns}

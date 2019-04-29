@@ -1,10 +1,21 @@
 import React from 'react'
 
-export const Logo: React.SFC<any> = () => {
+interface LogoProps {
+  size?: 'small' | 'large'
+}
+
+export const Logo: React.SFC<LogoProps> = (
+  { size }: LogoProps = { size: 'large' }
+) => {
+  const { width, height } =
+    size === 'large'
+      ? { width: '100%', height: '100%' }
+      : { width: '64px', height: '64px' }
+
   return (
     <svg
-      width="256px"
-      height="auto"
+      width={width}
+      height={height}
       viewBox="0 0 512 512"
       version="1.1"
       xmlnsXlink="http://www.w3.org/1999/xlink"

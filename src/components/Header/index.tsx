@@ -1,10 +1,19 @@
 import React from 'react'
 import { navigateTo } from 'gatsby-link'
 import styled from 'styled-components'
-import { Container, NavLink } from 'rebass'
+import { NavLink } from 'rebass'
 import Logo from '../../images/Logo.svg'
+import { Media } from '../Layout/Responsive'
+import { MenuIcon } from '../Icons/Menu'
+import { useSpring, animated } from 'react-spring'
+import { Grid, Row } from 'react-flexbox-grid'
 
-const Menu = Container.extend`
+const MenuContainer = styled.div`
+  background: black;
+  padding: 5px;
+`
+
+const Menu = styled(Grid)`
   position: relative;
   color: white;
   display: flex;
@@ -17,10 +26,12 @@ const MenuItem = styled(NavLink)`
   font-weight: normal;
 `
 
-const LogoContainer = styled.img`
+const LogoContainer = styled.img<{ hideLogo?: boolean }>`
   display: inline-block;
   width: 40px;
   height: 40px;
+  ${p => (p.hideLogo ? 'visibility: hidden;' : '')};
+  margin-right: 10px;
 `
 
 const menuItems = [
@@ -31,26 +42,52 @@ const menuItems = [
 ]
 
 const LanguageSwitcher = () => {
-  return <span>🇺🇸</span>
+  return (
+    <>
+      <Language>🇺🇸</Language>
+      <Language>🇫🇷</Language>
+      <Language>🇪🇸</Language>
+    </>
+  )
 }
+
+const Language = styled.div`
+  display: inline-block;
+  margin: 0 5px;
+`
 
 interface HeaderProps {
   hideLogo?: boolean
 }
 
-export const Header = ({ hideLogo }: HeaderProps) => (
-  <Menu width={1}>
-    {!hideLogo && <LogoContainer src={Logo} />}
-    <div>
-      {menuItems.map(({ path, name }) => (
-        <MenuItem key={path} onClick={() => navigateTo(path)}>
-          {name}
-        </MenuItem>
-      ))}
-    </div>
-    <div style={{ marginLeft: 'auto' }}>
-      <LanguageSwitcher />
-    </div>
-  </Menu>
-)
+export const Header = ({ hideLogo }: HeaderProps) => {
+  const animationProps = useSpring({
+    width: hideLogo ? 0 : 50,
+    opacity: hideLogo ? 0 : 1,
+  })
+
+  return (
+    <MenuContainer>
+      <Menu>
+        <Row>
+          <animated.div style={animationProps}>
+            <LogoContainer src={Logo} />
+          </animated.div>
+          <Media at="xs">
+            <MenuIcon />
+          </Media>
+          <Media greaterThan="xs">
+            <div>
+              {menuItems.map(({ path, name }) => (
+                <MenuItem key={path} onClick={() => navigateTo(path)}>
+                  {name}
+                </MenuItem>
+              ))}
+            </div>
+          </Media>
+        </Row>
+      </Menu>
+    </MenuContainer>
+  )
+}
 Header.displayName = 'Header'
