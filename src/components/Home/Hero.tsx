@@ -34,8 +34,8 @@ export class Hero extends React.Component<any> {
             <Col xs={12} md={9}>
               <HeroText />
               <h3>
-                I'm a Software engineer & entrepreneur from Paris, based in New
-                York.
+                I'm a Software Engineer from Paris, based in New York.
+                <br />
               </h3>
             </Col>
           </Row>
@@ -47,12 +47,4 @@ export class Hero extends React.Component<any> {
 
 const Container = styled(Grid)`
   margin: 40px auto;
-`
-
-const Content = styled.div`
-  margin-left: 50%;
-  color: white;
-  height: 500px;
-  width: 500px;
-  margin-top: 100px;
 `

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { WorkSectionItem } from './WorkSectionItem'
 import styled from 'styled-components'
 import { useSpring, useTransition, animated } from 'react-spring'
-import { media } from '../Layout/Responsive'
+import { media, Media } from '../Layout/Responsive'
 import { Grid } from 'react-flexbox-grid'
 
 const Header = styled(Grid)`
@@ -48,6 +48,11 @@ const IconContainer = styled.div`
   background: rgba(0, 0, 0, 0.3);
   position: relative;
   z-index: 5;
+
+  ${media.sm`
+    position: sticky;
+    bottom: 0;
+  `}
 `
 
 const SectionContainer = styled(Grid)`
@@ -99,9 +104,14 @@ export function WorkSection({ children }: Props) {
       </Header>
 
       <SectionContainer>
-        {transitions.map(({ item, props }) => {
-          return <animated.div style={props}>{children[item]}</animated.div>
-        })}
+        <Media at="xs">
+          <div>{current}</div>
+        </Media>
+        <Media greaterThan="xs">
+          {transitions.map(({ item, props }) => {
+            return <animated.div style={props}>{children[item]}</animated.div>
+          })}
+        </Media>
       </SectionContainer>
 
       <IconContainer>{items}</IconContainer>

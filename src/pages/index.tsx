@@ -61,8 +61,10 @@ class IndexPage extends React.Component<any> {
             backgroundColor="#FFF"
             color="#000"
             title="Sundial"
-            description="I designed and developed an app named Drizzy. This was one of the
-      first successful keyboard apps in the app store."
+            description="What if you could listen to all the music your were listening to on this
+            present date but one, two or three years in the past?
+            Well I was wondering the same thing, that's why my team built Sundial.
+            We started working on a it as project building Often"
             icon={require('../images/sundial/icon.png')}
             images={[require('../images/sundial/sundial-1.png')]}
           />
@@ -95,6 +97,12 @@ class IndexPage extends React.Component<any> {
               Here's a map of all the places I've been with my personal
               recommendations
             </h3>
+          </Container>
+        </Section>
+        <Section>
+          <Container>
+            <h2>About</h2>
+            <p>I ♥️ Typescript + React (Native)</p>
           </Container>
         </Section>
       </Layout>

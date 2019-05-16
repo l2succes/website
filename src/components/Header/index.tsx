@@ -1,7 +1,7 @@
 import React from 'react'
 import { navigateTo } from 'gatsby-link'
 import styled from 'styled-components'
-import { NavLink } from 'rebass'
+import { NavLink, Flex } from 'rebass'
 import Logo from '../../images/Logo.svg'
 import { Media } from '../Layout/Responsive'
 import { MenuIcon } from '../Icons/Menu'
@@ -69,22 +69,17 @@ export const Header = ({ hideLogo }: HeaderProps) => {
   return (
     <MenuContainer>
       <Menu>
-        <Row>
+        <Row between="sm">
           <animated.div style={animationProps}>
             <LogoContainer src={Logo} />
           </animated.div>
-          <Media at="xs">
-            <MenuIcon />
-          </Media>
-          <Media greaterThan="xs">
-            <div>
-              {menuItems.map(({ path, name }) => (
-                <MenuItem key={path} onClick={() => navigateTo(path)}>
-                  {name}
-                </MenuItem>
-              ))}
-            </div>
-          </Media>
+          <Flex flexDirection="row" alignItems="center">
+            {menuItems.map(({ path, name }) => (
+              <MenuItem key={path} onClick={() => navigateTo(path)}>
+                {name}
+              </MenuItem>
+            ))}
+          </Flex>
         </Row>
       </Menu>
     </MenuContainer>

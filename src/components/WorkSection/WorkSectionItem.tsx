@@ -15,11 +15,17 @@ export const Container = styled.div<{
 
   .icon {
     img {
-      width: inherit;
-      height: 152px;
+      width: 100%;
       border-radius: 30px;
       box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.2);
     }
+
+    ${media.sm`
+      img {
+        width: 100px;
+        border-radius: 20px;
+      }
+    `}
 
     text-align: center;
   }
@@ -44,12 +50,22 @@ const Description = styled.div`
   ${media.md`
     text-align: center;
   `}
+
+  ${media.sm`
+    font-size: 16px;
+  `}
 `
 
 const PhoneContainer = styled.div`
   ${media.md`
     margin-top: -142px;
     transform: scale(0.7);
+    text-align: center;
+  `}
+
+  ${media.xs`
+    margin-top: -142px;
+    transform: scale(0.5);
     text-align: center;
   `}
 `
@@ -81,23 +97,23 @@ export const WorkSectionItem: React.SFC<WorkSectionProps> = props => {
     <Container background={backgroundColor} color={color}>
       <Grid>
         <Row>
-          <Col sm={12} lg={8}>
+          <Col sm={12} md={8}>
             <Grid fluid>
               <Row>
-                <Col sm={12} lg={3}>
+                <Col xs={12} md={3}>
                   <div className="icon">
                     <img src={icon} />
                     <Title>{title}</Title>
                   </div>
                 </Col>
-                <Col sm={12} lg={9}>
+                <Col xs={12} md={9}>
                   <Description>{description}</Description>
                   {body && <div className="body">{body}</div>}
                 </Col>
               </Row>
             </Grid>
           </Col>
-          <Col xs={12} lg={4}>
+          <Col xs={12} md={4}>
             <PhoneContainer>
               <IPhone color={deviceColor}>
                 <IPhoneContent>
