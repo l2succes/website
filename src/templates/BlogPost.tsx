@@ -1,5 +1,5 @@
 import React from 'react'
-import { Layout } from '../components/Layout'
+import { Layout } from '../components/Layout/Blog'
 import { Header } from '../components/Header'
 import { graphql } from 'gatsby'
 

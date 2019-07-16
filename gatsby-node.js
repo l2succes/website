@@ -15,13 +15,12 @@ exports.onCreateNode = ({ actions, node, getNode }) => {
   const { createNodeField } = actions
 
   if (node.internal.type === `MarkdownRemark`) {
-    console.log(node.internal.type)
     const slug = createFilePath({ node, getNode, basePath: `content/blog` })
-    console.log('\n', slug)
+
     createNodeField({
       node,
       name: 'slug',
-      value: slug,
+      value: `/blog${slug}`,
     })
   }
 }
@@ -42,7 +41,6 @@ exports.createPages = ({ graphql, actions }) => {
     }
   `).then(result => {
     result.data.allMarkdownRemark.edges.forEach(({ node }) => {
-      console.log('\n', node)
       createPage({
         path: node.fields.slug,
         component: path.resolve(`./src/templates/BlogPost.tsx`),
