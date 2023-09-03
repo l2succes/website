@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import { WorkSectionItem } from "./WorkSectionItem"
 import { useSpring, animated } from "react-spring"
+import { Chevron } from "components/Icons/Chevron"
 
 interface Props {
   children: JSX.Element[]
@@ -21,7 +22,11 @@ export function WorkSection({ children }: Props) {
 
     return (
       <div className="border-t-2 py-5 flex flex-col" onClick={() => updateActiveItem(i)}>
-        <div className="ml-4 text-3xl">{child.props.title}</div>
+        <div className="flex justify-between align-middle mx-4">
+          <div className="text-3xl">{child.props.title}</div>
+
+          <Chevron rotate={isActive ? "up" : "right"} />
+        </div>
 
         <div className="flex w-full">
           <>{isActive && child}</>

@@ -22,7 +22,7 @@ const Home: NextPage = () => {
 
       <Section style={{ background: "white", color: "black" }}>
         <Container>
-          <div className="text-4xl leading-normal my-20">
+          <div className="text-4xl leading-normal my-20 mx-4">
             I&apos;m a software engineer + product designer with a background in computer science focusing on building
             things people love
           </div>
@@ -32,7 +32,7 @@ const Home: NextPage = () => {
             I&apos;ve been with my personal recommendations
           </div> */}
           <div className="flex flex-1 border-y border-x-black my-10"></div>
-          <div className="font-demibold text-4xl leading-normal my-20">Work</div>
+          <div className="font-demibold text-4xl leading-normal my-20 mx-4">Work</div>
           <Work />
         </Container>
       </Section>

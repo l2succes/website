@@ -17,7 +17,7 @@ export const WorkSectionItem: React.FC<WorkSectionProps> = (props) => {
   const { body, deviceColor, icon, title, description, images } = props
 
   return (
-    <div className="flex flex-1">
+    <div className="flex-col md:flex-row flex flex-1">
       <div className="flex-1 flex-grow">
         <div className="px-8">
           <div className="mt-8">
