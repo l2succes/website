@@ -11,20 +11,14 @@ export class Hero extends React.Component<any> {
   render() {
     return (
       <div className="bg-black">
-        <div className="container mx-auto py-4 pb-10">
-          <Header />
-          <div className="flex">
-            <div className="flex-1 flex">
-              <div className="grow"></div>
-              <Logo size="large" />
-            </div>
-            <div className="flex-1 text-white px-4">
-              <div className="text-3xl">Luc Succès</div>
+        <div className="container mx-auto py-4 pb-10 h-screen items-center justify-center flex-row">
+          {/* <Header /> */}
+          <div className="flex flex-row mx-20 items-center flex-1">
+            <Logo size="large" />
+            <div className="text-white mx-10 my-6">
+              <div className="text-7xl">Luc Succès</div>
               <br />
-              <h3>
-                <HeroText />
-                From Paris - New York
-              </h3>
+              <div className="text-3xl ">startup founder, coder + designer</div>
             </div>
           </div>
         </div>

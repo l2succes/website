@@ -5,7 +5,7 @@ interface IPhoneProps {
   color?: "silver" | "black"
 }
 
-export const IPhone: React.SFC<IPhoneProps> = ({ color, children, device }) => {
+export const IPhone: React.FC<IPhoneProps> = ({ color, children, device }) => {
   const classes = `marvel-device ${device} ${color}`
 
   return (
