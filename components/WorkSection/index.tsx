@@ -1,111 +1,74 @@
-import React, { useState } from "react"
-import { WorkSectionItem } from "./WorkSectionItem"
-import tw from "tailwind-styled-components"
-import styled from "styled-components"
-import { useSpring, useTransition, animated } from "react-spring"
-import { media, Media } from "../Layout/Responsive"
+import { WorkSection } from "./components/WorkSection"
 
-const Icon = styled.div<{ active?: boolean; src: string }>`
-  background: url(${(p) => p.src}) no-repeat center white;
-  background-size: cover;
-  display: inline-block;
-  width: 64px;
-  height: 64px;
-  margin: 10px;
-  overflow: hidden;
-  border-radius: 15px;
-  vertical-align: center;
-  box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.3);
-
-  &::after {
-    display: block;
-    width: 5px;
-    height: 5px;
-    border-radius: 100%;
-    margin: 10px auto;
-    background-color: blue;
-  }
-
-  ${media.sm`
-    width: 32px;
-    height: 32px;
-    border-radius: 7.5px;
-  `};
-`
-
-const IconContainer = tw.div`
-  margin: 0 auto;
-  text-align: center;
-  background: rgba(0, 0, 0, 0.3);
-  position: relative;
-  z-index: 5;
-`
-
-const Grid = tw.div`
-  grid
-`
-
-const Header = styled(Grid)`
-  vertical-align: center;
-
-  > h2 {
-    display: inline-block;
-    margin: 20px 10px 10px;
-  }
-`
-
-const SectionContainer = styled(Grid)`
-  position: relative;
-  height: 850px;
-
-  ${media.sm`
-    height: 980px;
-  `};
-`
-
-interface Props {
-  children: JSX.Element[]
-}
-
-interface State {
-  activeItem: number
-}
-
-export function WorkSection({ children }: Props) {
-  const [activeItem, updateActiveItem] = useState(0)
-  const current = children[activeItem]
-  const { backgroundColor, color } = current.props
-  const styles = useSpring({ backgroundColor, color })
-
-  const items = React.Children.map(children, (child: JSX.Element, i) => {
-    const isActive = i === activeItem
-
-    return (
-      <Icon
-        active={isActive}
-        className={isActive ? "active" : ""}
-        src={child.props.icon}
-        onClick={() => updateActiveItem(i)}
-      />
-    )
-  })
-
+export const Work = () => {
   return (
-    <animated.div style={styles}>
-      <Header>
-        <h2>Work</h2>
-      </Header>
-
-      <SectionContainer>
-        <Media at="xs">
-          <div>{current}</div>
-        </Media>
-        <Media greaterThan="xs">{current}</Media>
-      </SectionContainer>
-
-      <IconContainer>{items}</IconContainer>
-    </animated.div>
+    <WorkSection>
+      <WorkSection.Item
+        backgroundColor="#242424"
+        color="white"
+        deviceColor="silver"
+        title="Spotify"
+        description="I worked at Spotify for two years starting in 2013 where I joined 
+            the discover team which built features like Radio and 
+            the now infamous Discover Weekly playlist."
+        icon={"/images/spotify/icon.png"}
+        images={["/images/spotify/spotify-1.png"]}
+      />
+      <WorkSection.Item
+        backgroundColor="#FFC538"
+        color="#FFF"
+        title="Drizzy"
+        description="I designed and developed an app named Drizzy along with my friend and partner Regy Perlera. This was one of the
+            first successful keyboard apps in the app store."
+        icon={"/images/drizzy/icon.png"}
+        images={["/images/drizzy/screenshots/drizzy-4.png"]}
+      />
+      <WorkSection.Item
+        backgroundColor="black"
+        color="#FFF"
+        title="October"
+        description="October is essentially Drizzy v2. Instead of just having Drake lyrics in the keyboard
+            app, we figured a natural evolution would be to open it up to multiple artists"
+        icon={"/images/october/icon.png"}
+        images={["/images/october/october-2.png"]}
+      />
+      <WorkSection.Item
+        backgroundColor="#F7F7F7"
+        color="#000"
+        title="Often"
+        description="Create your very own keyboard with Photos, GIFS & Quotes."
+        icon={"/images/often/icon.png"}
+        images={["/images/often/often-1.png"]}
+      />
+      <WorkSection.Item
+        backgroundColor="#FFF"
+        color="#000"
+        title="Sundial"
+        description="What if you could listen to all the music your were listening to on this
+            present date but one, two or three years in the past?
+            Well I was wondering the same thing, that's why my team built Sundial.
+            We started working on a it as project building Often"
+        icon={"/images/sundial/icon.png"}
+        images={["/images/sundial/sundial-1.png"]}
+      />
+      <WorkSection.Item
+        backgroundColor="#242424"
+        deviceColor="silver"
+        color="#F7F7F7"
+        title="Artsy"
+        description="Artsy is the best way to buy and discover art."
+        body={
+          <div>
+            During my time at Artsy, I&apos;ve worked on many projects including the main website and the iOS app.
+            Features like Messaging, various UI fixes and the latest projects I&apos;ve had the chance to work on is
+            City Guide. <br />
+            In the iOS app, we used various libraries including Mapbox GL to complete this feature. There was also a lot
+            of work done on the data side.
+          </div>
+        }
+        icon={"/images/artsy/icon.jpg"}
+        images={["/images/artsy/artsy-1.png"]}
+      />
+    </WorkSection>
   )
 }
-
-WorkSection.Item = WorkSectionItem

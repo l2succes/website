@@ -1,5 +1,4 @@
 import React from "react"
-import styled from "styled-components"
 import { Flex } from "rebass"
 import tw from "tailwind-styled-components"
 
@@ -19,9 +18,9 @@ const MenuItem = tw.a`
 `
 
 const menuItems = [
-  { name: "Home", path: "/", exact: true },
-  { name: "Travel", path: "/travel/", exact: false },
-  { name: "About", path: "/about/", exact: true },
+  { name: "works", path: "/", exact: true },
+  { name: "services", path: "/travel/", exact: false },
+  { name: "about", path: "/about/", exact: true },
 ]
 
 interface HeaderProps {
