@@ -1,7 +1,6 @@
 import React from "react"
 import styled from "styled-components"
 import { IPhone } from "../../Home/iPhone"
-import { media } from "../../Layout/Responsive"
 
 interface WorkSectionProps {
   title: string
@@ -46,17 +45,9 @@ export const WorkSectionItem: React.FC<WorkSectionProps> = (props) => {
 }
 
 const PhoneContainer = styled.div`
-  ${media.md`
-    margin-top: -142px;
-    transform: scale(0.7);
-    text-align: center;
-  `}
-
-  ${media.xs`
-    margin-top: -142px;
-    transform: scale(0.5);
-    text-align: center;
-  `}
+  margin-top: -142px;
+  transform: scale(0.7);
+  text-align: center;
 `
 
 export const IPhoneContent = styled.div`

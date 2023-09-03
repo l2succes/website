@@ -1,35 +1,6 @@
 import React, { useState } from "react"
 import { WorkSectionItem } from "./WorkSectionItem"
-import Image from "next/image"
-import tw from "tailwind-styled-components"
-import styled from "styled-components"
 import { useSpring, animated } from "react-spring"
-import { media } from "components/Layout/Responsive"
-
-const Icon = styled.div<{ active?: boolean; src: string }>`
-  display: inline-block;
-  width: 64px;
-  height: 64px;
-  margin: 10px;
-  overflow: hidden;
-  border-radius: 15px;
-  vertical-align: center;
-
-  &::after {
-    display: block;
-    width: 5px;
-    height: 5px;
-    border-radius: 100%;
-    margin: 10px auto;
-    background-color: blue;
-  }
-
-  ${media.sm`
-    width: 32px;
-    height: 32px;
-    border-radius: 7.5px;
-  `};
-`
 
 interface Props {
   children: JSX.Element[]
