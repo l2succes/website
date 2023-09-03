@@ -1,7 +1,7 @@
 import React from "react"
 import { WorkSection } from "../components/WorkSection"
 
-export const Work = () => {
+const Work = () => {
   return (
     <WorkSection>
       <WorkSection.Item
@@ -52,7 +52,7 @@ export const Work = () => {
         icon={require("../images/sundial/icon.png")}
         images={[require("../images/sundial/sundial-1.png")]}
       />
-      <WorkSection.Item
+      {/* <WorkSection.Item
         backgroundColor="#242424"
         deviceColor="silver"
         color="#F7F7F7"
@@ -60,16 +60,18 @@ export const Work = () => {
         description="Artsy is the best way to buy and discover art."
         body={
           <div>
-            During my time at Artsy, I've worked on many projects including the main website and the iOS app. Features
-            like Messaging, various UI fixes and the latest projects I've had the chance to work on is City Guide.{" "}
-            <br />
+            During my time at Artsy, I&apos;ve worked on many projects including the main website and the iOS app.
+            Features like Messaging, various UI fixes and the latest projects I&apos;ve had the chance to work on is
+            City Guide. <br />
             In the iOS app, we used various libraries including Mapbox GL to complete this feature. There was also a lot
             of work done on the data side.
           </div>
         }
         icon={require("../images/artsy/icon.jpg")}
         images={[require("../images/artsy/artsy-1.png")]}
-      />
+      /> */}
     </WorkSection>
   )
 }
+
+export default Work

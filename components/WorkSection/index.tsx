@@ -64,7 +64,7 @@ const SectionContainer = styled(Grid)`
 `
 
 interface Props {
-  children: WorkSectionItem[]
+  children: JSX.Element[]
 }
 
 interface State {

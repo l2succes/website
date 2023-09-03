@@ -13,13 +13,13 @@ export class Hero extends React.Component<any> {
       <div className="bg-black">
         <div className="container mx-auto py-4 pb-10 h-screen items-center justify-center flex-row">
           {/* <Header /> */}
-          <div className="flex flex-row mx-20 items-center flex-1">
-            <Logo size="large" />
-            <div className="text-white mx-10 my-6">
+          <div className="flex mx-20 items-center">
+            <div className="text-white mx-10 my-6 flex-1">
               <div className="text-7xl">Luc Succès</div>
               <br />
-              <div className="text-3xl ">startup founder, coder + designer</div>
+              <div className="text-3xl text-neutral-500">startup founder, coder + designer</div>
             </div>
+            <Logo size="large" />
           </div>
         </div>
       </div>

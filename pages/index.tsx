@@ -24,8 +24,8 @@ const Home: NextPage = () => {
           <h2 className="text-2xl">Travel</h2>
 
           <div className="text-md">
-            I spent the past few years traveling and working around the world. Here's a map of all the places I've been
-            with my personal recommendations
+            I spent the past few years traveling and working around the world. Here&apos;s a map of all the places
+            I&apos;ve been with my personal recommendations
           </div>
         </Container>
       </Section>
