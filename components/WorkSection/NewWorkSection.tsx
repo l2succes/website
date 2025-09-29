@@ -6,8 +6,10 @@ interface FeaturedProject {
   role: string
   year: string
   image: string
+  video?: string
   slug: string
   backgroundColor: string
+  icon: string
 }
 
 interface GridProject {
@@ -21,19 +23,22 @@ interface GridProject {
 const featuredProjects: FeaturedProject[] = [
   {
     title: "Blaze",
-    role: "Co-Founder + Designer",
+    role: "Co-Founder + CTO",
     year: "2024",
     image: "/images/blaze/feed.png",
     slug: "blaze",
     backgroundColor: "#FAF000",
+    icon: "/images/blaze/icon.svg",
   },
   {
     title: "Catching Feelings",
     role: "Featured, Co-Founder + Designer",
-    year: "2017",
+    year: "2024",
     image: "/images/drizzy/screenshots/drizzy-4.png",
+    video: "/images/catching-feelings/demo.mp4",
     slug: "catching-feelings",
-    backgroundColor: "#FF6B6B",
+    backgroundColor: "#3F215A",
+    icon: "/images/catching-feelings/icon.png",
   },
 ]
 
@@ -96,7 +101,7 @@ export const NewWorkSection: React.FC = () => {
               className="rounded-2xl overflow-hidden cursor-pointer hover:scale-[1.02] transition-transform duration-300"
               style={{ backgroundColor: project.backgroundColor }}
             >
-              <div className="p-8 flex flex-col items-center">
+              <div className="p-8 pb-32 flex flex-col items-center relative">
                 <div className="mb-6">
                   <div className="relative" style={{ width: "280px", height: "560px" }}>
                     {/* Modern iPhone Frame */}
@@ -104,19 +109,50 @@ export const NewWorkSection: React.FC = () => {
                       <div className="w-full h-full bg-white rounded-[35px] overflow-hidden relative">
                         {/* Notch */}
                         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-7 bg-black rounded-b-3xl z-10"></div>
-                        {/* Screenshot */}
-                        <img
-                          src={project.image}
-                          alt={project.title}
-                          className="w-full h-full object-cover"
-                        />
+                        {/* Video or Screenshot */}
+                        {project.video ? (
+                          <video
+                            src={project.video}
+                            className="w-full h-full object-cover"
+                            autoPlay
+                            loop
+                            muted
+                            playsInline
+                            preload="metadata"
+                          />
+                        ) : (
+                          <img
+                            src={project.image}
+                            alt={project.title}
+                            className="w-full h-full object-cover"
+                          />
+                        )}
                       </div>
                     </div>
                   </div>
                 </div>
-                <h3 className="text-2xl font-semibold mb-2">{project.title}</h3>
-                <p className="text-lg opacity-80">{project.role}</p>
-                <p className="text-sm opacity-60 mt-1">{project.year}</p>
+                <div
+                  className="absolute bottom-0 left-0 right-0 px-8 py-5 rounded-b-2xl"
+                  style={{
+                    backgroundColor: project.slug === "catching-feelings" ? "rgba(0, 0, 0, 0.1)" : "rgba(0, 0, 0, 0.05)",
+                    color: project.slug === "catching-feelings" ? "white" : "inherit",
+                    height: "120px"
+                  }}
+                >
+                  <div className="flex items-center justify-between h-full">
+                    <div className="flex items-center gap-6">
+                      <img src={project.icon} alt={`${project.title} icon`} className="w-16 h-16 rounded-xl" />
+                      <div>
+                        <h3 className="text-2xl font-semibold leading-tight">{project.title}</h3>
+                        <p className="text-sm opacity-60">{project.year}</p>
+                        <p className="text-xs opacity-80 mt-1">{project.role}</p>
+                      </div>
+                    </div>
+                    <button className="bg-black text-white px-6 py-2 rounded-lg hover:bg-gray-800 transition-colors flex-shrink-0">
+                      Read More
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
           </Link>
