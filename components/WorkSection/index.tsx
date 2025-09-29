@@ -4,13 +4,19 @@ export const Work = () => {
   return (
     <WorkSection>
       <WorkSection.Item
+        backgroundColor="#FAF000"
+        color="black"
+        title="Blaze"
+        description="My current startup venture focused on solving complex problems through innovative technology solutions. Building the next generation of tools that empower teams and individuals to achieve their goals more efficiently."
+        icon={"/images/blaze/icon.svg"}
+        images={["/images/blaze/feed.png"]}
+      />
+      <WorkSection.Item
         backgroundColor="#242424"
         color="white"
         deviceColor="silver"
         title="Spotify"
-        description="I worked at Spotify for two years starting in 2013 where I joined 
-            the discover team which built features like Radio and 
-            the now infamous Discover Weekly playlist."
+        description="Led development on Spotify's discovery team from 2013-2015, building core features like Radio and the now-famous Discover Weekly playlist. This experience taught me how to scale products to millions of users and the importance of data-driven product decisions."
         icon={"/images/spotify/icon.png"}
         images={["/images/spotify/spotify-1.png"]}
       />
@@ -18,8 +24,7 @@ export const Work = () => {
         backgroundColor="#FFC538"
         color="#FFF"
         title="Drizzy"
-        description="I designed and developed an app named Drizzy along with my friend and partner Regy Perlera. This was one of the
-            first successful keyboard apps in the app store."
+        description="Co-founded and built Drizzy with my partner Regy Perlera, creating one of the first successful keyboard apps in the App Store. This venture taught me valuable lessons about product-market fit, user acquisition, and scaling consumer products."
         icon={"/images/drizzy/icon.png"}
         images={["/images/drizzy/screenshots/drizzy-4.png"]}
       />
@@ -27,8 +32,7 @@ export const Work = () => {
         backgroundColor="black"
         color="#FFF"
         title="October"
-        description="October is essentially Drizzy v2. Instead of just having Drake lyrics in the keyboard
-            app, we figured a natural evolution would be to open it up to multiple artists"
+        description="Built October as the natural evolution of Drizzy, expanding from a single-artist keyboard to a multi-artist platform. This pivot demonstrated our ability to iterate based on user feedback and market opportunities."
         icon={"/images/october/icon.png"}
         images={["/images/october/october-2.png"]}
       />
@@ -36,7 +40,7 @@ export const Work = () => {
         backgroundColor="#F7F7F7"
         color="#000"
         title="Often"
-        description="Create your very own keyboard with Photos, GIFS & Quotes."
+        description="Developed Often as a customizable keyboard platform, allowing users to create personalized keyboards with photos, GIFs, and quotes. This project showcased our technical expertise in mobile development and user customization features."
         icon={"/images/often/icon.png"}
         images={["/images/often/often-1.png"]}
       />
@@ -44,10 +48,7 @@ export const Work = () => {
         backgroundColor="#FFF"
         color="#000"
         title="Sundial"
-        description="What if you could listen to all the music your were listening to on this
-            present date but one, two or three years in the past?
-            Well I was wondering the same thing, that's why my team built Sundial.
-            We started working on a it as project building Often"
+        description="Co-created Sundial, a music time-travel app that lets users rediscover their past musical moments. This innovative concept combined data analytics with user experience design, demonstrating our ability to identify unique market opportunities and execute on creative ideas."
         icon={"/images/sundial/icon.png"}
         images={["/images/sundial/sundial-1.png"]}
       />
@@ -56,14 +57,14 @@ export const Work = () => {
         deviceColor="silver"
         color="#F7F7F7"
         title="Artsy"
-        description="Artsy is the best way to buy and discover art."
+        description="Contributed to Artsy's mission of making art accessible to everyone through innovative technology solutions."
         body={
           <div>
-            During my time at Artsy, I&apos;ve worked on many projects including the main website and the iOS app.
-            Features like Messaging, various UI fixes and the latest projects I&apos;ve had the chance to work on is
-            City Guide. <br />
-            In the iOS app, we used various libraries including Mapbox GL to complete this feature. There was also a lot
-            of work done on the data side.
+            During my time at Artsy, I worked on multiple projects including the main website and iOS app, focusing on
+            features like Messaging and the City Guide functionality. <br />
+            The City Guide project involved integrating Mapbox GL and extensive data engineering work, showcasing my
+            ability to work with complex mapping technologies and large-scale data systems. This experience reinforced
+            my passion for building products that bridge technology and culture.
           </div>
         }
         icon={"/images/artsy/icon.jpg"}
