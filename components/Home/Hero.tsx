@@ -45,6 +45,7 @@ export class Hero extends React.Component<any> {
             }
           }
           .logo-container {
+            transform: scale(2);
             ${animationComplete ? `
               animation: scaleDown 0.8s ease-out forwards;
             ` : ''}
