@@ -120,7 +120,6 @@ const Home: NextPage = () => {
           </div>
 
           <div className="flex flex-1 border-y border-x-black my-10"></div>
-          <div className="font-demibold text-4xl leading-normal my-20 mx-4">Past Projects</div>
           <NewWorkSection />
 
           {/* Contact Section */}

@@ -85,6 +85,9 @@ const gridProjects: GridProject[] = [
 export const NewWorkSection: React.FC = () => {
   return (
     <div className="my-10">
+      {/* Current Projects Header */}
+      <div className="font-demibold text-4xl leading-normal mb-10 mx-4">Current Projects</div>
+
       {/* Featured Projects */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
         {featuredProjects.map((project) => (
@@ -120,6 +123,9 @@ export const NewWorkSection: React.FC = () => {
         ))}
       </div>
 
+      {/* Past Projects Header */}
+      <div className="font-demibold text-4xl leading-normal my-10 mx-4">Past Projects</div>
+
       {/* Grid Projects */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {gridProjects.map((project) => (
@@ -141,11 +147,11 @@ export const NewWorkSection: React.FC = () => {
                 <p className="text-sm text-gray-400 mt-1">{project.year}</p>
               </div>
             </div>
-            <div className="flex-shrink-0 w-24 h-32 -my-6 -mr-6 rounded-r-2xl overflow-hidden">
+            <div className="flex-shrink-0 w-32 -my-6 mr-6 overflow-hidden flex items-center justify-center" style={{ height: "calc(100% + 3rem)" }}>
               <img
                 src={project.image}
                 alt={`${project.title} screenshot`}
-                className="w-full h-full object-cover object-center"
+                className="h-full w-auto object-cover object-center scale-[1.3]"
               />
             </div>
           </div>
