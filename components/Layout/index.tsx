@@ -1,5 +1,6 @@
 import React from "react"
 import { Helmet } from "react-helmet"
+import { Footer } from "../Footer"
 
 export const Layout: React.SFC<any> = ({ children }) => (
   <>
@@ -11,5 +12,6 @@ export const Layout: React.SFC<any> = ({ children }) => (
       ]}
     ></Helmet>
     {children}
+    <Footer />
   </>
 )

@@ -1,12 +1,15 @@
 import React from "react"
 
 interface LogoProps {
-  size?: "small" | "large"
+  size?: "small" | "large" | "xlarge"
   animated?: boolean
 }
 
 export const Logo = ({ size = "large", animated = false }: LogoProps) => {
-  const { width, height } = size === "large" ? { width: "150px", height: "150px" } : { width: "64px", height: "64px" }
+  const { width, height } =
+    size === "xlarge" ? { width: "200px", height: "200px" } :
+    size === "large" ? { width: "150px", height: "150px" } :
+    { width: "64px", height: "64px" }
 
   return (
     <svg

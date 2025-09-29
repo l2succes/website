@@ -17,11 +17,7 @@ const MenuItem = tw.a`
   text-white
 `
 
-const menuItems = [
-  { name: "works", path: "/", exact: true },
-  { name: "services", path: "/travel/", exact: false },
-  { name: "about", path: "/about/", exact: true },
-]
+const menuItems: { name: string; path: string; exact: boolean }[] = []
 
 interface HeaderProps {
   hideLogo?: boolean

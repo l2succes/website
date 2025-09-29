@@ -30,24 +30,47 @@ const Home: NextPage = () => {
           {/* About Section */}
           <div className="flex flex-1 border-y border-x-black my-10"></div>
           <div className="font-demibold text-4xl leading-normal my-20 mx-4">About me</div>
+          <div className="flex items-center gap-2 mx-4 mb-8 text-gray-600">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="w-5 h-5"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"
+              />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"
+              />
+            </svg>
+            <span>Currently based in Mexico City</span>
+          </div>
           <div className="flex flex-col md:flex-row gap-8 my-10 mx-4 max-w-6xl items-start">
             <div className="flex-shrink-0 w-full md:w-80">
               <img src="/images/profile-photo.jpg" alt="Luc Succes" className="w-full h-auto rounded-lg shadow-lg" />
             </div>
             <div className="text-lg leading-relaxed flex-1">
               <p className="mb-6">
-                With a background in computer science and years of experience building products from the ground up, I
-                specialize in turning ambitious ideas into successful businesses. My journey spans multiple startups,
-                each teaching me valuable lessons about product-market fit, user experience, and scalable engineering.
+                I&apos;ve spent the last few years bouncing between cities—Mexico City, New York, San Francisco—building
+                products and companies along the way. My background is in computer science, but I&apos;ve always been
+                drawn to the intersection of design, technology, and entrepreneurship.
               </p>
               <p className="mb-6">
-                At Blaze, I&apos;m focused on solving complex problems through innovative technology solutions. Beyond
-                my own ventures, I enjoy mentoring fellow entrepreneurs and collaborating with teams to bring
-                breakthrough products to market.
+                Right now, I&apos;m working on Blaze, trying to solve some interesting problems in the fintech space.
+                Before this, I&apos;ve built keyboard apps that hit millions of downloads, worked on Spotify&apos;s
+                discovery features, and helped bring art to more people at Artsy.
               </p>
               <p>
-                When I&apos;m not coding or designing, you&apos;ll find me exploring new technologies, contributing to
-                open source projects, or sharing insights about the startup ecosystem.
+                When I&apos;m not working, you&apos;ll probably find me exploring a new neighborhood, trying out local
+                coffee spots, or having deep conversations about startups, design, and where technology is headed.
+                I&apos;m always down to connect with fellow founders and creators.
               </p>
             </div>
           </div>
