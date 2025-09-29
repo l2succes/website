@@ -7,23 +7,75 @@ import { SocialLinks } from "../SocialLinks"
 export class Hero extends React.Component<any> {
   state = {
     isSticky: false,
+    animationComplete: false,
+  }
+
+  componentDidMount() {
+    // Animation sequence timing: border (0.8s) + L (2s at 1.1s delay) + S (2s at 2.1s delay) = ~4.1s total
+    // Then trigger scale down
+    setTimeout(() => {
+      this.setState({ animationComplete: true })
+    }, 4300)
   }
 
   render() {
+    const { animationComplete } = this.state
+
     return (
       <div className="bg-black min-h-screen relative">
+        <style jsx>{`
+          @keyframes scaleDown {
+            0% {
+              transform: scale(2);
+              opacity: 1;
+            }
+            100% {
+              transform: scale(1);
+              opacity: 1;
+            }
+          }
+          @keyframes fadeIn {
+            0% {
+              opacity: 0;
+              transform: translateY(20px);
+            }
+            100% {
+              opacity: 1;
+              transform: translateY(0);
+            }
+          }
+          .logo-container {
+            ${animationComplete ? `
+              animation: scaleDown 0.8s ease-out forwards;
+            ` : ''}
+          }
+          .text-container {
+            opacity: 0;
+            ${animationComplete ? `
+              animation: fadeIn 0.6s ease-out forwards;
+              animation-delay: 0.4s;
+            ` : ''}
+          }
+          .chevron-container {
+            opacity: 0;
+            ${animationComplete ? `
+              animation: fadeIn 0.6s ease-out forwards;
+              animation-delay: 0.8s;
+            ` : ''}
+          }
+        `}</style>
         <div className="container mx-auto py-4">
           <Header />
           <div className="absolute top-8 right-8 z-10">
             <SocialLinks color="white" hoverColor="gray-300" size="small" />
           </div>
-          <div className="flex flex-col items-center justify-center text-center relative" style={{ minHeight: "calc(100vh - 2rem)" }}>
-            <div className="text-white mx-10">
+          <div className="flex flex-col items-center justify-center text-center relative w-full" style={{ minHeight: "calc(100vh - 2rem)" }}>
+            <div className="text-white text-container">
               <div className="font-sans text-4xl mb-1">Luc Succès</div>
               <div className="text-md text-neutral-500">Coder. Designer. Startup founder</div>
             </div>
-            <div className="mt-10 flex justify-center">
-              <Logo size="xlarge" />
+            <div className={`${animationComplete ? 'mt-10' : ''} logo-container`}>
+              <Logo size="xlarge" animated={!animationComplete} />
             </div>
             <button
               onClick={() => {
@@ -32,7 +84,7 @@ export class Hero extends React.Component<any> {
                   behavior: "smooth",
                 })
               }}
-              className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white hover:text-gray-300 transition-colors cursor-pointer animate-bounce"
+              className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white hover:text-gray-300 transition-colors cursor-pointer animate-bounce chevron-container"
               aria-label="Scroll down"
             >
               <svg

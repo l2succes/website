@@ -4,6 +4,7 @@ import { Layout } from "../components/Layout"
 import { Hero } from "../components/Home/Hero"
 import tw from "tailwind-styled-components"
 import { Work } from "components/WorkSection"
+import { TypewriterHeader } from "../components/TypewriterHeader"
 
 const Section = styled.div`
   min-height: 700px;
@@ -30,6 +31,7 @@ const Home: NextPage = () => {
           {/* About Section */}
           <div className="flex flex-1 border-y border-x-black my-10"></div>
           <div className="font-demibold text-4xl leading-normal my-20 mx-4">About me</div>
+          <TypewriterHeader />
           <div className="flex items-center gap-2 mx-4 mb-8 text-gray-600">
             <svg
               xmlns="http://www.w3.org/2000/svg"
