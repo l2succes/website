@@ -3,8 +3,9 @@ import styled from "styled-components"
 import { Layout } from "../components/Layout"
 import { Hero } from "../components/Home/Hero"
 import tw from "tailwind-styled-components"
-import { Work } from "components/WorkSection"
+import { NewWorkSection } from "components/WorkSection/NewWorkSection"
 import { TypewriterHeader } from "../components/TypewriterHeader"
+import { InstagramFeed } from "../components/InstagramFeed"
 
 const Section = styled.div`
   min-height: 700px;
@@ -77,6 +78,11 @@ const Home: NextPage = () => {
             </div>
           </div>
 
+          {/* Instagram Feed */}
+          <div className="mx-4 my-10">
+            <InstagramFeed />
+          </div>
+
           {/* Skills Section */}
           <div className="flex flex-1 border-y border-x-black my-10"></div>
           <div className="font-demibold text-4xl leading-normal my-20 mx-4">Skills & Technologies</div>
@@ -114,8 +120,8 @@ const Home: NextPage = () => {
           </div>
 
           <div className="flex flex-1 border-y border-x-black my-10"></div>
-          <div className="font-demibold text-4xl leading-normal my-20 mx-4">Work</div>
-          <Work />
+          <div className="font-demibold text-4xl leading-normal my-20 mx-4">Past Projects</div>
+          <NewWorkSection />
 
           {/* Contact Section */}
           <div className="flex flex-1 border-y border-x-black my-10"></div>
