@@ -1,5 +1,4 @@
 import React from "react"
-import { Flex } from "rebass"
 import tw from "tailwind-styled-components"
 
 const MenuContainer = tw.div`
@@ -28,13 +27,13 @@ export const Header = ({ hideLogo }: HeaderProps) => {
     <MenuContainer>
       <Menu>
         <div className="grow"></div>
-        <Flex flexDirection="row" alignItems="center">
+        <div className="flex flex-row items-center">
           {menuItems.map(({ path, name }) => (
             <MenuItem key={path} onClick={() => console.log(path)}>
               {name}
             </MenuItem>
           ))}
-        </Flex>
+        </div>
       </Menu>
     </MenuContainer>
   )
