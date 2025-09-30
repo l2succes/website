@@ -1,22 +1,76 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Luc Succès Portfolio
+
+Personal portfolio website built with Next.js, TypeScript, and Tailwind CSS.
 
 ## Getting Started
 
-First, run the development server:
+First, install dependencies:
+
+```bash
+npm install
+```
+
+Then run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## Features
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+- **Animated Hero Section** - SVG logo animation with drawing effect and scale transition
+- **About Section** - Personal bio with location and social links
+- **Instagram Feed Integration** - Displays 5 most recent Instagram posts (requires API token)
+- **Work/Projects Section** - Showcases past projects with custom styling
+- **Skills Section** - Organized display of engineering, design, and entrepreneurship skills
+- **Responsive Design** - Mobile-friendly layout with Tailwind CSS
+- **Footer** - Social links and copyright information
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Configuration
+
+### Instagram Feed (Optional)
+
+To enable the Instagram feed in the About section, you'll need to set up Instagram Basic Display API:
+
+1. Follow the instructions in [`docs/instagram-setup.md`](./docs/instagram-setup.md)
+2. Create a `.env.local` file in the project root
+3. Add your Instagram access token:
+   ```
+   NEXT_PUBLIC_INSTAGRAM_ACCESS_TOKEN=your_token_here
+   ```
+4. Restart the dev server
+
+If no token is configured, the Instagram section will be hidden automatically.
+
+## Project Structure
+
+```
+├── components/          # React components
+│   ├── Home/           # Hero and Logo components
+│   ├── WorkSection/    # Work/project showcase
+│   ├── Footer.tsx      # Footer component
+│   ├── InstagramFeed.tsx # Instagram integration
+│   └── SocialLinks.tsx # Reusable social media links
+├── pages/              # Next.js pages
+│   ├── index.tsx       # Home page
+│   └── api/            # API routes
+├── public/             # Static assets
+│   └── images/         # Images and logos
+└── docs/               # Documentation
+```
+
+## Environment Variables
+
+Create a `.env.local` file in the root directory:
+
+```bash
+# Instagram API (optional)
+NEXT_PUBLIC_INSTAGRAM_ACCESS_TOKEN=your_instagram_token_here
+```
+
+**Note:** `.env.local` is gitignored and should never be committed.
 
 ## Learn More
 
