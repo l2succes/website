@@ -5,7 +5,8 @@ import { Hero } from "../components/Home/Hero"
 import tw from "tailwind-styled-components"
 import { NewWorkSection } from "components/WorkSection/NewWorkSection"
 import { TypewriterHeader } from "../components/TypewriterHeader"
-import { InstagramFeed } from "../components/InstagramFeed"
+// import { InstagramFeed } from "../components/InstagramFeed"
+import Image from "next/image"
 
 const Section = styled.div`
   min-height: 700px;
@@ -31,7 +32,6 @@ const Home: NextPage = () => {
 
           {/* About Section */}
           <div className="flex flex-1 border-y border-x-black my-10"></div>
-          <div className="font-demibold text-4xl leading-normal my-20 mx-4">About me</div>
           <TypewriterHeader />
           <div className="flex items-center gap-2 mx-4 mb-8 text-gray-600">
             <svg
@@ -42,11 +42,7 @@ const Home: NextPage = () => {
               stroke="currentColor"
               className="w-5 h-5"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"
-              />
+              <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -57,7 +53,13 @@ const Home: NextPage = () => {
           </div>
           <div className="flex flex-col md:flex-row gap-8 my-10 mx-4 max-w-6xl items-start">
             <div className="flex-shrink-0 w-full md:w-80">
-              <img src="/images/profile-photo.jpg" alt="Luc Succes" className="w-full h-auto rounded-lg shadow-lg" />
+              <Image
+                src="/images/profile-photo.jpg"
+                alt="Luc Succes"
+                width={320}
+                height={400}
+                className="w-full h-auto rounded-lg shadow-lg"
+              />
             </div>
             <div className="text-lg leading-relaxed flex-1">
               <p className="mb-6">
@@ -79,9 +81,12 @@ const Home: NextPage = () => {
           </div>
 
           {/* Instagram Feed */}
-          <div className="mx-4 my-10">
+          {/* <div className="mx-4 my-10">
             <InstagramFeed />
-          </div>
+          </div> */}
+
+          <div className="flex flex-1 border-y border-x-black my-10"></div>
+          <NewWorkSection />
 
           {/* Skills Section */}
           <div className="flex flex-1 border-y border-x-black my-10"></div>
@@ -119,12 +124,9 @@ const Home: NextPage = () => {
             </div>
           </div>
 
-          <div className="flex flex-1 border-y border-x-black my-10"></div>
-          <NewWorkSection />
-
           {/* Contact Section */}
           <div className="flex flex-1 border-y border-x-black my-10"></div>
-          <div className="font-demibold text-4xl leading-normal my-20 mx-4">Let&apos;s Connect</div>
+          <div className="font-demibold text-4xl leading-normal my-10 mx-4">Let&apos;s Connect</div>
           <div className="text-lg leading-relaxed my-10 mx-4 max-w-4xl">
             <p className="mb-6">
               I&apos;m always interested in connecting with fellow entrepreneurs, potential collaborators, and anyone
@@ -137,22 +139,6 @@ const Home: NextPage = () => {
                 className="bg-black text-white px-6 py-3 rounded-lg hover:bg-gray-800 transition-colors"
               >
                 Get in Touch
-              </a>
-              <a
-                href="https://linkedin.com/in/lucsucces"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="border border-black px-6 py-3 rounded-lg hover:bg-gray-100 transition-colors"
-              >
-                LinkedIn
-              </a>
-              <a
-                href="https://github.com/lucsucces"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="border border-black px-6 py-3 rounded-lg hover:bg-gray-100 transition-colors"
-              >
-                GitHub
               </a>
             </div>
           </div>

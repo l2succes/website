@@ -1,6 +1,7 @@
 import type { NextPage } from "next"
 import { Layout } from "../../components/Layout"
 import Link from "next/link"
+import Image from "next/image"
 
 const Blaze: NextPage = () => {
   return (
@@ -67,30 +68,38 @@ const Blaze: NextPage = () => {
             <h2 className="text-4xl font-bold mb-8">Product Screenshots</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="bg-gray-100 rounded-xl overflow-hidden aspect-[4/3]">
-                <img
+                <Image
                   src="/images/blaze/screenshot-1.png"
                   alt="Blaze Screenshot 1"
+                  width={400}
+                  height={300}
                   className="w-full h-full object-cover"
                 />
               </div>
               <div className="bg-gray-100 rounded-xl overflow-hidden aspect-[4/3]">
-                <img
+                <Image
                   src="/images/blaze/screenshot-2.png"
                   alt="Blaze Screenshot 2"
+                  width={400}
+                  height={300}
                   className="w-full h-full object-cover"
                 />
               </div>
               <div className="bg-gray-100 rounded-xl overflow-hidden aspect-[4/3]">
-                <img
+                <Image
                   src="/images/blaze/screenshot-3.png"
                   alt="Blaze Screenshot 3"
+                  width={400}
+                  height={300}
                   className="w-full h-full object-cover"
                 />
               </div>
               <div className="bg-gray-100 rounded-xl overflow-hidden aspect-[4/3]">
-                <img
+                <Image
                   src="/images/blaze/screenshot-4.png"
                   alt="Blaze Screenshot 4"
+                  width={400}
+                  height={300}
                   className="w-full h-full object-cover"
                 />
               </div>

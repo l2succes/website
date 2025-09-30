@@ -1,5 +1,6 @@
 import React from "react"
 import Link from "next/link"
+import Image from "next/image"
 
 interface FeaturedProject {
   title: string
@@ -121,9 +122,11 @@ export const NewWorkSection: React.FC = () => {
                             preload="metadata"
                           />
                         ) : (
-                          <img
+                          <Image
                             src={project.image}
                             alt={project.title}
+                            width={280}
+                            height={560}
                             className="w-full h-full object-cover"
                           />
                         )}
@@ -134,14 +137,21 @@ export const NewWorkSection: React.FC = () => {
                 <div
                   className="absolute bottom-0 left-0 right-0 px-8 py-5 rounded-b-2xl"
                   style={{
-                    backgroundColor: project.slug === "catching-feelings" ? "rgba(0, 0, 0, 0.1)" : "rgba(0, 0, 0, 0.05)",
+                    backgroundColor:
+                      project.slug === "catching-feelings" ? "rgba(0, 0, 0, 0.1)" : "rgba(0, 0, 0, 0.05)",
                     color: project.slug === "catching-feelings" ? "white" : "inherit",
-                    height: "120px"
+                    height: "120px",
                   }}
                 >
                   <div className="flex items-center justify-between h-full">
                     <div className="flex items-center gap-6">
-                      <img src={project.icon} alt={`${project.title} icon`} className="w-16 h-16 rounded-xl" />
+                      <Image
+                        src={project.icon}
+                        alt={`${project.title} icon`}
+                        width={64}
+                        height={64}
+                        className="w-16 h-16 rounded-xl"
+                      />
                       <div>
                         <h3 className="text-2xl font-semibold leading-tight">{project.title}</h3>
                         <p className="text-sm opacity-60">{project.year}</p>
@@ -171,9 +181,11 @@ export const NewWorkSection: React.FC = () => {
           >
             <div className="flex items-center gap-4 flex-1">
               <div className="flex-shrink-0 w-12 h-12 bg-white rounded-lg flex items-center justify-center">
-                <img
+                <Image
                   src={project.logo}
                   alt={project.title}
+                  width={40}
+                  height={40}
                   className="w-10 h-10 object-contain"
                 />
               </div>
@@ -183,10 +195,15 @@ export const NewWorkSection: React.FC = () => {
                 <p className="text-sm text-gray-400 mt-1">{project.year}</p>
               </div>
             </div>
-            <div className="flex-shrink-0 w-32 -my-6 mr-6 overflow-hidden flex items-center justify-center" style={{ height: "calc(100% + 3rem)" }}>
-              <img
+            <div
+              className="flex-shrink-0 w-32 -my-6 mr-6 overflow-hidden flex items-center justify-center"
+              style={{ height: "calc(100% + 3rem)" }}
+            >
+              <Image
                 src={project.image}
                 alt={`${project.title} screenshot`}
+                width={200}
+                height={300}
                 className="h-full w-auto object-cover object-center scale-[1.3]"
               />
             </div>

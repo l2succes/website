@@ -857,6 +857,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/react-helmet@npm:^6.1.11":
+  version: 6.1.11
+  resolution: "@types/react-helmet@npm:6.1.11"
+  dependencies:
+    "@types/react": "npm:*"
+  checksum: 10c0/f7b3bb2151d992a108ae46fed876fb9c8119108397d9a01d150c5642782997542c8b3c52e742b56e8689b7dbfa62ca9cfc76aa7e05dec4e60c652f7ef53fa783
+  languageName: node
+  linkType: hard
+
+"@types/react-typist@npm:^2.0.6":
+  version: 2.0.6
+  resolution: "@types/react-typist@npm:2.0.6"
+  dependencies:
+    "@types/react": "npm:*"
+  checksum: 10c0/0bf2f89bb5df0eb1340ab2c7c8503714829c172fab527200d6e9e8c44a7b654470700ad07bdebfea28b80e29ed587dcc95042f69cd6ac61c537ab0616384ca5e
+  languageName: node
+  linkType: hard
+
 "@types/react@npm:*":
   version: 19.1.16
   resolution: "@types/react@npm:19.1.16"
@@ -3722,6 +3740,8 @@ __metadata:
   dependencies:
     "@types/node": "npm:^22.9.0"
     "@types/react": "npm:^18.3.12"
+    "@types/react-helmet": "npm:^6.1.11"
+    "@types/react-typist": "npm:^2.0.6"
     "@types/styled-components": "npm:^5.1.34"
     autoprefixer: "npm:^10.4.20"
     date-fns: "npm:^4.1.0"

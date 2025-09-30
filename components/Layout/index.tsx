@@ -1,16 +1,14 @@
 import React from "react"
-import { Helmet } from "react-helmet"
+import Head from "next/head"
 import { Footer } from "../Footer"
 
-export const Layout: React.SFC<any> = ({ children }) => (
+export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => (
   <>
-    <Helmet
-      title="Luc Succès"
-      meta={[
-        { name: "description", content: "Luc Succès - Blog" },
-        { name: "keywords", content: "" },
-      ]}
-    ></Helmet>
+    <Head>
+      <title>Luc Succès</title>
+      <meta name="description" content="Luc Succès - Blog" />
+      <meta name="keywords" content="" />
+    </Head>
     {children}
     <Footer />
   </>

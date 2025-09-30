@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { IPhone } from "../../Home/iPhone"
+import Image from "next/image"
 
 interface WorkSectionProps {
   title: string
@@ -22,7 +23,7 @@ export const WorkSectionItem: React.FC<WorkSectionProps> = (props) => {
         <div className="px-8">
           <div className="mt-8">
             <div className="icon w-[100px] h-[100px]">
-              <img src={icon} />
+              <Image src={icon} alt={`${title} icon`} width={100} height={100} />
             </div>
           </div>
           <div className="my-4 text-lg">
@@ -35,7 +36,7 @@ export const WorkSectionItem: React.FC<WorkSectionProps> = (props) => {
         <PhoneContainer>
           <IPhone color={deviceColor}>
             <IPhoneContent>
-              <img src={images[0]} />
+              <Image src={images[0]} alt={`${title} screenshot`} width={300} height={600} />
             </IPhoneContent>
           </IPhone>
         </PhoneContainer>

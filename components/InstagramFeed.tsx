@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react"
+import Image from "next/image"
 
 interface InstagramPost {
   id: string
@@ -79,9 +80,11 @@ export const InstagramFeed = () => {
             rel="noopener noreferrer"
             className="aspect-square overflow-hidden rounded-lg hover:opacity-80 transition-opacity"
           >
-            <img
+            <Image
               src={post.media_url}
               alt={post.caption || "Instagram post"}
+              width={400}
+              height={400}
               className="w-full h-full object-cover"
             />
           </a>
