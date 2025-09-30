@@ -10,49 +10,28 @@ interface InstagramPost {
 export const InstagramFeed = () => {
   const [posts, setPosts] = useState<InstagramPost[]>([])
   const [loading, setLoading] = useState(true)
+  const [hasApiKey, setHasApiKey] = useState(false)
 
   useEffect(() => {
     const fetchInstagramPosts = async () => {
+      // Check if API key exists
+      if (!process.env.NEXT_PUBLIC_INSTAGRAM_ACCESS_TOKEN) {
+        setHasApiKey(false)
+        setLoading(false)
+        return
+      }
+
+      setHasApiKey(true)
+
       try {
-        const response = await fetch("/api/instagram")
+        const accessToken = process.env.NEXT_PUBLIC_INSTAGRAM_ACCESS_TOKEN
+        const response = await fetch(
+          `https://graph.instagram.com/me/media?fields=id,media_url,permalink,caption&access_token=${accessToken}&limit=5`
+        )
         const data = await response.json()
 
-        if (data.posts) {
-          setPosts(data.posts)
-        } else {
-          // Fallback to placeholder if API fails
-          setPosts([
-            {
-              id: "1",
-              media_url: "https://via.placeholder.com/400x400?text=Instagram+1",
-              permalink: "https://www.instagram.com/l2succes/",
-              caption: "Photo 1",
-            },
-            {
-              id: "2",
-              media_url: "https://via.placeholder.com/400x400?text=Instagram+2",
-              permalink: "https://www.instagram.com/l2succes/",
-              caption: "Photo 2",
-            },
-            {
-              id: "3",
-              media_url: "https://via.placeholder.com/400x400?text=Instagram+3",
-              permalink: "https://www.instagram.com/l2succes/",
-              caption: "Photo 3",
-            },
-            {
-              id: "4",
-              media_url: "https://via.placeholder.com/400x400?text=Instagram+4",
-              permalink: "https://www.instagram.com/l2succes/",
-              caption: "Photo 4",
-            },
-            {
-              id: "5",
-              media_url: "https://via.placeholder.com/400x400?text=Instagram+5",
-              permalink: "https://www.instagram.com/l2succes/",
-              caption: "Photo 5",
-            },
-          ])
+        if (data.data) {
+          setPosts(data.data)
         }
         setLoading(false)
       } catch (error) {
@@ -64,8 +43,17 @@ export const InstagramFeed = () => {
     fetchInstagramPosts()
   }, [])
 
+  // Hide component if no API key
+  if (!hasApiKey) {
+    return null
+  }
+
   if (loading) {
     return <div className="text-gray-500">Loading Instagram feed...</div>
+  }
+
+  if (posts.length === 0) {
+    return null
   }
 
   return (

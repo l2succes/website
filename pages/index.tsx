@@ -6,6 +6,8 @@ import tw from "tailwind-styled-components"
 import { NewWorkSection } from "components/WorkSection/NewWorkSection"
 import { TypewriterHeader } from "../components/TypewriterHeader"
 import { InstagramFeed } from "../components/InstagramFeed"
+import { RecentBlogPosts } from "../components/RecentBlogPosts"
+import { getAllPosts, BlogPost } from "../lib/blog"
 
 const Section = styled.div`
   min-height: 700px;
@@ -17,7 +19,11 @@ const Container = tw.div`
   mx-auto
 `
 
-const Home: NextPage = () => {
+interface HomeProps {
+  posts: BlogPost[]
+}
+
+const Home: NextPage<HomeProps> = ({ posts }) => {
   return (
     <Layout>
       <Hero />
@@ -122,6 +128,10 @@ const Home: NextPage = () => {
           <div className="flex flex-1 border-y border-x-black my-10"></div>
           <NewWorkSection />
 
+          {/* Blog Section */}
+          <div className="flex flex-1 border-y border-x-black my-10"></div>
+          <RecentBlogPosts posts={posts} />
+
           {/* Contact Section */}
           <div className="flex flex-1 border-y border-x-black my-10"></div>
           <div className="font-demibold text-4xl leading-normal my-20 mx-4">Let&apos;s Connect</div>
@@ -160,6 +170,16 @@ const Home: NextPage = () => {
       </Section>
     </Layout>
   )
+}
+
+export async function getStaticProps() {
+  const posts = getAllPosts()
+
+  return {
+    props: {
+      posts,
+    },
+  }
 }
 
 export default Home
