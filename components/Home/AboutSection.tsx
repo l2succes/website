@@ -35,12 +35,12 @@ export const AboutSection: React.FC = () => {
           />
         </div>
         <div className="flex-1">
-          <p className="text-2xl leading-relaxed mb-6">
+          <p className="text-xl md:text-2xl leading-relaxed mb-6">
             I&apos;m a serial entrepreneur, software engineer, and product designer. Currently building Blaze, my
             latest startup venture, while helping other founders bring their ideas to life through technology and
             design.
           </p>
-          <div className="text-lg leading-relaxed">
+          <div className="text-base md:text-lg leading-relaxed">
             <p className="mb-6">
               I&apos;ve spent the last few years between Mexico City, New York, and San Francisco building products
               and companies. My background is in computer science, but I&apos;ve always been drawn to the

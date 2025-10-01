@@ -4,11 +4,11 @@ export const SkillsSection: React.FC = () => {
   return (
     <>
       <div className="flex flex-1 border-y border-x-black my-10"></div>
-      <div className="font-demibold text-4xl leading-normal my-20 mx-4">Skills & Technologies</div>
+      <div className="font-demibold text-3xl md:text-4xl leading-normal my-20 mx-4">Skills & Technologies</div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 my-10 mx-4">
         <div>
-          <h3 className="text-xl font-semibold mb-4">Engineering</h3>
-          <ul className="text-gray-700 space-y-2">
+          <h3 className="text-lg md:text-xl font-semibold mb-4">Engineering</h3>
+          <ul className="text-gray-700 space-y-2 text-sm md:text-base">
             <li>• Full-stack development</li>
             <li>• React, Next.js, TypeScript</li>
             <li>• Node.js, Python, Go</li>
@@ -17,8 +17,8 @@ export const SkillsSection: React.FC = () => {
           </ul>
         </div>
         <div>
-          <h3 className="text-xl font-semibold mb-4">Design & Product</h3>
-          <ul className="text-gray-700 space-y-2">
+          <h3 className="text-lg md:text-xl font-semibold mb-4">Design & Product</h3>
+          <ul className="text-gray-700 space-y-2 text-sm md:text-base">
             <li>• User experience design</li>
             <li>• Product strategy & roadmap</li>
             <li>• Figma, Adobe Creative Suite</li>
@@ -27,8 +27,8 @@ export const SkillsSection: React.FC = () => {
           </ul>
         </div>
         <div>
-          <h3 className="text-xl font-semibold mb-4">Entrepreneurship</h3>
-          <ul className="text-gray-700 space-y-2">
+          <h3 className="text-lg md:text-xl font-semibold mb-4">Entrepreneurship</h3>
+          <ul className="text-gray-700 space-y-2 text-sm md:text-base">
             <li>• Startup strategy & execution</li>
             <li>• Fundraising & investor relations</li>
             <li>• Team building & leadership</li>

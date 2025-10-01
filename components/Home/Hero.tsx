@@ -116,10 +116,10 @@ export class Hero extends React.Component<any> {
           <div className="absolute top-8 right-8 z-10">
             <SocialLinks color="white" hoverColor="gray-300" size="small" />
           </div>
-          <div className="flex flex-col items-center justify-center text-center relative w-full" style={{ minHeight: "calc(100vh - 2rem)" }}>
+          <div className="flex flex-col items-center justify-center text-center relative w-full px-4" style={{ minHeight: "calc(100vh - 2rem)" }}>
             <div className="text-white text-container">
-              <div className="font-sans text-4xl mb-1">Luc Succès</div>
-              <div className="text-md text-neutral-500">Coder. Designer. Startup founder</div>
+              <div className="font-sans text-3xl md:text-4xl mb-1">Luc Succès</div>
+              <div className="text-sm md:text-md text-neutral-500">Coder. Designer. Startup founder</div>
             </div>
             <div className={`${animationComplete ? 'mt-10' : ''} logo-container`}>
               <Logo size="xlarge" animated={!animationComplete} />

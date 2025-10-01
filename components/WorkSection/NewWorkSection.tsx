@@ -92,10 +92,10 @@ export const NewWorkSection: React.FC = () => {
   return (
     <div className="my-10">
       {/* Current Work Header */}
-      <div className="font-demibold text-4xl leading-normal mb-10 mx-4">Current Work</div>
+      <div className="font-demibold text-3xl md:text-4xl leading-normal mb-10 mx-4">Current Work</div>
 
       {/* Featured Projects */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6 mx-4">
         {featuredProjects.map((project) => (
           <Link key={project.slug} href={`/work/${project.slug}`}>
             <div
@@ -135,30 +135,29 @@ export const NewWorkSection: React.FC = () => {
                   </div>
                 </div>
                 <div
-                  className="absolute bottom-0 left-0 right-0 px-8 py-5 rounded-b-2xl"
+                  className="absolute bottom-0 left-0 right-0 px-6 md:px-8 py-5 rounded-b-2xl"
                   style={{
                     backgroundColor:
                       project.slug === "catching-feelings" ? "rgba(0, 0, 0, 0.1)" : "rgba(0, 0, 0, 0.05)",
                     color: project.slug === "catching-feelings" ? "white" : "inherit",
-                    height: "120px",
                   }}
                 >
-                  <div className="flex items-center justify-between h-full">
-                    <div className="flex items-center gap-6">
+                  <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                    <div className="flex items-center gap-4">
                       <Image
                         src={project.icon}
                         alt={`${project.title} icon`}
                         width={64}
                         height={64}
-                        className="w-16 h-16 rounded-xl"
+                        className="w-12 h-12 md:w-16 md:h-16 rounded-xl flex-shrink-0"
                       />
                       <div>
-                        <h3 className="text-2xl font-semibold leading-tight">{project.title}</h3>
-                        <p className="text-sm opacity-60">{project.year}</p>
-                        <p className="text-xs opacity-80 mt-1">{project.role}</p>
+                        <h3 className="text-xl md:text-2xl font-semibold leading-tight">{project.title}</h3>
+                        <p className="text-xs md:text-sm opacity-60">{project.year}</p>
+                        <p className="text-xs opacity-80 mt-0.5">{project.role}</p>
                       </div>
                     </div>
-                    <button className="bg-black text-white px-6 py-2 rounded-lg hover:bg-gray-800 transition-colors flex-shrink-0">
+                    <button className="bg-black text-white px-6 py-2 rounded-lg hover:bg-gray-800 transition-colors text-sm md:text-base self-start md:self-auto flex-shrink-0">
                       Read More
                     </button>
                   </div>
@@ -170,10 +169,10 @@ export const NewWorkSection: React.FC = () => {
       </div>
 
       {/* Past Work Header */}
-      <div className="font-demibold text-4xl leading-normal my-10 mx-4">Past Work</div>
+      <div className="font-demibold text-3xl md:text-4xl leading-normal my-10 mx-4">Past Work</div>
 
       {/* Grid Projects */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mx-4">
         {gridProjects.map((project) => (
           <div
             key={project.title}
