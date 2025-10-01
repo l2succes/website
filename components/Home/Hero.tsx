@@ -72,7 +72,12 @@ export class Hero extends React.Component<any> {
               <button
                 onClick={() => {
                   const element = document.getElementById("about")
-                  if (element) element.scrollIntoView({ behavior: "smooth" })
+                  if (element) {
+                    const offset = 80
+                    const elementPosition = element.getBoundingClientRect().top + window.pageYOffset
+                    const offsetPosition = elementPosition - offset
+                    window.scrollTo({ top: offsetPosition, behavior: "smooth" })
+                  }
                 }}
                 className="text-white hover:text-gray-300 transition-colors text-sm"
               >
@@ -81,7 +86,12 @@ export class Hero extends React.Component<any> {
               <button
                 onClick={() => {
                   const element = document.getElementById("work")
-                  if (element) element.scrollIntoView({ behavior: "smooth" })
+                  if (element) {
+                    const offset = 80
+                    const elementPosition = element.getBoundingClientRect().top + window.pageYOffset
+                    const offsetPosition = elementPosition - offset
+                    window.scrollTo({ top: offsetPosition, behavior: "smooth" })
+                  }
                 }}
                 className="text-white hover:text-gray-300 transition-colors text-sm"
               >
@@ -90,7 +100,12 @@ export class Hero extends React.Component<any> {
               <button
                 onClick={() => {
                   const element = document.getElementById("contact")
-                  if (element) element.scrollIntoView({ behavior: "smooth" })
+                  if (element) {
+                    const offset = 80
+                    const elementPosition = element.getBoundingClientRect().top + window.pageYOffset
+                    const offsetPosition = elementPosition - offset
+                    window.scrollTo({ top: offsetPosition, behavior: "smooth" })
+                  }
                 }}
                 className="text-white hover:text-gray-300 transition-colors text-sm"
               >

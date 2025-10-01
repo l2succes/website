@@ -91,8 +91,8 @@ const gridProjects: GridProject[] = [
 export const NewWorkSection: React.FC = () => {
   return (
     <div className="my-10">
-      {/* Current Projects Header */}
-      <div className="font-demibold text-4xl leading-normal mb-10 mx-4">Current Projects</div>
+      {/* Current Work Header */}
+      <div className="font-demibold text-4xl leading-normal mb-10 mx-4">Current Work</div>
 
       {/* Featured Projects */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
@@ -169,8 +169,8 @@ export const NewWorkSection: React.FC = () => {
         ))}
       </div>
 
-      {/* Past Projects Header */}
-      <div className="font-demibold text-4xl leading-normal my-10 mx-4">Past Projects</div>
+      {/* Past Work Header */}
+      <div className="font-demibold text-4xl leading-normal my-10 mx-4">Past Work</div>
 
       {/* Grid Projects */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
