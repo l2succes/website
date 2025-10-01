@@ -28,7 +28,9 @@ const Home: NextPage = () => {
           <div className="mt-20"></div>
 
           {/* About Section */}
-          <TypewriterHeader />
+          <div id="about">
+            <TypewriterHeader />
+          </div>
           <div className="flex items-center gap-2 mx-4 mt-2 mb-8 text-gray-600">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -84,7 +86,9 @@ const Home: NextPage = () => {
           </div> */}
 
           <div className="flex flex-1 border-y border-x-black my-10"></div>
-          <NewWorkSection />
+          <div id="work">
+            <NewWorkSection />
+          </div>
 
           {/* Skills Section */}
           <div className="flex flex-1 border-y border-x-black my-10"></div>
@@ -124,7 +128,9 @@ const Home: NextPage = () => {
 
           {/* Contact Section */}
           <div className="flex flex-1 border-y border-x-black my-10"></div>
-          <div className="font-demibold text-4xl leading-normal my-10 mx-4">Let&apos;s Connect</div>
+          <div id="contact">
+            <div className="font-demibold text-4xl leading-normal my-10 mx-4">Let&apos;s Connect</div>
+          </div>
           <div className="text-lg leading-relaxed my-10 mx-4 max-w-4xl">
             <p className="mb-6">
               I&apos;m always interested in connecting with fellow entrepreneurs, potential collaborators, and anyone

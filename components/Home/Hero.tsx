@@ -67,6 +67,37 @@ export class Hero extends React.Component<any> {
         `}</style>
         <div className="container mx-auto py-4">
           <Header />
+          <div className="absolute top-8 left-1/2 -translate-x-1/2 z-10">
+            <nav className="hidden md:flex items-center gap-6">
+              <button
+                onClick={() => {
+                  const element = document.getElementById("about")
+                  if (element) element.scrollIntoView({ behavior: "smooth" })
+                }}
+                className="text-white hover:text-gray-300 transition-colors text-sm"
+              >
+                About Me
+              </button>
+              <button
+                onClick={() => {
+                  const element = document.getElementById("work")
+                  if (element) element.scrollIntoView({ behavior: "smooth" })
+                }}
+                className="text-white hover:text-gray-300 transition-colors text-sm"
+              >
+                Work
+              </button>
+              <button
+                onClick={() => {
+                  const element = document.getElementById("contact")
+                  if (element) element.scrollIntoView({ behavior: "smooth" })
+                }}
+                className="text-white hover:text-gray-300 transition-colors text-sm"
+              >
+                Contact
+              </button>
+            </nav>
+          </div>
           <div className="absolute top-8 right-8 z-10">
             <SocialLinks color="white" hoverColor="gray-300" size="small" />
           </div>
