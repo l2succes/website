@@ -46,14 +46,14 @@ const featuredProjects: FeaturedProject[] = [
 const gridProjects: GridProject[] = [
   {
     title: "Spotify",
-    role: "Product Designer",
+    role: "Lead Engineer",
     year: "2013-2015",
     logo: "/images/spotify/icon.png",
     image: "/images/spotify/spotify-1.png",
   },
   {
     title: "Drizzy",
-    role: "Co-Founder",
+    role: "Co-Founder & CTO",
     year: "2015",
     logo: "/images/drizzy/icon.png",
     image: "/images/drizzy/screenshots/drizzy-4.png",
@@ -81,7 +81,7 @@ const gridProjects: GridProject[] = [
   },
   {
     title: "Artsy",
-    role: "Software Engineer",
+    role: "Tech Lead",
     year: "2017-2018",
     logo: "/images/artsy/icon.jpg",
     image: "/images/artsy/artsy-1.png",
