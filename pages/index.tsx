@@ -25,15 +25,11 @@ const Home: NextPage = () => {
 
       <Section style={{ background: "white", color: "black" }}>
         <Container>
-          <div className="text-4xl leading-normal my-20 mx-4">
-            I&apos;m a serial entrepreneur, software engineer, and product designer. Currently building Blaze, my latest
-            startup venture, while helping other founders bring their ideas to life through technology and design.
-          </div>
+          <div className="mt-20"></div>
 
           {/* About Section */}
-          <div className="flex flex-1 border-y border-x-black my-10"></div>
           <TypewriterHeader />
-          <div className="flex items-center gap-2 mx-4 mb-8 text-gray-600">
+          <div className="flex items-center gap-2 mx-4 mt-2 mb-8 text-gray-600">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -51,7 +47,7 @@ const Home: NextPage = () => {
             </svg>
             <span>Currently based in Mexico City</span>
           </div>
-          <div className="flex flex-col md:flex-row gap-8 my-10 mx-4 max-w-6xl items-start">
+          <div className="flex flex-col md:flex-row gap-8 my-10 mx-4 items-start">
             <div className="flex-shrink-0 w-full md:w-80">
               <Image
                 src="/images/profile-photo.jpg"
@@ -61,22 +57,24 @@ const Home: NextPage = () => {
                 className="w-full h-auto rounded-lg shadow-lg"
               />
             </div>
-            <div className="text-lg leading-relaxed flex-1">
-              <p className="mb-6">
-                I&apos;ve spent the last few years bouncing between cities—Mexico City, New York, San Francisco—building
-                products and companies along the way. My background is in computer science, but I&apos;ve always been
-                drawn to the intersection of design, technology, and entrepreneurship.
+            <div className="flex-1">
+              <p className="text-2xl leading-relaxed mb-6">
+                I&apos;m a serial entrepreneur, software engineer, and product designer. Currently building Blaze, my
+                latest startup venture, while helping other founders bring their ideas to life through technology and
+                design.
               </p>
-              <p className="mb-6">
-                Right now, I&apos;m working on Blaze, trying to solve some interesting problems in the fintech space.
-                Before this, I&apos;ve built keyboard apps that hit millions of downloads, worked on Spotify&apos;s
-                discovery features, and helped bring art to more people at Artsy.
-              </p>
-              <p>
-                When I&apos;m not working, you&apos;ll probably find me exploring a new neighborhood, trying out local
-                coffee spots, or having deep conversations about startups, design, and where technology is headed.
-                I&apos;m always down to connect with fellow founders and creators.
-              </p>
+              <div className="text-lg leading-relaxed">
+                <p className="mb-6">
+                  I&apos;ve spent the last few years between Mexico City, New York, and San Francisco building products
+                  and companies. My background is in computer science, but I&apos;ve always been drawn to the
+                  intersection of design, technology, and entrepreneurship.
+                </p>
+                <p>
+                  Before Blaze, I built keyboard apps that hit millions of downloads, worked on Spotify&apos;s discovery
+                  features, and helped bring art to more people at Artsy. Always down to connect with fellow founders
+                  and creators.
+                </p>
+              </div>
             </div>
           </div>
 
