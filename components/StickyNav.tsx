@@ -21,7 +21,7 @@ export const StickyNav = () => {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId)
     if (element) {
-      const offset = 80 // Height of sticky nav + some padding
+      const offset = 120 // Height of sticky nav + padding to show section title
       const elementPosition = element.getBoundingClientRect().top + window.pageYOffset
       const offsetPosition = elementPosition - offset
 

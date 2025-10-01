@@ -73,7 +73,7 @@ export class Hero extends React.Component<any> {
                 onClick={() => {
                   const element = document.getElementById("about")
                   if (element) {
-                    const offset = 80
+                    const offset = 120
                     const elementPosition = element.getBoundingClientRect().top + window.pageYOffset
                     const offsetPosition = elementPosition - offset
                     window.scrollTo({ top: offsetPosition, behavior: "smooth" })
@@ -87,7 +87,7 @@ export class Hero extends React.Component<any> {
                 onClick={() => {
                   const element = document.getElementById("work")
                   if (element) {
-                    const offset = 80
+                    const offset = 120
                     const elementPosition = element.getBoundingClientRect().top + window.pageYOffset
                     const offsetPosition = elementPosition - offset
                     window.scrollTo({ top: offsetPosition, behavior: "smooth" })
@@ -101,7 +101,7 @@ export class Hero extends React.Component<any> {
                 onClick={() => {
                   const element = document.getElementById("contact")
                   if (element) {
-                    const offset = 80
+                    const offset = 120
                     const elementPosition = element.getBoundingClientRect().top + window.pageYOffset
                     const offsetPosition = elementPosition - offset
                     window.scrollTo({ top: offsetPosition, behavior: "smooth" })
