@@ -44,9 +44,9 @@ const Blaze: NextPage = () => {
                 </div>
               </div>
               <p className="text-xl md:text-2xl leading-relaxed max-w-4xl">
-                My current startup venture focused on solving complex problems through innovative technology solutions.
-                Building the next generation of tools that empower teams and individuals to achieve their goals more
-                efficiently.
+                A global payment app built on Stellar blockchain, making cross-border payments as easy as Venmo.
+                After two years of development, licensing, and partnerships, we&apos;ve built a fintech that bridges
+                traditional finance and crypto.
               </p>
             </div>
           </div>
@@ -55,10 +55,14 @@ const Blaze: NextPage = () => {
           <section className="mb-20">
             <h2 className="text-4xl font-bold mb-8">Overview</h2>
             <div className="prose prose-lg max-w-none">
+              <p className="text-xl leading-relaxed text-gray-700 mb-6">
+                Blaze is a global payment application that makes cross-border transactions as simple as sending money to a friend.
+                Built on the Stellar blockchain, we&apos;re creating a modern alternative to traditional remittance services and payment apps.
+              </p>
               <p className="text-xl leading-relaxed text-gray-700">
-                Blaze represents the culmination of years of experience in building consumer products and understanding
-                market needs. The platform combines cutting-edge technology with intuitive design to create a seamless
-                user experience.
+                After evaluating multiple blockchain platforms, we chose Stellar for its speed, low transaction costs, and
+                purpose-built infrastructure for payments. This decision has enabled us to offer near-instant international
+                transfers at a fraction of traditional costs.
               </p>
             </div>
           </section>
@@ -172,18 +176,25 @@ const Blaze: NextPage = () => {
             </div>
           </section>
 
-          {/* Challenges & Learnings Section */}
+          {/* The Journey Section */}
           <section className="mb-20">
-            <h2 className="text-4xl font-bold mb-8">Challenges & Learnings</h2>
+            <h2 className="text-4xl font-bold mb-8">The Journey</h2>
             <div className="prose prose-lg max-w-none">
               <p className="text-xl leading-relaxed text-gray-700 mb-6">
-                Building Blaze has been an incredible journey filled with both challenges and valuable learnings. One of
-                the biggest challenges was scaling the infrastructure to handle rapid user growth while maintaining
-                performance and reliability.
+                We started Blaze as a bootstrapped venture, funding development with our own resources until we secured
+                a Stellar grant that allowed us to focus full-time on the project. This initial phase taught us the value
+                of resourcefulness and validated our vision for making global payments accessible to everyone.
+              </p>
+              <p className="text-xl leading-relaxed text-gray-700 mb-6">
+                One of our biggest learnings was understanding the regulatory landscape of fintech. Building a global payment
+                platform requires navigating complex licensing requirements across multiple jurisdictions. We acquired a VASP
+                (Virtual Asset Service Provider) license in Europe and MSB (Money Services Business) licenses in the US,
+                which opened doors to partnerships with key players in the industry.
               </p>
               <p className="text-xl leading-relaxed text-gray-700">
-                The experience reinforced the importance of iterative development, user feedback, and building a strong
-                team culture. Each obstacle provided an opportunity to innovate and improve the product.
+                Our partnership with Bridge.xyz has been particularly valuable. As a leading startup in the stablecoin space,
+                their infrastructure helps us provide reliable, compliant payment rails to our users. The regulatory work,
+                while challenging, has positioned us to scale responsibly as we grow.
               </p>
             </div>
           </section>
