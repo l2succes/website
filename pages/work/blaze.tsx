@@ -45,7 +45,7 @@ const Blaze: NextPage = () => {
               </div>
               <p className="text-xl md:text-2xl leading-relaxed max-w-4xl">
                 A global payment app built on Stellar blockchain, making cross-border payments as easy as Venmo.
-                After two years of development, licensing, and partnerships, we've built a fintech that bridges
+                After two years of development, licensing, and partnerships, we&apos;ve built a fintech that bridges
                 traditional finance and crypto.
               </p>
             </div>
@@ -57,7 +57,7 @@ const Blaze: NextPage = () => {
             <div className="prose prose-lg max-w-none">
               <p className="text-xl leading-relaxed text-gray-700 mb-6">
                 Blaze is a global payment application that makes cross-border transactions as simple as sending money to a friend.
-                Built on the Stellar blockchain, we're creating a modern alternative to traditional remittance services and payment apps.
+                Built on the Stellar blockchain, we&apos;re creating a modern alternative to traditional remittance services and payment apps.
               </p>
               <p className="text-xl leading-relaxed text-gray-700">
                 After evaluating multiple blockchain platforms, we chose Stellar for its speed, low transaction costs, and
