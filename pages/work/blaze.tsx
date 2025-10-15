@@ -1,6 +1,7 @@
 import type { NextPage } from "next"
 import { Layout } from "../../components/Layout"
 import Link from "next/link"
+import Image from "next/image"
 
 const Blaze: NextPage = () => {
   return (
@@ -66,35 +67,47 @@ const Blaze: NextPage = () => {
             </div>
           </section>
 
-          {/* Screenshots Section */}
+          {/* Product Videos Section */}
           <section className="mb-20">
-            <h2 className="text-4xl font-bold mb-8">Product Screenshots</h2>
+            <h2 className="text-4xl font-bold mb-8">Product Videos</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="bg-gray-100 rounded-xl overflow-hidden aspect-[4/3]">
-                <img
-                  src="/images/blaze/screenshot-1.png"
-                  alt="Blaze Screenshot 1"
+              <div className="rounded-xl overflow-hidden h-[350px]" style={{ background: '#F2F2F2' }}>
+                <video
+                  src="https://blaze.money/images/features/blaze-payment.mp4"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
                   className="w-full h-full object-cover"
                 />
               </div>
-              <div className="bg-gray-100 rounded-xl overflow-hidden aspect-[4/3]">
-                <img
-                  src="/images/blaze/screenshot-2.png"
-                  alt="Blaze Screenshot 2"
+              <div className="rounded-xl overflow-hidden h-[350px]" style={{ background: '#F2F2F2' }}>
+                <video
+                  src="https://blaze.money/images/features/blaze-feed.mp4"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
                   className="w-full h-full object-cover"
                 />
               </div>
-              <div className="bg-gray-100 rounded-xl overflow-hidden aspect-[4/3]">
-                <img
-                  src="/images/blaze/screenshot-3.png"
-                  alt="Blaze Screenshot 3"
+              <div className="rounded-xl overflow-hidden h-[350px]" style={{ background: '#F2F2F2' }}>
+                <video
+                  src="https://blaze.money/images/features/blaze-card-payment.mp4"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
                   className="w-full h-full object-cover"
                 />
               </div>
-              <div className="bg-gray-100 rounded-xl overflow-hidden aspect-[4/3]">
-                <img
-                  src="/images/blaze/screenshot-4.png"
-                  alt="Blaze Screenshot 4"
+              <div className="rounded-xl overflow-hidden h-[350px]" style={{ background: '#F2F2F2' }}>
+                <video
+                  src="https://blaze.money/images/features/blaze-request.mp4"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
                   className="w-full h-full object-cover"
                 />
               </div>

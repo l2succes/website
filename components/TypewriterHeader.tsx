@@ -1,6 +1,17 @@
 import React, { useState, useEffect } from "react"
 
-type AnimationPhase = "typing-hi" | "pause-hi" | "deleting-hi" | "typing-hello" | "pause-hello" | "deleting-hello" | "typing-bonjour" | "pause-bonjour" | "deleting-bonjour" | "typing-holdon" | "complete"
+type AnimationPhase =
+  | "typing-hi"
+  | "pause-hi"
+  | "deleting-hi"
+  | "typing-hello"
+  | "pause-hello"
+  | "deleting-hello"
+  | "typing-bonjour"
+  | "pause-bonjour"
+  | "deleting-bonjour"
+  | "typing-holdon"
+  | "complete"
 
 export const TypewriterHeader: React.FC = () => {
   const [phase, setPhase] = useState<AnimationPhase>("typing-hi")
@@ -72,7 +83,7 @@ export const TypewriterHeader: React.FC = () => {
         deleteText("Bonjour", "typing-holdon")
         break
       case "typing-holdon":
-        typeText("Hold on", "complete")
+        typeText("Hola", "complete")
         break
       case "complete":
         // Animation complete
@@ -85,13 +96,13 @@ export const TypewriterHeader: React.FC = () => {
   // Cursor blink effect
   useEffect(() => {
     const interval = setInterval(() => {
-      setCursorVisible(prev => !prev)
+      setCursorVisible((prev) => !prev)
     }, 530)
     return () => clearInterval(interval)
   }, [])
 
   return (
-    <div className="text-2xl md:text-3xl my-8 mx-4 font-light">
+    <div className="text-2xl md:text-3xl  mx-4 font-light">
       <span>{displayText}</span>
       {phase !== "complete" && (
         <>

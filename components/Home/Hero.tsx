@@ -46,6 +46,7 @@ export class Hero extends React.Component<any> {
           }
           .logo-container {
             transform: scale(2);
+            transition: none;
             ${animationComplete ? `
               animation: scaleDown 0.8s ease-out forwards;
             ` : ''}
@@ -67,13 +68,59 @@ export class Hero extends React.Component<any> {
         `}</style>
         <div className="container mx-auto py-4">
           <Header />
+          <div className="absolute top-8 left-1/2 -translate-x-1/2 z-10">
+            <nav className="hidden md:flex items-center gap-6">
+              <button
+                onClick={() => {
+                  const element = document.getElementById("about")
+                  if (element) {
+                    const offset = 120
+                    const elementPosition = element.getBoundingClientRect().top + window.pageYOffset
+                    const offsetPosition = elementPosition - offset
+                    window.scrollTo({ top: offsetPosition, behavior: "smooth" })
+                  }
+                }}
+                className="text-white hover:text-gray-300 transition-colors text-sm"
+              >
+                About Me
+              </button>
+              <button
+                onClick={() => {
+                  const element = document.getElementById("work")
+                  if (element) {
+                    const offset = 120
+                    const elementPosition = element.getBoundingClientRect().top + window.pageYOffset
+                    const offsetPosition = elementPosition - offset
+                    window.scrollTo({ top: offsetPosition, behavior: "smooth" })
+                  }
+                }}
+                className="text-white hover:text-gray-300 transition-colors text-sm"
+              >
+                Work
+              </button>
+              <button
+                onClick={() => {
+                  const element = document.getElementById("contact")
+                  if (element) {
+                    const offset = 120
+                    const elementPosition = element.getBoundingClientRect().top + window.pageYOffset
+                    const offsetPosition = elementPosition - offset
+                    window.scrollTo({ top: offsetPosition, behavior: "smooth" })
+                  }
+                }}
+                className="text-white hover:text-gray-300 transition-colors text-sm"
+              >
+                Contact
+              </button>
+            </nav>
+          </div>
           <div className="absolute top-8 right-8 z-10">
             <SocialLinks color="white" hoverColor="gray-300" size="small" />
           </div>
-          <div className="flex flex-col items-center justify-center text-center relative w-full" style={{ minHeight: "calc(100vh - 2rem)" }}>
+          <div className="flex flex-col items-center justify-center text-center relative w-full px-4" style={{ minHeight: "calc(100vh - 2rem)" }}>
             <div className="text-white text-container">
-              <div className="font-sans text-4xl mb-1">Luc Succès</div>
-              <div className="text-md text-neutral-500">Coder. Designer. Startup founder</div>
+              <div className="font-sans text-3xl md:text-4xl mb-1">Luc Succès</div>
+              <div className="text-sm md:text-md text-neutral-500">Coder. Designer. Startup founder</div>
             </div>
             <div className={`${animationComplete ? 'mt-10' : ''} logo-container`}>
               <Logo size="xlarge" animated={!animationComplete} />

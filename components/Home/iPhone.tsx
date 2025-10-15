@@ -3,6 +3,7 @@ import React from "react"
 interface IPhoneProps {
   device?: "iphone5s"
   color?: "silver" | "black"
+  children?: React.ReactNode
 }
 
 export const IPhone: React.FC<IPhoneProps> = ({ color, children, device }) => {

@@ -2,6 +2,10 @@ import type { NextPage } from "next"
 import styled from "styled-components"
 import { Layout } from "../components/Layout"
 import { Hero } from "../components/Home/Hero"
+import { AboutSection } from "../components/Home/AboutSection"
+import { WorkSectionWrapper } from "../components/Home/WorkSectionWrapper"
+import { SkillsSection } from "../components/Home/SkillsSection"
+import { ContactSection } from "../components/Home/ContactSection"
 import tw from "tailwind-styled-components"
 import { NewWorkSection } from "components/WorkSection/NewWorkSection"
 import { TypewriterHeader } from "../components/TypewriterHeader"
@@ -167,6 +171,7 @@ const Home: NextPage<HomeProps> = ({ posts }) => {
             </div>
           </div>
         </Container>
+        <ContactSection />
       </Section>
     </Layout>
   )

@@ -1,6 +1,7 @@
 import type { NextPage } from "next"
 import { Layout } from "../../components/Layout"
 import Link from "next/link"
+import Image from "next/image"
 
 const CatchingFeelings: NextPage = () => {
   return (
@@ -31,8 +32,14 @@ const CatchingFeelings: NextPage = () => {
                 {/* Left Content */}
                 <div className="flex-1">
                   <div className="flex items-center gap-4 mb-6">
-                    <img src="/images/catching-feelings/icon.png" alt="Catchin Feelings Icon" className="w-20 h-20 rounded-2xl shadow-lg" />
-                    <h1 className="text-5xl md:text-6xl font-bold">Catchin' Feelings</h1>
+                    <Image
+                      src="/images/catching-feelings/icon.png"
+                      alt="Catchin Feelings Icon"
+                      width={80}
+                      height={80}
+                      className="w-20 h-20 rounded-2xl shadow-lg"
+                    />
+                    <h1 className="text-5xl md:text-6xl font-bold">Catchin&apos; Feelings</h1>
                   </div>
                   <div className="flex flex-wrap gap-8 text-lg mb-12">
                     <div>
@@ -53,7 +60,8 @@ const CatchingFeelings: NextPage = () => {
                     </div>
                   </div>
                   <p className="text-xl md:text-2xl leading-relaxed mb-8">
-                    A modern, cross-platform compatibility game designed for couples and close friends. Bringing people closer through meaningful conversations, one question at a time.
+                    A modern, cross-platform compatibility game designed for couples and close friends. Bringing people
+                    closer through meaningful conversations, one question at a time.
                   </p>
                   <div className="flex gap-4">
                     <a
@@ -98,10 +106,13 @@ const CatchingFeelings: NextPage = () => {
             <h2 className="text-4xl font-bold mb-8">Overview</h2>
             <div className="prose prose-lg max-w-none">
               <p className="text-xl leading-relaxed text-gray-700 mb-6">
-                Catchin' Feelings is an interactive game that helps people discover how well they really know each other through playful questions with a modern, meme-culture twist. The experience combines real-time multiplayer functionality with thoughtfully designed game modes that spark meaningful conversations.
+                Catchin&apos; Feelings is an interactive game that helps people discover how well they really know each
+                other through playful questions with a modern, meme-culture twist. The experience combines real-time
+                multiplayer functionality with thoughtfully designed game modes that spark meaningful conversations.
               </p>
               <p className="text-xl leading-relaxed text-gray-700">
-                Built as a modern monorepo with shared packages, the project features both web (Next.js) and mobile (Expo React Native) applications, allowing seamless gameplay across all devices.
+                Built as a modern monorepo with shared packages, the project features both web (Next.js) and mobile
+                (Expo React Native) applications, allowing seamless gameplay across all devices.
               </p>
             </div>
           </section>
@@ -114,28 +125,32 @@ const CatchingFeelings: NextPage = () => {
                 <div className="text-3xl mb-4">🎮</div>
                 <h3 className="text-2xl font-semibold mb-3">Real-time Multiplayer</h3>
                 <p className="text-gray-700">
-                  Both players see questions simultaneously with 6-digit room codes for easy joining. 30-second timers keep the excitement high while live answer tracking shows when your partner has responded.
+                  Both players see questions simultaneously with 6-digit room codes for easy joining. 30-second timers
+                  keep the excitement high while live answer tracking shows when your partner has responded.
                 </p>
               </div>
               <div className="bg-[#3F215A]/5 p-8 rounded-xl">
                 <div className="text-3xl mb-4">💕</div>
                 <h3 className="text-2xl font-semibold mb-3">8 Unique Game Modes</h3>
                 <p className="text-gray-700">
-                  From Netflix & Chill to Spicy Takes, Future Vibes to Love Languages - each mode offers a different lens to understand your partner through curated questions.
+                  From Netflix & Chill to Spicy Takes, Future Vibes to Love Languages - each mode offers a different
+                  lens to understand your partner through curated questions.
                 </p>
               </div>
               <div className="bg-[#3F215A]/5 p-8 rounded-xl">
                 <div className="text-3xl mb-4">📊</div>
                 <h3 className="text-2xl font-semibold mb-3">Compatibility Scoring</h3>
                 <p className="text-gray-700">
-                  See your match percentage and get personalized relationship insights based on your answers. Smart algorithms analyze compatibility across different dimensions.
+                  See your match percentage and get personalized relationship insights based on your answers. Smart
+                  algorithms analyze compatibility across different dimensions.
                 </p>
               </div>
               <div className="bg-[#3F215A]/5 p-8 rounded-xl">
                 <div className="text-3xl mb-4">📱</div>
                 <h3 className="text-2xl font-semibold mb-3">Cross-Platform Experience</h3>
                 <p className="text-gray-700">
-                  Mobile-first design that works perfectly on any device. Play on web, iOS, or Android with seamless synchronization across platforms.
+                  Mobile-first design that works perfectly on any device. Play on web, iOS, or Android with seamless
+                  synchronization across platforms.
                 </p>
               </div>
             </div>
@@ -165,20 +180,22 @@ const CatchingFeelings: NextPage = () => {
           </section>
 
           {/* Screenshots Section */}
-          <section className="mb-20">
+          {/* <section className="mb-20">
             <h2 className="text-4xl font-bold mb-8">Product Screenshots</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {[1, 2, 3, 4, 5, 6].map((i) => (
                 <div key={i} className="bg-gray-100 rounded-xl overflow-hidden aspect-[9/16]">
-                  <img
+                  <Image
                     src={`/images/catching-feelings/screenshot-${i}.png`}
                     alt={`Catchin Feelings Screenshot ${i}`}
+                    width={400}
+                    height={711}
                     className="w-full h-full object-cover"
                   />
                 </div>
               ))}
             </div>
-          </section>
+          </section> */}
 
           {/* Technical Stack */}
           <section className="mb-20">
@@ -186,15 +203,16 @@ const CatchingFeelings: NextPage = () => {
             <div className="bg-gray-50 p-8 rounded-xl mb-8">
               <h3 className="text-2xl font-semibold mb-4">Monorepo Structure</h3>
               <p className="text-gray-700 mb-4">
-                Built as a modern monorepo using npm workspaces, enabling code sharing between web and mobile apps while maintaining independent deployments.
+                Built as a modern monorepo using npm workspaces, enabling code sharing between web and mobile apps while
+                maintaining independent deployments.
               </p>
               <div className="bg-white p-4 rounded-lg font-mono text-sm">
                 <div>catchin-feelings/</div>
                 <div className="ml-4">├── apps/</div>
-                <div className="ml-8">│   ├── web/          # Next.js web app</div>
-                <div className="ml-8">│   └── mobile/       # Expo React Native</div>
+                <div className="ml-8">│ ├── web/ # Next.js web app</div>
+                <div className="ml-8">│ └── mobile/ # Expo React Native</div>
                 <div className="ml-4">└── packages/</div>
-                <div className="ml-8">    └── shared/       # Shared code</div>
+                <div className="ml-8"> └── shared/ # Shared code</div>
               </div>
             </div>
 
@@ -301,25 +319,30 @@ const CatchingFeelings: NextPage = () => {
               <div className="border-l-4 border-[#3F215A] pl-6">
                 <h3 className="text-xl font-semibold mb-2">Real-time Synchronization</h3>
                 <p className="text-gray-700">
-                  Building a seamless real-time multiplayer experience required careful architecture decisions around Firebase Realtime Database and handling connection states, ensuring both players stayed in sync even with poor network conditions.
+                  Building a seamless real-time multiplayer experience required careful architecture decisions around
+                  Firebase Realtime Database and handling connection states, ensuring both players stayed in sync even
+                  with poor network conditions.
                 </p>
               </div>
               <div className="border-l-4 border-[#3F215A] pl-6">
                 <h3 className="text-xl font-semibold mb-2">Cross-Platform Design</h3>
                 <p className="text-gray-700">
-                  Creating a unified design system that works across web and mobile platforms while respecting native patterns required extensive component planning and shared design tokens.
+                  Creating a unified design system that works across web and mobile platforms while respecting native
+                  patterns required extensive component planning and shared design tokens.
                 </p>
               </div>
               <div className="border-l-4 border-[#3F215A] pl-6">
                 <h3 className="text-xl font-semibold mb-2">Question Curation</h3>
                 <p className="text-gray-700">
-                  Crafting questions that are engaging, appropriate, and meaningful across different relationship stages and cultural contexts was an iterative process involving extensive user testing and feedback.
+                  Crafting questions that are engaging, appropriate, and meaningful across different relationship stages
+                  and cultural contexts was an iterative process involving extensive user testing and feedback.
                 </p>
               </div>
               <div className="border-l-4 border-[#3F215A] pl-6">
                 <h3 className="text-xl font-semibold mb-2">Monorepo Architecture</h3>
                 <p className="text-gray-700">
-                  Setting up a monorepo with shared packages between web and mobile apps enabled code reuse and faster development, but required thoughtful dependency management and build configuration.
+                  Setting up a monorepo with shared packages between web and mobile apps enabled code reuse and faster
+                  development, but required thoughtful dependency management and build configuration.
                 </p>
               </div>
             </div>

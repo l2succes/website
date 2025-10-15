@@ -1,5 +1,6 @@
 import React from "react"
 import Link from "next/link"
+import Image from "next/image"
 
 interface FeaturedProject {
   title: string
@@ -45,14 +46,14 @@ const featuredProjects: FeaturedProject[] = [
 const gridProjects: GridProject[] = [
   {
     title: "Spotify",
-    role: "Product Designer",
+    role: "Lead Engineer",
     year: "2013-2015",
     logo: "/images/spotify/icon.png",
     image: "/images/spotify/spotify-1.png",
   },
   {
     title: "Drizzy",
-    role: "Co-Founder",
+    role: "Co-Founder & CTO",
     year: "2015",
     logo: "/images/drizzy/icon.png",
     image: "/images/drizzy/screenshots/drizzy-4.png",
@@ -80,7 +81,7 @@ const gridProjects: GridProject[] = [
   },
   {
     title: "Artsy",
-    role: "Software Engineer",
+    role: "Tech Lead",
     year: "2017-2018",
     logo: "/images/artsy/icon.jpg",
     image: "/images/artsy/artsy-1.png",
@@ -90,11 +91,11 @@ const gridProjects: GridProject[] = [
 export const NewWorkSection: React.FC = () => {
   return (
     <div className="my-10">
-      {/* Current Projects Header */}
-      <div className="font-demibold text-4xl leading-normal mb-10 mx-4">Current Projects</div>
+      {/* Current Work Header */}
+      <div className="font-demibold text-3xl md:text-4xl leading-normal mb-10 mx-4">Current Work</div>
 
       {/* Featured Projects */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6 mx-4">
         {featuredProjects.map((project) => (
           <Link key={project.slug} href={`/work/${project.slug}`}>
             <div
@@ -121,9 +122,11 @@ export const NewWorkSection: React.FC = () => {
                             preload="metadata"
                           />
                         ) : (
-                          <img
+                          <Image
                             src={project.image}
                             alt={project.title}
+                            width={280}
+                            height={560}
                             className="w-full h-full object-cover"
                           />
                         )}
@@ -132,23 +135,29 @@ export const NewWorkSection: React.FC = () => {
                   </div>
                 </div>
                 <div
-                  className="absolute bottom-0 left-0 right-0 px-8 py-5 rounded-b-2xl"
+                  className="absolute bottom-0 left-0 right-0 px-6 md:px-8 py-5 rounded-b-2xl"
                   style={{
-                    backgroundColor: project.slug === "catching-feelings" ? "rgba(0, 0, 0, 0.1)" : "rgba(0, 0, 0, 0.05)",
+                    backgroundColor:
+                      project.slug === "catching-feelings" ? "rgba(0, 0, 0, 0.1)" : "rgba(0, 0, 0, 0.05)",
                     color: project.slug === "catching-feelings" ? "white" : "inherit",
-                    height: "120px"
                   }}
                 >
-                  <div className="flex items-center justify-between h-full">
-                    <div className="flex items-center gap-6">
-                      <img src={project.icon} alt={`${project.title} icon`} className="w-16 h-16 rounded-xl" />
+                  <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                    <div className="flex items-center gap-4">
+                      <Image
+                        src={project.icon}
+                        alt={`${project.title} icon`}
+                        width={64}
+                        height={64}
+                        className="w-12 h-12 md:w-16 md:h-16 rounded-xl flex-shrink-0"
+                      />
                       <div>
-                        <h3 className="text-2xl font-semibold leading-tight">{project.title}</h3>
-                        <p className="text-sm opacity-60">{project.year}</p>
-                        <p className="text-xs opacity-80 mt-1">{project.role}</p>
+                        <h3 className="text-xl md:text-2xl font-semibold leading-tight">{project.title}</h3>
+                        <p className="text-xs md:text-sm opacity-60">{project.year}</p>
+                        <p className="text-xs opacity-80 mt-0.5">{project.role}</p>
                       </div>
                     </div>
-                    <button className="bg-black text-white px-6 py-2 rounded-lg hover:bg-gray-800 transition-colors flex-shrink-0">
+                    <button className="bg-black text-white px-6 py-2 rounded-lg hover:bg-gray-800 transition-colors text-sm md:text-base self-start md:self-auto flex-shrink-0">
                       Read More
                     </button>
                   </div>
@@ -159,11 +168,11 @@ export const NewWorkSection: React.FC = () => {
         ))}
       </div>
 
-      {/* Past Projects Header */}
-      <div className="font-demibold text-4xl leading-normal my-10 mx-4">Past Projects</div>
+      {/* Past Work Header */}
+      <div className="font-demibold text-3xl md:text-4xl leading-normal my-10 mx-4">Past Work</div>
 
       {/* Grid Projects */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mx-4">
         {gridProjects.map((project) => (
           <div
             key={project.title}
@@ -171,9 +180,11 @@ export const NewWorkSection: React.FC = () => {
           >
             <div className="flex items-center gap-4 flex-1">
               <div className="flex-shrink-0 w-12 h-12 bg-white rounded-lg flex items-center justify-center">
-                <img
+                <Image
                   src={project.logo}
                   alt={project.title}
+                  width={40}
+                  height={40}
                   className="w-10 h-10 object-contain"
                 />
               </div>
@@ -183,10 +194,15 @@ export const NewWorkSection: React.FC = () => {
                 <p className="text-sm text-gray-400 mt-1">{project.year}</p>
               </div>
             </div>
-            <div className="flex-shrink-0 w-32 -my-6 mr-6 overflow-hidden flex items-center justify-center" style={{ height: "calc(100% + 3rem)" }}>
-              <img
+            <div
+              className="flex-shrink-0 w-32 -my-6 mr-6 overflow-hidden flex items-center justify-center"
+              style={{ height: "calc(100% + 3rem)" }}
+            >
+              <Image
                 src={project.image}
                 alt={`${project.title} screenshot`}
+                width={200}
+                height={300}
                 className="h-full w-auto object-cover object-center scale-[1.3]"
               />
             </div>

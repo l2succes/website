@@ -30,7 +30,7 @@ export const SplashScreen = ({ onComplete }: SplashScreenProps) => {
 
   return (
     <div
-      className={`fixed inset-0 z-50 flex items-center justify-center bg-black transition-opacity duration-700 ${
+      className={`fixed inset-0 z-50 flex items-center justify-center bg-black transition-opacity duration-700 px-4 ${
         isVisible ? "opacity-100" : "opacity-0"
       }`}
     >
