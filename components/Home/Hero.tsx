@@ -122,7 +122,7 @@ export class Hero extends React.Component<any> {
               <div className="font-sans text-3xl md:text-4xl mb-1">Luc Succès</div>
               <div className="text-sm md:text-md text-neutral-500">Coder. Designer. Startup founder</div>
             </div>
-            <div className={`${animationComplete ? 'mt-10' : ''} logo-container`}>
+            <div className={`${animationComplete ? 'mt-10' : ''} logo-container`} style={{ transform: 'scale(2)' }}>
               <Logo size="xlarge" animated={!animationComplete} />
             </div>
             <button
