@@ -5,6 +5,7 @@ import type { AppProps } from "next/app"
 import { defaultFont } from "typography"
 import { useState, useEffect } from "react"
 import { SplashScreen } from "../components/SplashScreen"
+import { ThemeProvider } from "../contexts/ThemeContext"
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [showSplash, setShowSplash] = useState(true)
@@ -26,10 +27,12 @@ function MyApp({ Component, pageProps }: AppProps) {
   }
 
   return (
-    <main className={`${defaultFont.variable} font-sans`}>
-      {showSplash && isFirstLoad && <SplashScreen onComplete={handleSplashComplete} />}
-      <Component {...pageProps} />
-    </main>
+    <ThemeProvider>
+      <main className={`${defaultFont.variable} font-sans`}>
+        {showSplash && isFirstLoad && <SplashScreen onComplete={handleSplashComplete} />}
+        <Component {...pageProps} />
+      </main>
+    </ThemeProvider>
   )
 }
 
