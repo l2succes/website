@@ -2,7 +2,6 @@ import Link from 'next/link';
 import { getAllPosts, BlogPost } from '../../lib/blog';
 import { format } from 'date-fns';
 import { Layout } from '../../components/Layout';
-import { TypewriterHeader } from '../../components/TypewriterHeader';
 
 interface BlogPageProps {
   posts: BlogPost[];
@@ -13,11 +12,7 @@ export default function BlogPage({ posts }: BlogPageProps) {
     <Layout>
       <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white transition-colors">
         <div className="max-w-4xl mx-auto px-6 pt-32 pb-20">
-          <div className="mb-12">
-            <TypewriterHeader />
-          </div>
-
-          <h1 className="text-5xl font-bold mb-12 mt-8">Blog</h1>
+          <h1 className="text-5xl font-bold mb-12">Blog</h1>
 
           <div className="space-y-12">
             {posts.map((post) => (
