@@ -10,6 +10,14 @@ export const StickyNav = () => {
   const router = useRouter()
 
   useEffect(() => {
+    // Always show nav on blog pages
+    const isBlogPage = router.pathname.startsWith("/blog")
+
+    if (isBlogPage) {
+      setIsVisible(true)
+      return
+    }
+
     const handleScroll = () => {
       // Show nav when scrolled past the viewport (hero section)
       const scrollPosition = window.scrollY
@@ -20,7 +28,7 @@ export const StickyNav = () => {
 
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+  }, [router.pathname])
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId)
