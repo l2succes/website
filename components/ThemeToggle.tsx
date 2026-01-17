@@ -1,8 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useTheme } from '../contexts/ThemeContext';
 
 export const ThemeToggle: React.FC = () => {
-  const { theme, toggleTheme } = useTheme();
+  // Try to get the theme context, but don't throw if it's not available
+  let theme: 'light' | 'dark' = 'light';
+  let toggleTheme = () => {};
+
+  try {
+    const context = useTheme();
+    theme = context.theme;
+    toggleTheme = context.toggleTheme;
+  } catch (e) {
+    // If context is not available, component will render but won't be functional
+    // This prevents errors during SSR or when Layout is used outside ThemeProvider
+    return null;
+  }
 
   return (
     <button
