@@ -6,29 +6,8 @@ import Link from "next/link"
 import { useRouter } from "next/router"
 
 export const StickyNav = () => {
-  const [isVisible, setIsVisible] = useState(false)
+  const [isVisible, setIsVisible] = useState(true) // Always visible now
   const router = useRouter()
-
-  useEffect(() => {
-    // Always show nav on blog pages
-    const isBlogPage = router.pathname.startsWith("/blog")
-
-    if (isBlogPage) {
-      setIsVisible(true)
-      return
-    }
-
-    const handleScroll = () => {
-      // Show nav when scrolled past the viewport (hero section)
-      const scrollPosition = window.scrollY
-      const viewportHeight = window.innerHeight
-
-      setIsVisible(scrollPosition > viewportHeight * 0.8)
-    }
-
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [router.pathname])
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId)
@@ -44,14 +23,6 @@ export const StickyNav = () => {
     }
   }
 
-  const handleServicesClick = () => {
-    const element = document.getElementById("services")
-    if (element) {
-      scrollToSection("services")
-    } else {
-      window.location.href = "/services"
-    }
-  }
 
   const handleNavClick = (sectionId: string) => {
     // If we're on the blog page, navigate to home first
@@ -87,12 +58,12 @@ export const StickyNav = () => {
           >
             Work
           </button>
-          <button
-            onClick={handleServicesClick}
+          <Link
+            href="/services"
             className="text-white dark:text-gray-200 hover:text-gray-300 dark:hover:text-white transition-colors text-sm"
           >
             Services
-          </button>
+          </Link>
           <Link
             href="/blog"
             className="text-white dark:text-gray-200 hover:text-gray-300 dark:hover:text-white transition-colors text-sm"

@@ -11,6 +11,7 @@ import { NewWorkSection } from "components/WorkSection/NewWorkSection"
 import { TypewriterHeader } from "../components/TypewriterHeader"
 import { InstagramFeed } from "../components/InstagramFeed"
 import { RecentBlogPosts } from "../components/RecentBlogPosts"
+import { ServicesSection } from "../components/Home/ServicesSection"
 import { getAllPosts, BlogPost } from "../lib/blog"
 
 const Section = styled.div`
@@ -135,6 +136,10 @@ const Home: NextPage<HomeProps> = ({ posts }) => {
           {/* Blog Section */}
           <div className="flex flex-1 border-y border-x-black my-10"></div>
           <RecentBlogPosts posts={posts} />
+
+          {/* Services Section */}
+          <div className="flex flex-1 border-y border-x-black my-10"></div>
+          <ServicesSection />
 
           {/* Contact Section */}
           <div className="flex flex-1 border-y border-x-black my-10"></div>
