@@ -5,15 +5,12 @@ import type { Experience } from "../../data/resume"
 
 interface ExperienceSectionProps {
   experience: Experience[]
-  continued?: boolean
 }
 
-export const ExperienceSection = ({ experience, continued }: ExperienceSectionProps) => {
+export const ExperienceSection = ({ experience }: ExperienceSectionProps) => {
   return (
     <View style={styles.section}>
-      <Text style={styles.sectionTitle}>
-        Experience{continued ? " (Continued)" : ""}
-      </Text>
+      <Text style={styles.sectionTitle}>Experience</Text>
       {experience.map((exp, index) => (
         <ExperienceItem key={index} experience={exp} />
       ))}
@@ -27,9 +24,10 @@ interface ExperienceItemProps {
 
 const ExperienceItem = ({ experience }: ExperienceItemProps) => {
   const dateRange = `${experience.startDate} - ${experience.endDate}`
+  const shouldBreakBefore = experience.company === "Often"
 
   return (
-    <View style={styles.experienceItem}>
+    <View style={styles.experienceItem} break={shouldBreakBefore}>
       <View style={styles.companyRow}>
         <Text style={styles.company}>{experience.company}</Text>
         <Text style={styles.dates}>{dateRange}</Text>
