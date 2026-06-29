@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Greenchip Product Development Proposal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0b1208; --charcoal:#10170d; --soft:#f6f8f0; --paper:#fffef9;
+    --lime:#bfff69; --lime2:#d3fd98; --muted:#6b7166; --line:#dde6d0;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:#e9eee0;color:var(--ink);font-family:Inter, Arial, sans-serif;line-height:1.35}
+  .page{width:100%;max-width:1280px;margin:0 auto;background:var(--paper);box-shadow:0 24px 80px rgba(0,0,0,.18);overflow:hidden}
+  .hero{min-height:430px;background:#071006;position:relative;color:#fff;display:grid;grid-template-columns:1.05fr 1fr;gap:30px;padding:42px 48px 36px 48px}
+  .hero:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(4,8,4,.94) 0%,rgba(7,16,6,.82) 42%,rgba(7,16,6,.18) 100%);z-index:1}
+  .hero-copy{position:relative;z-index:2;max-width:590px}
+  .logo{font-family:Poppins, sans-serif;font-size:58px;font-weight:800;letter-spacing:-4px;color:var(--lime);line-height:.9;margin-bottom:36px}
+  .eyebrow{font-size:13px;text-transform:uppercase;letter-spacing:.08em;font-weight:800;color:#fff;margin-bottom:18px}
+  h1,h2,h3{font-family:Poppins, sans-serif}
+  h1{font-size:54px;font-weight:800;letter-spacing:-2px;line-height:1;margin:0 0 22px}
+  .rule{width:42px;height:3px;background:var(--lime);margin:0 0 24px;border-radius:3px}
+  .hero p{font-size:17px;color:#f4f8ec;margin:0;max-width:520px}
+  .art-grid{position:relative;z-index:0;display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:118px;gap:10px;transform:rotate(-2deg) scale(1.08);align-self:center;opacity:.96}
+  .art-grid img{width:100%;height:100%;object-fit:cover;border-radius:12px;filter:saturate(1.15) contrast(1.05)}
+  .art-grid img:nth-child(1){grid-row:span 2}.art-grid img:nth-child(4){grid-row:span 2}
+  .content{padding:34px 42px 0}
+  .two{display:grid;grid-template-columns:.82fr 1.18fr;gap:38px;margin-bottom:30px}
+  h2{font-size:21px;text-transform:uppercase;letter-spacing:.02em;margin:0 0 11px;font-weight:800}
+  h3{font-size:17px;margin:0 0 6px;font-weight:800}
+  .mini-rule{width:28px;height:2px;background:var(--lime);margin-bottom:18px}
+  p{font-size:15px;margin:0 0 14px;color:#1d241b}
+  .mission{background:linear-gradient(135deg,#eef6df,#fbfff2);border:1px solid #e8f2d8;border-radius:10px;padding:22px 26px;display:grid;grid-template-columns:42px 1fr;align-items:center;margin-top:26px;font-weight:700}
+  .spark{font-size:28px;color:#0b1208}
+  .approach-icons{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:24px;border-left:1px solid var(--line)}
+  .icon-card{padding:10px 22px;border-right:1px solid var(--line)}
+  .icon{width:42px;height:42px;margin-bottom:14px;color:#9ddb28}
+  .icon svg{width:100%;height:100%;stroke:currentColor;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+  .icon-card p{font-size:12px;color:#4e574a;margin:0}
+  .delivery-plan{display:grid;grid-template-columns:350px 1fr;gap:46px;background:#071006;color:#fff;border-radius:16px;padding:38px 42px;margin-bottom:26px;overflow:hidden}
+  .delivery-plan h2{color:#fff}.delivery-plan .mini-rule{background:var(--lime)}
+  .delivery-lead{color:#dce6d6;max-width:720px;margin-bottom:24px}
+  .phone-stage{display:grid;place-items:center;position:relative;min-height:510px}
+  .phone-stage:before{content:"";position:absolute;width:330px;height:330px;border-radius:50%;background:radial-gradient(circle,var(--lime) 0%,rgba(191,255,105,.15) 45%,transparent 70%);filter:blur(4px)}
+  .phone{width:246px;height:500px;border:10px solid #20251e;border-radius:48px;background:#f3f6ec;box-shadow:0 28px 60px rgba(0,0,0,.48);overflow:hidden;position:relative;z-index:1;transform:rotate(-3deg)}
+  .phone:before{content:"";position:absolute;z-index:4;top:8px;left:50%;transform:translateX(-50%);width:82px;height:22px;background:#11150f;border-radius:20px}
+  .phone-head{background:#0b1208;color:var(--lime);padding:42px 18px 16px;font-family:Poppins,sans-serif;font-weight:800;font-size:22px;letter-spacing:-1px}
+  .phone-art{width:100%;height:188px;object-fit:cover;display:block}
+  .phone-body{padding:16px;color:#0b1208}.phone-kicker{font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:#75806f;font-weight:800}.phone-body h3{font-size:17px;margin:6px 0 8px}.phone-body p{font-size:11px;color:#4d5549;margin-bottom:12px}
+  .critique-row{display:flex;gap:6px;flex-wrap:wrap}.critique-chip{font-size:9px;font-weight:800;border:1px solid #cbd8bd;background:#fff;border-radius:999px;padding:5px 8px}.phone-cta{margin-top:14px;background:var(--lime);border-radius:10px;padding:10px;text-align:center;font-size:11px;font-weight:900}
+  .phase-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+  .phase-card{border:1px solid rgba(211,253,152,.2);background:rgba(255,255,255,.055);border-radius:12px;padding:16px 17px}.phase-card:last-child{grid-column:1 / -1}
+  .phase-top{display:flex;justify-content:space-between;gap:14px;align-items:center;margin-bottom:8px}.phase-num{display:grid;place-items:center;width:26px;height:26px;background:var(--lime);color:#071006;border-radius:50%;font-size:12px;font-weight:900}.phase-week{font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--lime);font-weight:800}
+  .phase-card h3{font-size:14px;color:#fff;margin-bottom:7px}.phase-card ul{margin:0;padding-left:17px}.phase-card li{font-size:11px;color:#dce6d6;margin:4px 0}
+  .scope-timeline{display:grid;grid-template-columns:1.25fr .85fr;gap:42px;background:#fbfcf8;border:1px solid #edf1e7;border-radius:14px;padding:26px 30px 24px;margin-bottom:25px}
+  .scope-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:18px}
+  .scope-col ul{margin:0;padding-left:19px;font-size:13px;color:#20261e}.scope-col li{margin-bottom:6px}
+  .pill-title{display:flex;align-items:center;gap:9px;font-size:11px;text-transform:uppercase;font-weight:900;margin-bottom:14px}
+  .dot{width:31px;height:31px;background:#0b1208;color:var(--lime);border-radius:50%;display:grid;place-items:center;font-size:15px}
+  .web-note{border-top:1px solid var(--line);margin-top:20px;padding-top:16px;display:grid;grid-template-columns:48px 1fr;gap:14px;font-size:13px}
+  .web-note .dot{width:48px;height:48px;background:var(--lime);color:#071006;font-size:24px}
+  .timeline{position:relative;margin-top:18px;padding-left:34px}
+  .timeline:before{content:"";position:absolute;left:10px;top:6px;bottom:11px;width:2px;background:#aee84a}
+  .step{position:relative;margin-bottom:18px}.step:before{content:"";position:absolute;left:-31px;top:2px;width:14px;height:14px;background:var(--paper);border:2px solid #aee84a;border-radius:50%}
+  .step .num{font-size:13px;color:#78806f;font-weight:700;margin-right:10px}.step strong{font-size:14px;text-transform:uppercase}.step p{font-size:12px;color:#50594c;margin:2px 0 0 30px}
+  .client-inputs{display:grid;grid-template-columns:220px 1fr;gap:28px;align-items:start;background:linear-gradient(135deg,#dfffad,#f3ffe2);border:1px solid #c8ef8f;border-radius:14px;padding:26px 30px;margin-bottom:28px}.client-inputs h2{margin-bottom:7px}.client-inputs .mini-rule{background:#071006;margin-bottom:0}.input-list{display:grid;grid-template-columns:1.35fr 1fr 1fr;gap:12px}.input-card{background:rgba(255,255,255,.68);border:1px solid rgba(75,110,28,.13);border-radius:10px;padding:15px}.input-card.required{background:#071006;color:#fff}.input-card .label{font-size:9px;text-transform:uppercase;letter-spacing:.09em;font-weight:900;color:#68a40d;margin-bottom:7px}.input-card.required .label{color:var(--lime)}.input-card h3{font-size:14px}.input-card.required h3,.input-card.required p{color:#fff}.input-card p{font-size:11px;margin:0;color:#46513e}
+  .pricing-retainer{display:grid;grid-template-columns:1.15fr .85fr;gap:30px;padding:0 0 26px}
+  .options{display:grid;grid-template-columns:1fr;gap:10px}.price-card{background:#f6f8f0;border:1px solid #edf1e7;border-radius:10px;padding:20px 18px;min-height:205px}.price-card.reco{background:#071006;color:#fff}.badge{display:inline-block;background:var(--lime);color:#071006;padding:3px 18px;border-radius:999px;font-size:10px;font-weight:900;text-transform:uppercase;margin-top:-28px;margin-bottom:10px}.price{font-size:27px;color:#94d51e;font-weight:900;margin:12px 0}.price-card p,.price-card li{font-size:12px}.price-card ul{padding-left:16px;margin:10px 0 0}.price-card li{margin:5px 0}.price-card.reco p,.price-card.reco li{color:#eef8e7}
+  .retainer-list{display:grid;gap:10px}.retainer{display:grid;grid-template-columns:68px 1fr 1.25fr;gap:14px;align-items:center;background:#f6f8f0;border:1px solid #edf1e7;border-radius:10px;padding:12px}.retainer .iconbox{height:54px;border-radius:9px;background:#071006;color:var(--lime);display:grid;place-items:center;font-size:27px}.retainer .amt{color:#82c71a;font-size:20px;font-weight:900}.retainer p{font-size:12px;margin:0;color:#333b2f}
+  .feature-strip{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;border-top:1px solid var(--line);padding:14px 0 20px}.micro{display:grid;grid-template-columns:28px 1fr;gap:8px;font-size:10px;color:#4a5145}.micro strong{font-size:11px;color:#0b1208;display:block}.micro .smallico{width:24px;height:24px;border-radius:50%;background:#eef6df;color:#77b600;display:grid;place-items:center}
+  footer{background:#071006;color:#fff;display:grid;grid-template-columns:230px 1fr 300px;gap:20px;align-items:center;padding:24px 48px}.foot-logo{font-family:Poppins, sans-serif;font-size:38px;color:var(--lime);font-weight:800;letter-spacing:-3px}.footer-cta strong{font-family:Poppins, sans-serif;font-weight:700;display:block;color:var(--lime);font-size:17px}.footer-cta span{font-size:15px;color:#fff}.contact{font-size:14px;color:#eef8e7;text-align:right}
+  @media (max-width:900px){.hero{grid-template-columns:1fr;padding:36px 28px;gap:26px}.hero-copy{max-width:none}.art-grid{transform:none;grid-auto-rows:100px}.content{padding:28px 22px 0}.two,.delivery-plan,.scope-timeline,.pricing-retainer,.client-inputs{grid-template-columns:1fr}.delivery-plan{padding:30px 24px}.phone-stage{min-height:520px}.scope-grid{grid-template-columns:1fr 1fr}.input-list{grid-template-columns:1fr}.approach-icons{grid-template-columns:1fr 1fr;row-gap:18px}.phase-grid{grid-template-columns:1fr}.phase-card:last-child{grid-column:auto}.feature-strip{grid-template-columns:1fr 1fr}.retainer{grid-template-columns:58px 1fr}.retainer p{grid-column:2}.client-inputs{gap:20px}footer{grid-template-columns:1fr;padding:28px}.contact{text-align:left}}
+  @media (max-width:560px){h1{font-size:42px}.logo{font-size:48px;margin-bottom:28px}.art-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:110px}.art-grid img:nth-child(1),.art-grid img:nth-child(4){grid-row:auto}.art-grid img:nth-child(5),.art-grid img:nth-child(6){display:none}.scope-grid,.approach-icons,.feature-strip{grid-template-columns:1fr}.phone{transform:none}.hero p{font-size:15px}}
+  @media print{body{background:#fff;-webkit-print-color-adjust:exact;print-color-adjust:exact}.page{box-shadow:none;width:100%;margin:0}.delivery-plan,.client-inputs{break-inside:avoid}@page{size:1280px 2800px;margin:0}}
+</style>
+</head>
+<body>
+<div class="page">
+  <section class="hero">
+    <div class="hero-copy">
+      <div class="logo">greenchip</div>
+      <div class="eyebrow">Building the home for serious artists</div>
+      <h1>Product Development Proposal</h1>
+      <div class="rule"></div>
+      <p>A focused plan to build and launch the Greenchip platform - a mobile-first experience for artists to share work, exchange meaningful critique, and grow together.</p>
+    </div>
+    <div class="art-grid" aria-label="Greenchip artwork grid">
+      <img src="art1.jpg" alt="Artwork 1"><img src="art2.jpg" alt="Artwork 2"><img src="art3.jpg" alt="Artwork 3"><img src="art4.jpg" alt="Artwork 4"><img src="art5.jpg" alt="Artwork 5"><img src="art6.jpg" alt="Artwork 6">
+    </div>
+  </section>
+  <main class="content">
+    <section class="two">
+      <div><h2>The Vision</h2><div class="mini-rule"></div><p>Greenchip is the critique network for the next generation of artists. A space built on respect, depth, and growth - where artists share work, give and receive meaningful critique, and build their practice in public.</p><div class="mission"><div class="spark">✦</div><div>Our mission is to help artists level up through honest feedback and real connection.</div></div></div>
+      <div><h2>Our Approach</h2><div class="mini-rule"></div><p>We will build an intuitive, high-quality native mobile app using Expo with a powerful web platform for account management and billing. The core experience will be fast, focused, and community-first.</p><div class="approach-icons"><div class="icon-card"><div class="icon"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><h3>Artist-First Experience</h3><p>Built for creators, not audiences.</p></div><div class="icon-card"><div class="icon"><svg viewBox="0 0 24 24"><path d="M21 15a4 4 0 0 1-4 4H7l-4 4V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"/><path d="M8 9h8M8 13h5"/></svg></div><h3>Meaningful Critique</h3><p>Structured feedback that drives growth.</p></div><div class="icon-card"><div class="icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h3>Trust & Safety</h3><p>Consent-first, privacy-respectful, moderated.</p></div><div class="icon-card"><div class="icon"><svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg></div><h3>Built for Scale</h3><p>A modern stack ready to grow.</p></div></div></div>
+    </section>
+    <section class="delivery-plan">
+      <div class="phone-stage" aria-label="Conceptual Greenchip iPhone application mockup">
+        <div class="phone">
+          <div class="phone-head">greenchip</div>
+          <img class="phone-art" src="art3.jpg" alt="Featured artwork in the Greenchip mobile feed">
+          <div class="phone-body">
+            <div class="phone-kicker">Critique requested · Painting</div>
+            <h3>Untitled study, v2</h3>
+            <p>The artist is looking for feedback on composition, contrast, and the emotional read.</p>
+            <div class="critique-row"><span class="critique-chip">Composition</span><span class="critique-chip">Color</span><span class="critique-chip">Intent</span></div>
+            <div class="phone-cta">Give thoughtful critique</div>
+          </div>
+        </div>
+      </div>
+      <div class="delivery-copy">
+        <h2>Delivery Plan</h2><div class="mini-rule"></div>
+        <p class="delivery-lead">A 16-week build organized around working software, reviewable milestones, and a production launch. Each phase ends with a demo and a clear acceptance checkpoint.</p>
+        <div class="phase-grid">
+          <article class="phase-card"><div class="phase-top"><span class="phase-num">1</span><span class="phase-week">Weeks 1–2</span></div><h3>Foundation & Design Handoff</h3><ul><li>Technical architecture and data model</li><li>Repositories, environments, CI/CD, analytics</li><li>UI/UX handoff audit and component mapping</li><li>Authentication and account foundation</li></ul></article>
+          <article class="phase-card"><div class="phase-top"><span class="phase-num">2</span><span class="phase-week">Weeks 3–6</span></div><h3>Core Critique Loop</h3><ul><li>Artist profiles and work publishing</li><li>Image, video, and audio upload flows</li><li>Versions, critique requests, and responses</li><li>Discovery feed, filters, replies, and threads</li></ul></article>
+          <article class="phase-card"><div class="phase-top"><span class="phase-num">3</span><span class="phase-week">Weeks 7–10</span></div><h3>Community & Communication</h3><ul><li>1:1 messaging and push notifications</li><li>Consent, privacy, reporting, and blocking</li><li>Content visibility and moderation workflows</li><li>End-to-end community experience demo</li></ul></article>
+          <article class="phase-card"><div class="phase-top"><span class="phase-num">4</span><span class="phase-week">Weeks 11–14</span></div><h3>Operations & Beta</h3><ul><li>Admin dashboard and user management</li><li>Web billing, subscriptions, and entitlements</li><li>QA, accessibility, performance, and security</li><li>TestFlight / Play beta and feedback fixes</li></ul></article>
+          <article class="phase-card"><div class="phase-top"><span class="phase-num">5</span><span class="phase-week">Weeks 15–16</span></div><h3>Production Launch & Handover</h3><ul><li>App Store and Play Store submissions</li><li>Production web and backend deployment</li><li>Monitoring, runbooks, and launch support</li><li>Source code, documentation, and team handover</li></ul></article>
+        </div>
+      </div>
+    </section>
+    <section class="scope-timeline">
+      <div><h2>MVP Scope</h2><div class="mini-rule"></div><p>We will deliver a complete MVP focused on the core critique loop and community experience.</p><div class="scope-grid"><div class="scope-col"><div class="pill-title"><span class="dot">♣</span>Core Experience</div><ul><li>User accounts & profiles</li><li>Upload work: image, video, audio</li><li>Work versions</li><li>Critique requests</li><li>Structured critiques</li><li>Replies & threads</li><li>Discovery feed & filters</li><li>Messaging 1:1</li><li>Push notifications</li></ul></div><div class="scope-col"><div class="pill-title"><span class="dot">◈</span>Community & Trust</div><ul><li>Privacy & consent settings</li><li>Reporting & blocking</li><li>Moderation tools</li><li>Content visibility controls</li><li>Community guidelines & enforcement</li></ul></div><div class="scope-col"><div class="pill-title"><span class="dot">✱</span>Admin & Operations</div><ul><li>Admin dashboard</li><li>User management</li><li>Content moderation</li><li>Internal analytics</li><li>System alerts & monitoring</li></ul></div></div><div class="web-note"><span class="dot">◎</span><div><strong>Payments & subscriptions: web-managed</strong><br>Subscriptions, upgrades, Stripe Connect onboarding, payouts, patronage, and billing management will live on the web. Entitlements sync seamlessly back into the app.</div></div></div>
+      <div><h2>Timeline at a Glance</h2><div class="mini-rule"></div><div class="timeline"><div class="step"><span class="num">1</span><strong>Foundation</strong><p>Weeks 1–2: architecture, setup, design handoff, and authentication.</p></div><div class="step"><span class="num">2</span><strong>Core Build</strong><p>Weeks 3–6: build the critique loop and media flows.</p></div><div class="step"><span class="num">3</span><strong>Community</strong><p>Weeks 7–10: messaging, notifications, privacy, and trust.</p></div><div class="step"><span class="num">4</span><strong>Beta</strong><p>Weeks 11–14: admin, billing, QA, performance, and beta feedback.</p></div><div class="step"><span class="num">5</span><strong>Launch</strong><p>Weeks 15–16: store submissions, production release, and handover.</p></div></div><p style="margin-top:24px;color:#8a9182;font-style:italic">Schedule assumes finalized UI/UX is delivered before kickoff and feedback is returned within two business days.</p></div>
+    </section>
+    <section class="client-inputs">
+      <div><h2>Required from Greenchip</h2><div class="mini-rule"></div></div>
+      <div class="input-list">
+        <article class="input-card required"><div class="label">Required before kickoff</div><h3>Finalized mobile UI/UX designs</h3><p>Complete, approved Figma files covering all MVP screens, component states, responsive behavior, assets, and interaction notes. Design changes after implementation begins may affect timing and scope.</p></article>
+        <article class="input-card"><div class="label">During the build</div><h3>One decision owner</h3><p>A designated Greenchip lead who can consolidate feedback and approve milestone demos within two business days.</p></article>
+        <article class="input-card"><div class="label">Before beta</div><h3>Content & platform access</h3><p>Brand assets, community guidelines, legal copy, test content, and access to Apple, Google, Stripe, and required service accounts.</p></article>
+      </div>
+    </section>
+    <section class="pricing-retainer">
+      <div><h2>Investment</h2><div class="mini-rule"></div><div class="options"><div class="price-card reco"><span class="badge">Proposed</span><h3>MVP Development Partnership</h3><div class="price">$40,000<br><span style="font-size:18px">+ Advisor Equity</span></div><p>All MVP features delivered and launched, with meaningful long-term alignment.</p><ul><li>$20,000 due now</li><li>$20,000 due later in the project</li><li>Strategic product partnership</li><li>Equity terms to be agreed</li><li>Launch support included</li></ul></div></div></div>
+      <div><h2>Support Retainer</h2><div class="mini-rule"></div><p>Ongoing support to keep Greenchip reliable, secure, and evolving.</p><div class="retainer-list"><div class="retainer"><div class="iconbox">⌘</div><div><h3>Support Retainer</h3><div class="amt">$3,000 / month</div></div><p>Bug fixes, updates, monitoring, and small product enhancements.</p></div></div><p style="font-size:12px;color:#6a7264;margin-top:12px;font-style:italic">Monthly, cancelable with 30 days' notice.</p></div>
+    </section>
+    <section class="feature-strip"><div class="micro"><span class="smallico">▣</span><div><strong>Secure & compliant</strong>Privacy, consent, and best practices.</div></div><div class="micro"><span class="smallico">&lt;/&gt;</span><div><strong>Modern tech stack</strong>Expo, Node.js, PostgreSQL, Supabase, and more.</div></div><div class="micro"><span class="smallico">▯</span><div><strong>Native mobile app</strong>High-performance iOS and Android experience.</div></div><div class="micro"><span class="smallico">☁</span><div><strong>Scalable foundation</strong>Architecture designed to grow with the community.</div></div><div class="micro"><span class="smallico">◎</span><div><strong>Web billing layer</strong>Subscriptions and payouts managed outside app stores.</div></div></section>
+  </main>
+  <footer><div class="foot-logo">greenchip</div><div class="footer-cta"><strong>Let's build the future of critique together.</strong><span>We're excited to partner with you on this journey.</span></div><div class="contact">Luc Succes<br>luc@lucsucces.com</div></footer>
+</div>
+</body>
+</html>
