@@ -10,7 +10,7 @@ interface SkillsSectionProps {
 export const SkillsSection = ({ skills }: SkillsSectionProps) => {
   return (
     <View style={styles.section}>
-      <Text style={styles.sectionTitle}>Technical Skills</Text>
+      <Text style={styles.sectionTitle}>Skills</Text>
       <View style={styles.skillsGrid}>
         {skills.map((skill, index) => (
           <View key={index} style={styles.skillColumn}>

@@ -24,10 +24,10 @@ interface ExperienceItemProps {
 
 const ExperienceItem = ({ experience }: ExperienceItemProps) => {
   const dateRange = `${experience.startDate} - ${experience.endDate}`
-  const shouldBreakBefore = experience.company === "Often"
 
   return (
-    <View style={styles.experienceItem} break={shouldBreakBefore}>
+    // wrap={false} keeps an entry whole: pages break between jobs, never mid-entry
+    <View style={styles.experienceItem} wrap={false}>
       <View style={styles.companyRow}>
         <Text style={styles.company}>{experience.company}</Text>
         <Text style={styles.dates}>{dateRange}</Text>
@@ -35,7 +35,7 @@ const ExperienceItem = ({ experience }: ExperienceItemProps) => {
 
       <View style={styles.roleRow}>
         <Text style={styles.role}>
-          {experience.roles.map((r) => r.title).join(" → ")}
+          {experience.roles.map((r) => r.title).join(" / ")}
         </Text>
         <Text style={styles.location}>{experience.location}</Text>
       </View>

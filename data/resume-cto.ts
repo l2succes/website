@@ -3,7 +3,7 @@ import type { ResumeData } from "./resume"
 export const resumeDataCTO: ResumeData = {
   contact: {
     name: "Luc Succes",
-    title: "Fractional CTO / Technical Co-Founder",
+    title: "Fractional CTO / Founder",
     email: "luc@lucsucces.com",
     location: "San Francisco, USA",
     linkedin: "linkedin.com/in/lucsucces",
@@ -12,20 +12,24 @@ export const resumeDataCTO: ResumeData = {
   },
 
   summary:
-    "Technical leader and 3x startup CTO with 12+ years building and scaling engineering teams. Founded multiple venture-backed companies including a YC-backed fintech startup. Experienced in hiring from zero, defining architecture, and establishing engineering culture. Track record of raising $5.5M+ in venture funding, shipping products to millions of users, and mentoring engineers from junior to senior. Deep expertise across the full stack with a focus on making the right technical bets for early-stage companies.",
+    "Technical leader and 3x startup CTO with 12+ years building and scaling engineering teams. Founded multiple venture-backed companies including a YC-backed fintech startup. Experienced in hiring from zero, defining architecture, and establishing engineering culture. Track record of raising $5.5M+ in venture funding, shipping products to millions of users, and mentoring engineers from junior to senior. Currently shipping production AI agents that move real money — multi-provider agent runtimes, MCP surfaces, and the eval and safety infrastructure that makes them trustworthy.",
 
   skills: [
     {
-      category: "Leadership",
-      items: ["Technical Hiring", "Team Building", "Architecture Planning", "Vendor Evaluation", "Agile/Scrum", "Technical Due Diligence"],
+      category: "AI & Agents",
+      items: ["Agent Architecture", "Tool / Function Calling", "Agent Evals", "LLM Safety & Guardrails", "Multi-Provider Runtimes", "Context Engineering", "RAG"],
     },
     {
-      category: "Strategy",
-      items: ["Tech Stack Selection", "Build vs Buy Decisions", "Cloud Cost Optimization", "Security & Compliance", "CI/CD & DevOps", "Technical Roadmapping"],
+      category: "Product",
+      items: ["Product Building", "0-to-1 Ideation", "ICP Discovery", "Rapid Prototyping", "User Research"],
     },
     {
-      category: "Stack",
-      items: ["React", "Next.js", "React Native", "TypeScript", "Node.js", "GraphQL", "PostgreSQL", "Redis", "AWS", "Kubernetes", "Docker"],
+      category: "Go-to-Market",
+      items: ["Sales", "Marketing", "Pricing & Packaging", "Fundraising", "Investor Narrative"],
+    },
+    {
+      category: "Strategy & Team",
+      items: ["Tech Stack Selection", "AI Build vs Buy", "Technical Hiring", "Team Building", "Technical Due Diligence", "Roadmapping"],
     },
   ],
 
@@ -37,13 +41,13 @@ export const resumeDataCTO: ResumeData = {
       startDate: "May 2023",
       endDate: "Present",
       highlights: [
-        "Defined technical vision and architecture for stablecoin payments platform serving users in 50+ countries",
-        "Selected and implemented tech stack (Next.js, NestJS, Prisma, PostgreSQL, Redis) balancing speed-to-market with scalability",
-        "Designed microservices architecture on AWS EKS (Kubernetes) achieving 99.9% uptime",
-        "Established CI/CD pipelines, code review processes, and engineering best practices from day one",
-        "Raised $1.2M in funding including Y Combinator (S24 batch), owning technical narrative for investor pitches",
+        "Built and architected an AI-powered fintech company from zero: payments rails across 13+ providers, 80+ currencies, and 40+ countries (NestJS, GraphQL, Prisma/Postgres, Redis, AWS EKS) with an agentic finance layer on top; raised $1.2M including Y Combinator (S24)",
+        "Shipped AI CFO, a production finance agent with 73 tool-calling functions over live banking, AP/AR, payroll, and QuickBooks/Xero/Puzzle data — scaffold to paid launch in 60 days",
+        "Architected a model-agnostic agent runtime across AWS Bedrock, Azure AI Foundry, Google Vertex, and OpenAI, with providers and models hot-swappable from an admin console without a code release",
+        "Owned the safety model for agents that move real money — propose-then-confirm on every write, threshold-gated autonomous bill pay, a 27-entry risk-tiered tool policy registry — gated in CI by a 66-scenario eval suite and a 103-turn endurance test",
+        "Ran an agent-native engineering org: a 6-agent autonomous C-suite on Azure, an LLM-generated company wiki served to agents over MCP, and self-improving voice sales agents",
       ],
-      technologies: ["React", "Next.js", "TypeScript", "React Native", "Node.js", "GraphQL", "PostgreSQL", "Redis", "AWS", "Kubernetes"],
+      technologies: ["Vercel AI SDK", "MCP", "Claude", "GPT", "Gemini", "AWS Bedrock", "Azure AI Foundry", "Google Vertex", "TypeScript", "Next.js", "NestJS", "GraphQL", "PostgreSQL", "AWS", "Kubernetes"],
     },
     {
       company: "Seasons",
@@ -128,6 +132,33 @@ export const resumeDataCTO: ResumeData = {
       degree: "Bachelor of Science",
       field: "Computer Science",
       year: "2012",
+    },
+  ],
+
+  stack: [
+    {
+      category: "Agents",
+      items: ["Claude Code", "Codex", "Grok", "Cursor", "MCP", "Claude Agent SDK", "Vercel AI SDK"],
+    },
+    {
+      category: "Models",
+      items: ["Claude", "GPT", "Gemini"],
+    },
+    {
+      category: "LLM Infra",
+      items: ["AWS Bedrock", "Azure AI Foundry", "Google Vertex", "Braintrust"],
+    },
+    {
+      category: "Product",
+      items: ["TypeScript", "React", "Next.js", "React Native", "Tailwind"],
+    },
+    {
+      category: "Backend",
+      items: ["Node.js", "NestJS", "GraphQL", "Postgres", "Prisma", "Redis"],
+    },
+    {
+      category: "Infra",
+      items: ["AWS", "Kubernetes", "Terraform", "GitHub Actions", "Vercel"],
     },
   ],
 }

@@ -88,6 +88,40 @@ export const styles = StyleSheet.create({
     lineHeight: 1.4,
   },
 
+  // Tech stack styles
+  stackRow: {
+    flexDirection: "row",
+    alignItems: "flex-start",
+    marginBottom: 5,
+  },
+  stackLabel: {
+    width: 62,
+    paddingTop: 2.5,
+    fontSize: 8.5,
+    fontWeight: 600,
+    color: colors.muted,
+    textTransform: "uppercase",
+    letterSpacing: 0.4,
+  },
+  stackChips: {
+    flex: 1,
+    flexDirection: "row",
+    flexWrap: "wrap",
+    gap: 4,
+  },
+  chip: {
+    borderWidth: 0.75,
+    borderColor: colors.divider,
+    borderRadius: 3,
+    paddingHorizontal: 5,
+    paddingVertical: 2,
+  },
+  chipText: {
+    fontSize: 8.5,
+    lineHeight: 1,
+    color: colors.secondary,
+  },
+
   // Experience styles
   experienceItem: {
     marginBottom: 12,
