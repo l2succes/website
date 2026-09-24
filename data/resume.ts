@@ -59,19 +59,19 @@ export const resumeData: ResumeData = {
   skills: [
     {
       category: "AI & Agents",
-      items: ["Agent Architecture", "Tool / Function Calling", "Agent Evals", "LLM Safety & Guardrails", "Context Engineering", "RAG"],
+      items: ["Agent Architecture", "Tool Calling", "Agent Evals", "LLM Safety", "Context Engineering", "RAG"],
     },
     {
       category: "Product",
-      items: ["Product Building", "0-to-1 Ideation", "ICP Discovery", "Rapid Prototyping", "User Research"],
+      items: ["Product Building", "0-to-1 Ideation", "ICP Discovery", "User Research"],
     },
     {
       category: "Go-to-Market",
-      items: ["Sales", "Marketing", "Pricing & Packaging", "Fundraising", "Investor Narrative"],
+      items: ["Sales", "Marketing", "Pricing", "Fundraising"],
     },
     {
       category: "Strategy & Team",
-      items: ["Tech Stack Selection", "AI Build vs Buy", "Technical Hiring", "Team Building", "Technical Due Diligence", "Roadmapping"],
+      items: ["Tech Stack Selection", "AI Build vs Buy", "Technical Hiring", "Team Building"],
     },
   ],
 
@@ -83,10 +83,12 @@ export const resumeData: ResumeData = {
       startDate: "May 2023",
       endDate: "Present",
       highlights: [
-        "Built and architected an AI-powered fintech platform end to end — Next.js, NestJS, Prisma/Postgres, and Redis on AWS EKS — serving 80+ currencies across 40+ countries; raised $1.2M including Y Combinator (S24)",
-        "Built AI CFO, a production finance agent with 73 tool-calling functions over live banking, AP/AR, payroll, and QuickBooks/Xero/Puzzle data, on the Vercel AI SDK",
-        "Implemented a model-agnostic provider factory (AWS Bedrock, Azure AI Foundry, Google Vertex, OpenAI) with runtime model switching, context-budgeted memory compaction, and per-turn LLM tracing",
-        "Designed guardrails for agent-initiated money movement — confirmation-gated writes, capped autonomous bill pay, prompt-injection defenses on tool output — and the eval harness that gates them: tool-routing and numeric-grounding scorers across a 66-scenario suite and a 103-turn endurance test, wired into daily CI",
+        "Built and architected an AI-powered fintech platform from zero, scaling payments to 80+ currencies across 40+ countries",
+        "Built an AI CFO agent with 73 tools spanning live banking, payables, receivables, payroll, and accounting data",
+        "Implemented a model-agnostic provider factory with runtime model switching and context-budgeted memory compaction",
+        "Designed guardrails for agent-initiated money movement, gating every write behind user confirmation and capped limits",
+        "Wrote the eval harness that gates each release, covering 66 behavioral scenarios and a 103-turn endurance test",
+        "Raised $1.2M in funding including Y Combinator (S24 batch)",
       ],
       technologies: ["Vercel AI SDK", "MCP", "Claude", "GPT", "Gemini", "AWS Bedrock", "Azure AI Foundry", "Google Vertex", "TypeScript", "Next.js", "NestJS", "GraphQL", "PostgreSQL", "AWS", "Kubernetes"],
     },

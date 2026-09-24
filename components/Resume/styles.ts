@@ -68,21 +68,20 @@ export const styles = StyleSheet.create({
     color: colors.secondary,
   },
 
-  // Skills styles
-  skillsGrid: {
+  // Skills styles — full-width labelled rows
+  skillRow: {
     flexDirection: "row",
-    gap: 16,
+    alignItems: "flex-start",
+    marginBottom: 4,
   },
-  skillColumn: {
-    flex: 1,
-  },
-  skillCategory: {
+  skillRowLabel: {
+    width: 92,
     fontSize: 9,
     fontWeight: 600,
-    marginBottom: 3,
     color: colors.primary,
   },
-  skillList: {
+  skillRowItems: {
+    flex: 1,
     fontSize: 9,
     color: colors.secondary,
     lineHeight: 1.4,

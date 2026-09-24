@@ -17,19 +17,19 @@ export const resumeDataCTO: ResumeData = {
   skills: [
     {
       category: "AI & Agents",
-      items: ["Agent Architecture", "Tool / Function Calling", "Agent Evals", "LLM Safety & Guardrails", "Multi-Provider Runtimes", "Context Engineering", "RAG"],
+      items: ["Agent Architecture", "Tool Calling", "Agent Evals", "LLM Safety", "Context Engineering", "RAG"],
     },
     {
       category: "Product",
-      items: ["Product Building", "0-to-1 Ideation", "ICP Discovery", "Rapid Prototyping", "User Research"],
+      items: ["Product Building", "0-to-1 Ideation", "ICP Discovery", "User Research"],
     },
     {
       category: "Go-to-Market",
-      items: ["Sales", "Marketing", "Pricing & Packaging", "Fundraising", "Investor Narrative"],
+      items: ["Sales", "Marketing", "Pricing", "Fundraising"],
     },
     {
       category: "Strategy & Team",
-      items: ["Tech Stack Selection", "AI Build vs Buy", "Technical Hiring", "Team Building", "Technical Due Diligence", "Roadmapping"],
+      items: ["Tech Stack Selection", "AI Build vs Buy", "Technical Hiring", "Team Building"],
     },
   ],
 
@@ -41,11 +41,12 @@ export const resumeDataCTO: ResumeData = {
       startDate: "May 2023",
       endDate: "Present",
       highlights: [
-        "Built and architected an AI-powered fintech company from zero: payments rails across 13+ providers, 80+ currencies, and 40+ countries (NestJS, GraphQL, Prisma/Postgres, Redis, AWS EKS) with an agentic finance layer on top; raised $1.2M including Y Combinator (S24)",
-        "Shipped AI CFO, a production finance agent with 73 tool-calling functions over live banking, AP/AR, payroll, and QuickBooks/Xero/Puzzle data — scaffold to paid launch in 60 days",
-        "Architected a model-agnostic agent runtime across AWS Bedrock, Azure AI Foundry, Google Vertex, and OpenAI, with providers and models hot-swappable from an admin console without a code release",
-        "Owned the safety model for agents that move real money — propose-then-confirm on every write, threshold-gated autonomous bill pay, a 27-entry risk-tiered tool policy registry — gated in CI by a 66-scenario eval suite and a 103-turn endurance test",
-        "Ran an agent-native engineering org: a 6-agent autonomous C-suite on Azure, an LLM-generated company wiki served to agents over MCP, and self-improving voice sales agents",
+        "Built and architected an AI-powered fintech company from zero, scaling payments to 80+ currencies across 40+ countries",
+        "Raised $1.2M including Y Combinator (S24), owning the technical narrative for investor pitches",
+        "Shipped an AI CFO agent with 73 tools spanning live banking, payables, receivables, payroll, and accounting data",
+        "Architected a model-agnostic agent runtime, making providers and models swappable from an admin console without a code release",
+        "Owned the safety model for agents that move real money, gating every write behind user confirmation and capped autonomous limits",
+        "Built the eval infrastructure that gates each release, covering 66 behavioral scenarios and a 103-turn endurance test",
       ],
       technologies: ["Vercel AI SDK", "MCP", "Claude", "GPT", "Gemini", "AWS Bedrock", "Azure AI Foundry", "Google Vertex", "TypeScript", "Next.js", "NestJS", "GraphQL", "PostgreSQL", "AWS", "Kubernetes"],
     },

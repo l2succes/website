@@ -11,14 +11,12 @@ export const SkillsSection = ({ skills }: SkillsSectionProps) => {
   return (
     <View style={styles.section}>
       <Text style={styles.sectionTitle}>Skills</Text>
-      <View style={styles.skillsGrid}>
-        {skills.map((skill, index) => (
-          <View key={index} style={styles.skillColumn}>
-            <Text style={styles.skillCategory}>{skill.category}</Text>
-            <Text style={styles.skillList}>{skill.items.join(", ")}</Text>
-          </View>
-        ))}
-      </View>
+      {skills.map((skill, index) => (
+        <View key={index} style={styles.skillRow}>
+          <Text style={styles.skillRowLabel}>{skill.category}</Text>
+          <Text style={styles.skillRowItems}>{skill.items.join(", ")}</Text>
+        </View>
+      ))}
     </View>
   )
 }
