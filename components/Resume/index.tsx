@@ -6,6 +6,7 @@ import { SummarySection } from "./SummarySection"
 import { SkillsSection } from "./SkillsSection"
 import { ExperienceSection } from "./ExperienceSection"
 import { EducationSection } from "./EducationSection"
+import { StackSection } from "./StackSection"
 import type { ResumeData } from "../../data/resume"
 
 interface ResumeProps {
@@ -26,6 +27,7 @@ export const Resume = ({ data }: ResumeProps) => {
         <SkillsSection skills={data.skills} />
         <ExperienceSection experience={data.experience} />
         <EducationSection education={data.education} />
+        {data.stack && <StackSection stack={data.stack} />}
         <Text
           style={styles.pageNumber}
           render={({ pageNumber, totalPages }) => `${pageNumber} / ${totalPages}`}

@@ -38,6 +38,8 @@ export interface ResumeData {
   skills: Skill[]
   experience: Experience[]
   education: Education[]
+  /** Rendered as labelled chip rows below Education. */
+  stack?: Skill[]
 }
 
 export const resumeData: ResumeData = {
@@ -52,24 +54,24 @@ export const resumeData: ResumeData = {
   },
 
   summary:
-    "Full stack engineer with 12+ years building consumer products at scale. Founded multiple venture-backed startups including a YC company. Led engineering teams at Artsy and shipped features to 100M+ users at Spotify. Deep expertise in React, Node.js, GraphQL, and cloud infrastructure. Currently building AI-powered tools and exploring the future of fintech through stablecoins.",
+    "Full stack engineer with 12+ years building consumer products at scale. Founded multiple venture-backed startups including a YC company. Led engineering teams at Artsy and shipped features to 100M+ users at Spotify. Deep expertise in React, Node.js, GraphQL, and cloud infrastructure. Currently building production AI agents at Blaze — multi-provider LLM runtimes, MCP servers, and the eval harnesses that keep them honest.",
 
   skills: [
     {
-      category: "Languages",
-      items: ["TypeScript", "JavaScript", "Python", "Go", "Swift", "Objective-C"],
+      category: "AI & Agents",
+      items: ["Agent Architecture", "Tool Calling", "Agent Evals", "LLM Safety", "Context Engineering", "RAG"],
     },
     {
-      category: "Frontend",
-      items: ["React", "Next.js", "React Native", "Tailwind CSS", "HTML/CSS"],
+      category: "Product",
+      items: ["Product Building", "0-to-1 Ideation", "ICP Discovery", "User Research"],
     },
     {
-      category: "Backend",
-      items: ["Node.js", "GraphQL", "PostgreSQL", "Redis", "MongoDB", "REST APIs"],
+      category: "Go-to-Market",
+      items: ["Sales", "Marketing", "Pricing", "Fundraising"],
     },
     {
-      category: "Cloud & DevOps",
-      items: ["AWS", "Docker", "Kubernetes", "GitHub Actions", "Vercel", "CI/CD"],
+      category: "Strategy & Team",
+      items: ["Tech Stack Selection", "AI Build vs Buy", "Technical Hiring", "Team Building"],
     },
   ],
 
@@ -81,13 +83,14 @@ export const resumeData: ResumeData = {
       startDate: "May 2023",
       endDate: "Present",
       highlights: [
-        "Architected end-to-end stablecoin payments platform for digital nomads and expats, serving users in 50+ countries",
-        "Built full-stack application with Next.js, NestJS, Prisma, PostgreSQL, and Redis for high-performance caching",
-        "Designed microservices architecture on AWS EKS (Kubernetes) achieving 99.9% uptime",
-        "Implemented CI/CD pipeline with GitHub Actions, reducing deployment time from hours to minutes",
+        "Built and architected an AI-powered fintech platform from zero, scaling payments to 80+ currencies across 40+ countries",
+        "Built an AI CFO agent with 73 tools spanning live banking, payables, receivables, payroll, and accounting data",
+        "Implemented a model-agnostic provider factory with runtime model switching and context-budgeted memory compaction",
+        "Designed guardrails for agent-initiated money movement, gating every write behind user confirmation and capped limits",
+        "Wrote the eval harness that gates each release, covering 66 behavioral scenarios and a 103-turn endurance test",
         "Raised $1.2M in funding including Y Combinator (S24 batch)",
       ],
-      technologies: ["React", "Next.js", "TypeScript", "React Native", "Node.js", "GraphQL", "PostgreSQL", "Redis", "AWS", "Kubernetes"],
+      technologies: ["Vercel AI SDK", "MCP", "Claude", "GPT", "Gemini", "AWS Bedrock", "Azure AI Foundry", "Google Vertex", "TypeScript", "Next.js", "NestJS", "GraphQL", "PostgreSQL", "AWS", "Kubernetes"],
     },
     {
       company: "Seasons",
@@ -131,7 +134,6 @@ export const resumeData: ResumeData = {
         "Architected entire system from ground up: Swift iOS app, Node.js backend, and MongoDB database",
         "Built iOS keyboard app reaching 500K+ downloads and #1 in App Store for 72 hours",
         "Designed backend services handling 1M+ daily API requests with real-time content delivery",
-        "Created content management system for curating trending emoji and GIF content",
       ],
       technologies: ["Swift", "Node.js", "MongoDB", "AWS"],
     },
@@ -145,7 +147,6 @@ export const resumeData: ResumeData = {
         "Built features for iOS, web, and desktop clients serving 100M+ users",
         "Developed Radio feature improvements increasing listening session length by 15%",
         "Implemented A/B testing framework for new feature rollouts across platforms",
-        "Contributed to cross-platform codebase in Objective-C, JavaScript, and C++",
       ],
       technologies: ["Objective-C", "JavaScript", "C++", "Python"],
     },
@@ -159,7 +160,6 @@ export const resumeData: ResumeData = {
         "First frontend engineer at YieldMo; architected the entire frontend framework from scratch",
         "Built high-performance ad serving platform with JavaScript SDK handling millions of impressions daily",
         "Grew and mentored frontend team from 1 to 5 engineers, establishing coding standards and best practices",
-        "Created responsive ad units achieving 95%+ viewability scores",
       ],
       technologies: ["JavaScript", "HTML/CSS", "Python"],
     },
@@ -177,5 +177,32 @@ export const resumeData: ResumeData = {
       field: "Computer Science",
       year: "2012",
     },
-      ],
+  ],
+
+  stack: [
+    {
+      category: "Agents",
+      items: ["Claude Code", "Codex", "Grok", "Cursor", "MCP", "Claude Agent SDK", "Vercel AI SDK"],
+    },
+    {
+      category: "Models",
+      items: ["Claude", "GPT", "Gemini"],
+    },
+    {
+      category: "LLM Infra",
+      items: ["AWS Bedrock", "Azure AI Foundry", "Google Vertex", "Braintrust"],
+    },
+    {
+      category: "Product",
+      items: ["TypeScript", "React", "Next.js", "React Native", "Tailwind"],
+    },
+    {
+      category: "Backend",
+      items: ["Node.js", "NestJS", "GraphQL", "Postgres", "Prisma", "Redis", "Python"],
+    },
+    {
+      category: "Infra",
+      items: ["AWS", "Kubernetes", "Docker", "Terraform", "GitHub Actions", "Vercel"],
+    },
+  ],
 }
