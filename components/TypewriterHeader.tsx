@@ -102,19 +102,19 @@ export const TypewriterHeader: React.FC = () => {
   }, [])
 
   return (
-    <div className="text-2xl md:text-3xl  mx-4 font-light">
+    <div className="text-2xl md:text-3xl mx-4 font-light text-black dark:text-white">
       <span>{displayText}</span>
       {phase !== "complete" && (
         <>
           <span>, my name is </span>
-          <span className="text-gray-400">Luc Succes</span>
-          <span className={`inline-block w-0.5 h-6 bg-black ml-1 ${cursorVisible ? "opacity-100" : "opacity-0"}`} />
+          <span className="text-gray-400 dark:text-gray-400">Luc Succes</span>
+          <span className={`inline-block w-0.5 h-6 bg-black dark:bg-white ml-1 ${cursorVisible ? "opacity-100" : "opacity-0"}`} />
         </>
       )}
       {phase === "complete" && (
         <>
           <span>, my name is </span>
-          <span className="text-gray-400">Luc Succes</span>
+          <span className="text-gray-400 dark:text-gray-400">Luc Succes</span>
           <span>.</span>
         </>
       )}

@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react"
 import { Logo } from "./Home/Logo"
+import { VantaBackground } from "./VantaBackground"
 
 interface SplashScreenProps {
   onComplete: () => void
@@ -33,7 +34,10 @@ export const SplashScreen = ({ onComplete }: SplashScreenProps) => {
         isVisible ? "opacity-100" : "opacity-0"
       }`}
     >
-      <Logo size="large" animated={true} />
+      <VantaBackground enabled={true} />
+      <div className="relative z-10">
+        <Logo size="large" animated={true} />
+      </div>
     </div>
   )
 }
