@@ -11,10 +11,11 @@ interface SiteShellProps {
   title?: string
   description?: string
   path?: string
+  noindex?: boolean
 }
 
 // Chrome shared by every page in the new design: smooth scroll, nav, cursor, grain and the contact footer.
-export const SiteShell = ({ children, navVisible = true, title, description, path }: SiteShellProps) => {
+export const SiteShell = ({ children, navVisible = true, title, description, path, noindex }: SiteShellProps) => {
   useSmoothScroll()
 
   useEffect(() => {
@@ -26,7 +27,7 @@ export const SiteShell = ({ children, navVisible = true, title, description, pat
 
   return (
     <div className="ls">
-      <SeoHead title={title} description={description} path={path} />
+      <SeoHead title={title} description={description} path={path} noindex={noindex} />
       <SiteNav visible={navVisible} />
       <Cursor />
       <div className="ls-grain" aria-hidden="true" />
