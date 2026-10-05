@@ -477,14 +477,19 @@ export const CryptoStory = ({ variant }: { variant: CryptoVariant }) => {
             </div>
             <h3 className="ls-mono ls-cs-sub">Architecture &amp; stack</h3>
             <Chips items={MANGO_STACK} />
-            <a
-              className="ls-cs-link ls-mono"
-              href="https://github.com/l2succes/mango-ui-v3"
-              target="_blank"
-              rel="noreferrer"
-            >
-              View the repo <span aria-hidden="true">↗</span>
-            </a>
+            <div className="ls-cs-links">
+              <Link className="ls-cs-link ls-mono" href="/work/mango-pay" data-cursor="Open">
+                The full Mango Pay project <span aria-hidden="true">→</span>
+              </Link>
+              <a
+                className="ls-cs-link ls-mono"
+                href="https://github.com/l2succes/mango-ui-v3"
+                target="_blank"
+                rel="noreferrer"
+              >
+                View the repo <span aria-hidden="true">↗</span>
+              </a>
+            </div>
           </div>
 
           <div className="ls-cs-visual">
