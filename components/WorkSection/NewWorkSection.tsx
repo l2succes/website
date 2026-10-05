@@ -23,6 +23,15 @@ interface GridProject {
 
 const featuredProjects: FeaturedProject[] = [
   {
+    title: "Crypto & Wallets",
+    role: "Mango Markets · Rainbow · Blaze",
+    year: "2021–Present",
+    image: "/images/crypto/rainbow/home-screen.png",
+    slug: "crypto",
+    backgroundColor: "#121212",
+    icon: "/images/crypto/icon.svg",
+  },
+  {
     title: "Blaze",
     role: "Co-Founder + CTO",
     year: "2024",
@@ -137,9 +146,10 @@ export const NewWorkSection: React.FC = () => {
                 <div
                   className="absolute bottom-0 left-0 right-0 px-6 md:px-8 py-5 rounded-b-2xl"
                   style={{
-                    backgroundColor:
-                      project.slug === "catching-feelings" ? "rgba(0, 0, 0, 0.1)" : "rgba(0, 0, 0, 0.05)",
-                    color: project.slug === "catching-feelings" ? "white" : "inherit",
+                    backgroundColor: ["catching-feelings", "crypto"].includes(project.slug)
+                      ? "rgba(255, 255, 255, 0.08)"
+                      : "rgba(0, 0, 0, 0.05)",
+                    color: ["catching-feelings", "crypto"].includes(project.slug) ? "white" : "inherit",
                   }}
                 >
                   <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
