@@ -246,17 +246,45 @@ html.ls-root body {
   position: absolute;
   inset: 0;
   will-change: transform;
+  /* Three working shots, cut like a contact sheet. Black and white until you point at one. */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  background: var(--ink);
 }
 .ls-hero__img {
   object-fit: cover;
-  object-position: 30% 40%;
 }
 .ls-hero__shade {
   position: absolute;
   inset: 0;
+  /* Above the panes, but hover reaches through to them. */
+  z-index: 2;
+  pointer-events: none;
   background: rgba(11, 11, 10, 0.32);
+  transition: background 0.9s var(--ease-out);
+}
+.ls-hero__pane {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+.ls-hero__paneInner {
+  position: absolute;
+  inset: -12% 0;
+  filter: grayscale(1) contrast(1.06);
+  transition: filter 0.9s var(--ease-out);
+}
+@media (hover: hover) {
+  .ls-hero__photo:has(.ls-hero__pane:hover) .ls-hero__shade {
+    background: rgba(11, 11, 10, 0.18);
+  }
+  .ls-hero__pane:hover .ls-hero__paneInner {
+    filter: none;
+  }
 }
 .ls-hero__greeting {
+  pointer-events: none;
   position: absolute;
   right: var(--gutter);
   bottom: calc(var(--gutter) * 1.4);
