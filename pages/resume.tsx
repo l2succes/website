@@ -1,7 +1,8 @@
 import type { NextPage } from "next"
 import React, { useEffect, useRef, useState } from "react"
+import { useRouter } from "next/router"
 import { SiteShell } from "../components/Site/SiteShell"
-import { gsap, MOTION_OK } from "../lib/site/motion"
+import { gsap, MOTION_OK, prefersReducedMotion } from "../lib/site/motion"
 import { LS_PATH } from "../lib/site/ls-path"
 import { projectByName } from "../lib/site/content"
 import { resumeData, ResumeData } from "../data/resume"
@@ -12,22 +13,8 @@ const VARIANTS = [
   { id: "cto", label: "CTO", data: resumeDataCTO, file: "luc-succes-resume-cto.pdf" },
 ] as const
 type VariantId = (typeof VARIANTS)[number]["id"]
-type Status = "idle" | "building" | "error"
 
-// Builds the PDF in the browser from the same data this page renders, so the two never drift apart.
-async function downloadPdf(data: ResumeData, filename: string) {
-  const [{ pdf }, { Resume }] = await Promise.all([import("@react-pdf/renderer"), import("../components/Resume")])
-  const blob = await pdf(<Resume data={data} />).toBlob()
-  const url = URL.createObjectURL(blob)
-  const a = document.createElement("a")
-  a.href = url
-  a.download = filename
-  document.body.appendChild(a)
-  a.click()
-  a.remove()
-  setTimeout(() => URL.revokeObjectURL(url), 1000)
-}
-
+// The PDFs in public/ are this page printed by headless Chrome (`yarn generate:resume`), one per variant.
 const href = (value: string) => (value.startsWith("http") ? value : `https://${value}`)
 
 const Sheet = ({ data }: { data: ResumeData }) => {
@@ -35,9 +22,11 @@ const Sheet = ({ data }: { data: ResumeData }) => {
   return (
     <article className="ls-sheet" aria-label={`${contact.name} résumé`}>
       <header className="ls-sheet__head">
-        <svg className="ls-sheet__mark" viewBox="290 190 462 670" aria-hidden="true">
-          <path d={LS_PATH} pathLength={1} strokeDasharray="1" strokeDashoffset="0" />
-        </svg>
+        <span className="ls-sheet__mark" aria-hidden="true">
+          <svg viewBox="290 190 462 670">
+            <path d={LS_PATH} pathLength={1} strokeDasharray="1" strokeDashoffset="0" />
+          </svg>
+        </span>
         <h1 className="ls-display">Luc Succès</h1>
         <p className="ls-sheet__title">{contact.title}</p>
         <ul className="ls-sheet__contact ls-mono">
@@ -154,9 +143,14 @@ const Sheet = ({ data }: { data: ResumeData }) => {
 
 const ResumePage: NextPage = () => {
   const root = useRef<HTMLElement>(null)
+  const router = useRouter()
   const [variantId, setVariantId] = useState<VariantId>("engineer")
-  const [status, setStatus] = useState<Status>("idle")
   const variant = VARIANTS.find((v) => v.id === variantId)!
+
+  // ?v=cto opens the CTO version directly; the PDF export relies on it.
+  useEffect(() => {
+    if (router.isReady && router.query.v === "cto") setVariantId("cto")
+  }, [router.isReady, router.query.v])
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -185,24 +179,13 @@ const ResumePage: NextPage = () => {
 
   // Fade the sheet's contents between variants.
   useEffect(() => {
-    if (!root.current) return
+    if (!root.current || prefersReducedMotion()) return
     gsap.fromTo(
       root.current.querySelectorAll(".ls-sheet__summary, .ls-sheet__title, .ls-sheet__cols"),
       { autoAlpha: 0.15, y: 10 },
       { autoAlpha: 1, y: 0, duration: 0.6, stagger: 0.05, ease: "power2.out" }
     )
   }, [variantId])
-
-  const onDownload = async () => {
-    setStatus("building")
-    try {
-      await downloadPdf(variant.data, variant.file)
-      setStatus("idle")
-    } catch (error) {
-      console.error("Resume PDF build failed", error)
-      setStatus("error")
-    }
-  }
 
   return (
     <SiteShell
@@ -219,32 +202,20 @@ const ResumePage: NextPage = () => {
                 key={v.id}
                 className="ls-mono"
                 aria-pressed={variantId === v.id}
-                onClick={() => {
-                  setVariantId(v.id)
-                  setStatus("idle")
-                }}
+                onClick={() => setVariantId(v.id)}
               >
                 {v.label}
               </button>
             ))}
           </div>
           <div className="ls-resumeBar__actions">
-            <button className="ls-pill ls-mono" onClick={onDownload} disabled={status === "building"} aria-live="polite">
-              {status === "building" ? "Building PDF…" : "Download PDF"}
+            <a href={`/${variant.file}`} download className="ls-pill ls-mono">
+              Download PDF
               <svg viewBox="0 0 16 16" aria-hidden="true">
                 <path d="M8 2v9m0 0L4 7m4 4 4-4M3 14h10" fill="none" stroke="currentColor" strokeWidth="1.5" />
               </svg>
-            </button>
+            </a>
           </div>
-          {status === "error" && (
-            <p className="ls-resumeBar__error" role="alert">
-              The PDF didn&apos;t build in this browser.{" "}
-              <a href={`/${variant.file}`} download>
-                Download the saved copy
-              </a>{" "}
-              instead.
-            </p>
-          )}
         </div>
 
         <Sheet data={variant.data} />

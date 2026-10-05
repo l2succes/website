@@ -1239,20 +1239,12 @@ html.ls-root body {
 .ls-pill:hover {
   transform: translateY(-2px);
 }
-.ls-pill:disabled {
-  opacity: 0.6;
+.ls a.ls-pill {
+  color: var(--bone);
 }
 .ls-pill svg {
   width: 14px;
   height: 14px;
-}
-.ls-resumeBar__error {
-  flex-basis: 100%;
-  padding: 0 8px 4px;
-  font-size: 14px;
-}
-.ls-resumeBar__error a {
-  text-decoration: underline !important;
 }
 .ls-sheet {
   max-width: 1180px;
@@ -1267,7 +1259,7 @@ html.ls-root body {
   border-bottom: 1px solid rgba(11, 11, 10, 0.14);
 }
 .ls-sheet__head h1 {
-  font-size: clamp(56px, 8.5vw, 140px);
+  font-size: clamp(48px, 6.6vw, 108px);
   margin: 0;
 }
 .ls-sheet__title {
@@ -1327,17 +1319,26 @@ html.ls-root body {
 .ls-sheet__head {
   position: relative;
 }
+/* White monogram on an ink tile, cut like an app icon. */
 .ls-sheet__mark {
   position: absolute;
   top: 0;
   right: 0;
-  width: clamp(30px, 3.4vw, 48px);
+  display: grid;
+  place-items: center;
+  width: clamp(48px, 5vw, 72px);
+  aspect-ratio: 1;
+  border-radius: 23%;
+  background: var(--ink);
+}
+.ls-sheet__mark svg {
+  width: 44%;
   height: auto;
   overflow: visible;
 }
 .ls-sheet__mark path {
-  fill: var(--ink);
-  stroke: var(--ink);
+  fill: #fff;
+  stroke: #fff;
   stroke-width: 1.2;
   vector-effect: non-scaling-stroke;
 }
@@ -1469,7 +1470,7 @@ html.ls-root body {
   text-transform: none;
   letter-spacing: 0.02em;
 }
-@media (max-width: 767px) {
+@media screen and (max-width: 767px) {
   .ls-resumeBar {
     position: static;
     border-radius: 18px;
@@ -1500,7 +1501,23 @@ html.ls-root body {
   }
 }
 
+/* Print: one Letter-size résumé. `yarn generate:resume` prints the page through this. */
+@page {
+  size: Letter;
+  margin: 0.5in 0.55in;
+}
 @media print {
+  * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  html.ls-root,
+  html.ls-root body,
+  .ls,
+  .ls-resumePage {
+    background: #fff !important;
+    padding: 0 !important;
+  }
   .ls-nav,
   .ls-cursor,
   .ls-grain,
@@ -1508,14 +1525,119 @@ html.ls-root body {
   .ls-contact {
     display: none !important;
   }
-  .ls,
-  .ls-resumePage {
-    background: #fff !important;
-    padding: 0 !important;
-  }
   .ls-sheet {
-    box-shadow: none;
-    padding: 0;
     max-width: none;
+    padding: 0;
+    border-radius: 0;
+    background: #fff;
+    box-shadow: none;
+  }
+  .ls-sheet .ls-mono {
+    font-size: 8px;
+  }
+  .ls-sheet__head {
+    padding-bottom: 14px;
+  }
+  .ls-sheet__head h1 {
+    font-size: 40px;
+  }
+  .ls-sheet__mark {
+    width: 42px;
+  }
+  .ls-sheet__title {
+    margin-top: 6px;
+    font-size: 14px;
+  }
+  .ls-sheet__contact {
+    gap: 2px 16px;
+    margin-top: 10px;
+  }
+  .ls-sheet__summary {
+    max-width: none;
+    margin-top: 14px;
+    font-size: 11.5px;
+    line-height: 1.5;
+  }
+  .ls-sheet__cols {
+    grid-template-columns: 158px 1fr;
+    gap: 26px;
+    margin-top: 18px;
+  }
+  .ls-sheet h2.ls-mono {
+    padding-bottom: 6px;
+    margin-bottom: 4px;
+  }
+  .ls-sheet__side section + section {
+    margin-top: 18px;
+  }
+  .ls-sheet__skill {
+    padding: 5px 0;
+    break-inside: avoid;
+  }
+  .ls-sheet__skill h3 {
+    font-size: 10.5px;
+    margin-bottom: 2px;
+  }
+  .ls-sheet__skill p {
+    font-size: 9.5px;
+    line-height: 1.45;
+  }
+  .ls-chips {
+    gap: 3px;
+    margin-top: 3px;
+  }
+  .ls-chips li {
+    padding: 1px 5px;
+    font-size: 7.5px !important;
+  }
+  .ls-jobs::before {
+    left: 37px;
+    top: 22px;
+    bottom: 22px;
+  }
+  .ls-job {
+    padding: 10px 0 10px 58px;
+    break-inside: avoid;
+  }
+  .ls-job__year {
+    top: 16px;
+  }
+  .ls-job__dot {
+    left: 33px;
+    top: 19px;
+    width: 9px;
+    height: 9px;
+    box-shadow: 0 0 0 3px #fff, 0 0 0 4px rgba(11, 11, 10, 0.22);
+  }
+  .ls-job__head {
+    gap: 8px;
+  }
+  .ls-job__icon {
+    width: 22px;
+    height: 22px;
+    border-radius: 6px;
+    font-size: 12px;
+  }
+  .ls-job__head h3 {
+    font-size: 17px;
+  }
+  .ls-job__role {
+    margin-top: 4px;
+    font-size: 10.5px;
+  }
+  .ls-job__points {
+    margin-top: 4px;
+  }
+  .ls-job__points li {
+    padding: 1.5px 0 1.5px 12px;
+    font-size: 9.5px;
+    line-height: 1.45;
+  }
+  .ls-job__points li::before {
+    top: 0.85em;
+    width: 6px;
+  }
+  .ls-job__tech {
+    margin-top: 4px;
   }
 }
