@@ -57,6 +57,7 @@ export const projects: Project[] = [
   },
   {
     slug: "seasons",
+    icon: "/images/seasons/icon.svg",
     title: "Seasons",
     years: "2019—2022",
     role: "Co-founder & CTO",
@@ -149,6 +150,7 @@ export const projects: Project[] = [
   },
   {
     slug: "yieldmo",
+    icon: "/images/yieldmo/icon.jpg",
     title: "YieldMo",
     years: "2012—2013",
     role: "Founding engineer",

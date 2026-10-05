@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+  <!-- Seasons mark, from seasons/flare public/images/SeasonsLogo.svg -->
+  <rect width="48" height="48" fill="#000"/>
+  <g transform="translate(12 12)">
+    <path d="M24,12 C24,5.372583 18.627417,0 12,0 C5.372583,0 0,5.372583 0,12 C12,12 12,12 24,12 Z" fill="#EEA30E"/>
+    <path d="M24,12 C24,18.627417 18.627417,24 12,24 C5.372583,24 0,18.627417 0,12 C12,12 12,12 24,12 Z" fill="#2A4BEE"/>
+  </g>
+</svg>
