@@ -262,7 +262,9 @@ const MangoPay: NextPage = () => {
         <section className="ls-cs-section ls-mp-chapter ls-mp-chapter--violet">
           <div className="ls-cs-split ls-cs-split--center">
             <div className="ls-mp-pair">
-              <Shot src="/images/mango-pay/portfolio.webp" alt="Mango Pay portfolio with total balance and earning assets" />
+              <div>
+                <Shot src="/images/mango-pay/portfolio.webp" alt="Mango Pay portfolio with total balance and earning assets" />
+              </div>
               <div data-drift="10">
                 <Shot src="/images/mango-pay/explore.webp" alt="Mango Pay explore tab with Earn rates" />
               </div>
@@ -304,7 +306,9 @@ const MangoPay: NextPage = () => {
               <div data-drift="-10">
                 <Shot src="/images/mango-pay/asset.webp" alt="Mango Pay Bitcoin detail with price chart" />
               </div>
-              <Shot src="/images/mango-pay/convert.webp" alt="Mango Pay convert screen, USDC to BTC" />
+              <div>
+                <Shot src="/images/mango-pay/convert.webp" alt="Mango Pay convert screen, USDC to BTC" />
+              </div>
             </div>
           </div>
         </section>

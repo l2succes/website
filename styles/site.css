@@ -2268,9 +2268,10 @@ html.ls-root body {
 .ls-mp-pair {
   display: flex;
   justify-content: center;
+  align-items: flex-start;
   gap: 3vw;
 }
-.ls-mp-pair > div:not(.ls-phone) {
+.ls-mp-pair > [data-drift] {
   margin-top: 10vh;
 }
 
