@@ -739,6 +739,22 @@ html.ls-root body {
   transform: scale(1.15);
   transition: opacity 0.35s, transform 0.8s var(--ease-out);
 }
+.ls-preview__logo {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  opacity: 0;
+  transform: scale(1.15);
+  transition: opacity 0.35s, transform 0.8s var(--ease-out);
+}
+.ls-preview .ls-preview__logo img {
+  position: static;
+  width: 52%;
+  height: auto;
+  opacity: 1;
+  transform: none;
+}
 .ls-preview .is-current {
   opacity: 1;
   transform: none;
@@ -1073,6 +1089,21 @@ html.ls-root body {
 .ls-card:hover .ls-card__phone {
   rotate: -3deg;
   scale: 1.03;
+}
+.ls-card__logo {
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+}
+.ls-card__logo img {
+  width: clamp(96px, 11vw, 168px);
+  height: auto;
+}
+.ls-card__logo .ls-mono {
+  font-size: 13px;
+  letter-spacing: 0.32em;
 }
 .ls-card__wordmark {
   align-self: center;
