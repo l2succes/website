@@ -169,6 +169,17 @@ const Lines = ({ lines }: { lines: React.ReactNode[] }) => (
   </>
 )
 
+// Mango Pay screenshots in the site's modern phone frame. The wrapper gives the frame's % padding its own width.
+const PayShot = ({ src, alt, drift }: { src: string; alt: string; drift?: number }) => (
+  <div className="ls-cs-payshot" data-drift={drift}>
+    <div className="ls-phone ls-phone--modern">
+      <div className="ls-phone__screen">
+        <Image src={src} alt={alt} fill sizes="(max-width: 767px) 40vw, 240px" quality={90} />
+      </div>
+    </div>
+  </div>
+)
+
 // A small random walk so the illustrative terminal feels live. Deterministic seed keeps SSR and first paint equal.
 const BASE_PRICE = 148.2
 function useTicker() {
@@ -441,25 +452,42 @@ export const CryptoStory = ({ variant }: { variant: CryptoVariant }) => {
       <section className="ls-cs-section ls-cs-brand ls-cs-mango">
         <div className="ls-cs-split">
           <div>
-            <p className="ls-mono ls-cs-eyebrow">Solana DEX · mobile</p>
+            <p className="ls-mono ls-cs-eyebrow">
+              {arcade ? "Solana payments app · design + React Native" : "Solana DEX · mobile"}
+            </p>
             <h2 className="ls-display ls-cs-title ls-cs-title--xl">
-              <Lines lines={["Mango", "Markets"]} />
+              <Lines lines={arcade ? ["Mango", "Pay"] : ["Mango", "Markets"]} />
             </h2>
-            <div className="ls-cs-prose">
-              <p>
-                Mango was one of Solana&apos;s flagship DeFi protocols — an on-chain exchange for spot, perpetual
-                futures, lending and borrowing, all cross-margined against a single account. I built the{" "}
-                <strong>Solana mobile app</strong> for it, and worked on the V3 trading interface.
-              </p>
-              <p>
-                {arcade ? "This is the exact surface Arcade is building: a" : "A"} dense trading UI wired straight to a
-                Solana program, streaming order books and prices, plus a mobile wallet where every tap moves real money
-                on-chain and signing has to be bulletproof.
-              </p>
-            </div>
+            {arcade ? (
+              <div className="ls-cs-prose">
+                <p>
+                  <strong>Mango Pay</strong> is the consumer app I built on Mango, one of Solana&apos;s flagship DeFi
+                  protocols. The Mango team built the protocol — spot, perps, lending, cross-margin. I designed the
+                  entire app experience from scratch, we built it in React Native for iOS and Android, and I worked on
+                  Mango&apos;s V3 trading interface alongside it.
+                </p>
+                <p>
+                  This is the exact surface Arcade is building: a mobile wallet wired straight to a Solana program,
+                  live prices and portfolio, and every tap moving real money on-chain — so signing has to be
+                  bulletproof.
+                </p>
+              </div>
+            ) : (
+              <div className="ls-cs-prose">
+                <p>
+                  Mango was one of Solana&apos;s flagship DeFi protocols — an on-chain exchange for spot, perpetual
+                  futures, lending and borrowing, all cross-margined against a single account. I built the{" "}
+                  <strong>Solana mobile app</strong> for it, and worked on the V3 trading interface.
+                </p>
+                <p>
+                  A dense trading UI wired straight to a Solana program, streaming order books and prices, plus a
+                  mobile wallet where every tap moves real money on-chain and signing has to be bulletproof.
+                </p>
+              </div>
+            )}
             <div className="ls-cs-lists">
               <div>
-                <h3 className="ls-mono">The protocol</h3>
+                <h3 className="ls-mono">{arcade ? "Built on the protocol" : "The protocol"}</h3>
                 <ul>
                   {MANGO_PROTOCOL.map((x) => (
                     <li key={x}>{x}</li>
@@ -492,25 +520,23 @@ export const CryptoStory = ({ variant }: { variant: CryptoVariant }) => {
             </div>
           </div>
 
-          <div className="ls-cs-visual">
-            <Terminal />
-            <div className="ls-cs-shots">
-              <Image
-                src="/images/crypto/mango-pay/mango-app-wallet-2.png"
-                alt="Mango mobile — portfolio and Mango Earn"
-                width={832}
-                height={1700}
-                data-drift="8"
-              />
-              <Image
-                src="/images/crypto/mango-pay/mango-app-wallet-1.png"
-                alt="Mango mobile — convert USDC to BTC"
-                width={832}
-                height={1700}
-                data-drift="-8"
-              />
+          {arcade ? (
+            <div className="ls-cs-visual">
+              <div className="ls-cs-phones">
+                <PayShot src="/images/mango-pay/payments-pending.webp" alt="Mango Pay — pending payments and requests" />
+                <PayShot src="/images/mango-pay/portfolio.webp" alt="Mango Pay — portfolio and Mango Earn" drift={10} />
+                <PayShot src="/images/mango-pay/convert.webp" alt="Mango Pay — convert USDC to BTC" />
+              </div>
             </div>
-          </div>
+          ) : (
+            <div className="ls-cs-visual">
+              <Terminal />
+              <div className="ls-cs-phones ls-cs-phones--two">
+                <PayShot src="/images/mango-pay/portfolio.webp" alt="Mango mobile — portfolio and Mango Earn" drift={8} />
+                <PayShot src="/images/mango-pay/convert.webp" alt="Mango mobile — convert USDC to BTC" drift={-8} />
+              </div>
+            </div>
+          )}
         </div>
       </section>
 

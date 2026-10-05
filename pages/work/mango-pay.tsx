@@ -105,7 +105,7 @@ const Clip = ({ name, label, className = "" }: { name: string; label: string; cl
 const Shot = ({ src, alt }: { src: string; alt: string }) => (
   <div className="ls-phone ls-phone--modern ls-mp-shot">
     <div className="ls-phone__screen">
-      <Image src={src} alt={alt} fill sizes="300px" />
+      <Image src={src} alt={alt} fill sizes="(max-width: 767px) 60vw, 300px" quality={90} />
     </div>
   </div>
 )

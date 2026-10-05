@@ -1915,6 +1915,28 @@ html.ls-root body {
 .ls-cs-phone {
   width: clamp(220px, 22vw, 320px);
 }
+.ls-cs-phones {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2.5vw;
+}
+.ls-cs-payshot {
+  width: clamp(130px, 12.5vw, 220px);
+}
+.ls-cs-payshot:nth-child(2) {
+  margin-top: 10vh;
+}
+.ls-cs-phones--two .ls-cs-payshot {
+  width: clamp(150px, 15vw, 240px);
+}
+.ls-cs-phones--two .ls-cs-payshot:nth-child(2) {
+  margin-top: 6vh;
+}
+.ls-cs-payshot .ls-phone {
+  width: 100%;
+  box-shadow: 0 40px 70px -30px rgba(0, 0, 0, 0.7);
+}
 
 /* Illustrative terminal */
 .ls-terminal {
