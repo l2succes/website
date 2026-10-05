@@ -4,12 +4,13 @@ module.exports = {
     fontFamily: {
       sans: ["var(--font-sans)"],
     },
-  },
-  plugins: [],
-  extend: {
-    fontFamily: {
-      italic: ["var(--font-italic)"],
-      demibold: ["var(--font-demibold)"],
+    extend: {
+      fontFamily: {
+        italic: ["var(--font-italic)"],
+        demibold: ["var(--font-demibold)"],
+        mono: ["var(--font-mono)", "ui-monospace", "monospace"],
+      },
     },
   },
+  plugins: [],
 }

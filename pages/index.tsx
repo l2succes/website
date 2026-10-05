@@ -1,38 +1,23 @@
 import type { NextPage } from "next"
-import styled from "styled-components"
-import { Layout } from "../components/Layout"
-import { Hero } from "../components/Home/Hero"
-import { AboutSection } from "../components/Home/AboutSection"
-import { WorkSectionWrapper } from "../components/Home/WorkSectionWrapper"
-import { SkillsSection } from "../components/Home/SkillsSection"
-import { ContactSection } from "../components/Home/ContactSection"
-import tw from "tailwind-styled-components"
-
-const Section = styled.div`
-  min-height: 700px;
-  overflow: hidden;
-`
-
-const Container = tw.div`
-  container
-  mx-auto
-`
+import { useState } from "react"
+import { SiteShell } from "../components/Site/SiteShell"
+import { PortalHero } from "../components/Site/PortalHero"
+import { Manifesto } from "../components/Site/Manifesto"
+import { WorkReel } from "../components/Site/WorkReel"
+import { Timeline } from "../components/Site/Timeline"
+import { Marquee } from "../components/Site/Marquee"
 
 const Home: NextPage = () => {
-  return (
-    <Layout>
-      <Hero />
+  const [introDone, setIntroDone] = useState(false)
 
-      <Section style={{ background: "white", color: "black" }}>
-        <Container>
-          <div className="mt-20"></div>
-          <AboutSection />
-          <WorkSectionWrapper />
-          <SkillsSection />
-        </Container>
-        <ContactSection />
-      </Section>
-    </Layout>
+  return (
+    <SiteShell navVisible={introDone}>
+      <PortalHero onIntroDone={() => setIntroDone(true)} />
+      <Manifesto />
+      <WorkReel />
+      <Timeline />
+      <Marquee />
+    </SiteShell>
   )
 }
 

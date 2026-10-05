@@ -1,4 +1,5 @@
 import localFont from "next/font/local"
+import { Fragment_Mono } from "next/font/google"
 
 export const defaultFont = localFont({
   src: "../public/fonts/TTNormsProNormal.woff2",
@@ -11,4 +12,9 @@ export const demiboldFont = localFont({
 export const italicFont = localFont({
   src: "../public/fonts/TTNormsProItalic.woff2",
   variable: "--font-italic",
+})
+export const monoFont = Fragment_Mono({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-mono",
 })
