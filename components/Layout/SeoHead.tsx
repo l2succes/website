@@ -9,9 +9,10 @@ interface SeoHeadProps {
   title?: string
   description?: string
   path?: string
+  noindex?: boolean
 }
 
-export const SeoHead = ({ title = DEFAULT_TITLE, description = DEFAULT_DESCRIPTION, path = "" }: SeoHeadProps) => {
+export const SeoHead = ({ title = DEFAULT_TITLE, description = DEFAULT_DESCRIPTION, path = "", noindex }: SeoHeadProps) => {
   const url = `https://lucsucces.com${path}`
   return (
     <Head>
@@ -19,6 +20,7 @@ export const SeoHead = ({ title = DEFAULT_TITLE, description = DEFAULT_DESCRIPTI
       <meta name="description" content={description} />
       <meta name="keywords" content="Luc Succès, software engineer, entrepreneur, product designer, full-stack developer, React, Next.js, TypeScript, startup founder, Blaze, Mexico City, web development, UX design" />
       <meta name="author" content="Luc Succès" />
+      {noindex && <meta name="robots" content="noindex, nofollow" />}
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:type" content="website" />

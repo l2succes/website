@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react"
 import Link from "next/link"
 import { gsap, ScrollTrigger, MOTION_OK } from "../../lib/site/motion"
-import { visualProjects } from "../../lib/site/content"
+import { countWord, visualProjects } from "../../lib/site/content"
 import { Phone } from "./Phone"
 
 const INTRO_COLORS = { bg: "#EDEDE9", fg: "#0B0B0A" }
@@ -92,7 +92,7 @@ export const WorkReel = () => {
             I&apos;ve <em className="ls-italic">shipped.</em>
           </h2>
           <p className="ls-panel__hint ls-mono">
-            Eight products, newest first <span aria-hidden="true">→</span>
+            {countWord(visualProjects.length, true)} products, newest first <span aria-hidden="true">→</span>
           </p>
         </div>
 

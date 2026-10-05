@@ -56,6 +56,22 @@ export const projects: Project[] = [
     fg: BONE,
   },
   {
+    slug: "mango-pay",
+    icon: "/images/crypto/mango-markets/twitter-image.png",
+    title: "Mango Pay",
+    years: "2022—2023",
+    role: "Product designer & mobile engineer",
+    blurb: "Pay anyone with crypto using just their phone number. A payments app on the Mango protocol on Solana.",
+    description:
+      "A crypto payments app on the Mango protocol on Solana: pay and request by phone number or QR, a portfolio that earns through Mango's lending markets, and buy, convert and withdraw-to-bank. The Mango team built the protocol; I designed the entire experience from scratch and we built it in React Native for iOS and Android.",
+    tech: ["React Native", "Solana", "Mango v3", "TypeScript"],
+    image: "/images/mango-pay/payments-pending.webp",
+    device: "modern",
+    href: "/work/mango-pay",
+    bg: "#1B1923",
+    fg: BONE,
+  },
+  {
     slug: "seasons",
     title: "Seasons",
     years: "2019—2022",
@@ -164,6 +180,14 @@ export const projectByName = (name: string) => projects.find((p) => p.title.toLo
 
 /** Projects with something to show on a phone. */
 export const visualProjects = projects.filter((p) => p.image || p.video)
+
+const NUMBER_WORDS = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen", "twenty"]
+
+/** "eleven", "Eleven" — counts in copy follow the data. */
+export const countWord = (n: number, capitalize = false) => {
+  const word = NUMBER_WORDS[n] ?? String(n)
+  return capitalize ? word[0].toUpperCase() + word.slice(1) : word
+}
 
 export const capabilities = [
   "Product design",
