@@ -88,6 +88,23 @@ const Sheet = ({ data }: { data: ResumeData }) => {
               </div>
             ))}
           </section>
+          {data.stack && (
+            <section>
+              <h2 className="ls-mono">Tech stack</h2>
+              {data.stack.map((group) => (
+                <div key={group.category} className="ls-sheet__skill">
+                  <h3>{group.category}</h3>
+                  <ul className="ls-chips">
+                    {group.items.map((item) => (
+                      <li key={item} className="ls-mono">
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </section>
+          )}
         </aside>
 
         <section className="ls-sheet__main">

@@ -4,7 +4,7 @@ import { gsap, MOTION_OK } from "../../lib/site/motion"
 
 // *word* renders in italic.
 const STATEMENT =
-  "I design and engineer products, then build the companies around them. Over fourteen years that has meant features in front of 100M+ listeners at *Spotify,* auction tools at *Artsy,* a keyboard that hit #1 on the App Store, and now *Blaze* — stablecoin payments for people who live everywhere."
+  "I design and engineer products, then build the companies around them. Over fourteen years that has meant features in front of 100M+ listeners at *Spotify,* auction tools at *Artsy,* a keyboard that hit #1 on the App Store, and now *Blaze,* where I build AI agents that move money across 40+ countries."
 
 const LEDGER = [
   { k: "Based in", v: "Mexico City" },

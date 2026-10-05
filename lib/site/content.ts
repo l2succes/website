@@ -29,10 +29,10 @@ export const projects: Project[] = [
     title: "Blaze",
     years: "2023—Now",
     role: "Co-founder & CTO",
-    blurb: "Stablecoin payments for digital nomads and expats, live in 50+ countries. Y Combinator S24.",
+    blurb: "An AI-powered fintech platform moving money in 80+ currencies across 40+ countries. Y Combinator S24.",
     description:
-      "Stablecoin payments for digital nomads and expats in 50+ countries. I architected the platform end to end — Next.js and NestJS on Postgres and Redis, running on Kubernetes at 99.9% uptime — and helped raise $1.2M, including Y Combinator's S24 batch.",
-    tech: ["Next.js", "NestJS", "React Native", "PostgreSQL", "Redis", "AWS EKS"],
+      "An AI-powered fintech platform built from zero, now moving money in 80+ currencies across 40+ countries. I built its AI CFO agent — 73 tools across banking, payables, payroll and accounting, with guardrails on every money movement and an eval harness that gates each release — and helped raise $1.2M, including Y Combinator's S24 batch.",
+    tech: ["Vercel AI SDK", "MCP", "Claude", "Next.js", "NestJS", "PostgreSQL", "Kubernetes"],
     image: "/images/blaze/feed.png",
     device: "modern",
     href: "/work/blaze",

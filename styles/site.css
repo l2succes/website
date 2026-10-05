@@ -1341,12 +1341,21 @@ html.ls-root body {
   stroke-width: 1.2;
   vector-effect: non-scaling-stroke;
 }
-@media (min-width: 768px) {
-  .ls-sheet__side {
-    position: sticky;
-    top: 150px;
-    align-self: start;
-  }
+.ls-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 6px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.ls-chips li {
+  padding: 4px 9px;
+  border: 1px solid rgba(11, 11, 10, 0.16);
+  border-radius: 999px;
+  text-transform: none;
+  letter-spacing: 0.02em;
+  color: #3a3a36;
 }
 .ls-jobs {
   --rail: 1;
