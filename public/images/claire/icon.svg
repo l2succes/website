@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-labelledby="title desc">
+  <title id="title">Claire app icon</title>
+  <desc id="desc">The Claire Kept Thread mark in paper white with a lime terminal on an ink field.</desc>
+  <rect width="1024" height="1024" rx="224" fill="#10120F"/>
+  <g transform="translate(112 112) scale(12.5)">
+    <g transform="translate(64 0) scale(-1 1)">
+      <path d="M10 34c0-13 9-22 22-22s22 8 22 20-9 20-21 20c-10 0-17-6-17-14 0-7 5-12 12-12 6 0 10 4 10 9 0 6-4 10-10 10" fill="none" stroke="#FFFDF8" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="10" cy="34" r="4" fill="#DFFF64"/>
+    </g>
+  </g>
+</svg>

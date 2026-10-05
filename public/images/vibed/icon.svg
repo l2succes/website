@@ -1,0 +1,20 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="256"
+  height="256"
+  viewBox="28 0 286 256"
+  role="img"
+  aria-labelledby="title description"
+>
+  <title id="title">Vibed symbol</title>
+  <desc id="description">Three modular product blocks in acid green and black</desc>
+
+  <g id="modular-symbol">
+    <path
+      d="M62 38C51 38 43 49 47 59L100 201C104 211 113 218 124 218H154C169 218 179 203 173 190L118 51C115 43 107 38 98 38H62Z"
+      fill="#c8ff32"
+    />
+    <rect x="150" y="38" width="66" height="180" rx="24" fill="#11110f" />
+    <rect x="228" y="82" width="66" height="136" rx="24" fill="#11110f" />
+  </g>
+</svg>
