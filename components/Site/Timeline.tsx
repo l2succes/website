@@ -39,7 +39,7 @@ export const Timeline = () => {
     return () => ctx.revert()
   }, [])
 
-  const visual = active?.image || active?.video
+  const visual = active?.image || active?.video || active?.logo
 
   return (
     <section ref={root} id="timeline" className="ls-timeline">
@@ -100,6 +100,15 @@ export const Timeline = () => {
                 loading="lazy"
                 className={active === entry ? "is-current" : ""}
               />
+            ) : entry.logo ? (
+              <div
+                key={entry.slug}
+                className={`ls-preview__logo ${active === entry ? "is-current" : ""}`}
+                style={{ backgroundColor: entry.bg }}
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={entry.logo} alt="" loading="lazy" />
+              </div>
             ) : null
           )}
         </div>

@@ -42,6 +42,12 @@ const Card = ({ project, span }: { project: Project; span: number }) => {
     <div className="ls-card__media" style={{ backgroundColor: project.bg, color: project.fg }}>
       {visual ? (
         <Phone project={project} className="ls-card__phone" />
+      ) : project.logo ? (
+        <span className="ls-card__logo">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={project.logo} alt={`${project.title} logo`} />
+          <span className="ls-mono">{project.title}</span>
+        </span>
       ) : (
         <span className="ls-card__wordmark ls-display" aria-hidden="true">
           {project.title}
@@ -139,7 +145,7 @@ const WorkPage: NextPage = () => {
     const ctx = gsap.context(() => {
       gsap.matchMedia().add(MOTION_OK, () => {
         gsap.utils.toArray<HTMLElement>(".ls-card__media").forEach((media) => {
-          const subject = media.querySelector(".ls-card__phone, .ls-card__wordmark")
+          const subject = media.querySelector(".ls-card__phone, .ls-card__logo, .ls-card__wordmark")
           if (!subject) return
           gsap.fromTo(
             subject,
