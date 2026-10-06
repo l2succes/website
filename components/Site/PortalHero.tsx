@@ -38,6 +38,12 @@ export const PortalHero = ({ onIntroDone }: PortalHeroProps) => {
     const coverScale = () => (Math.hypot(view.w, view.h) / 2 / LS_PORTAL.r) * 1.2
 
     const render = () => {
+      // Refs are cleared before effect cleanup runs on unmount; a late tween update must not touch them.
+      const maskEl = maskMark.current
+      const strokeEl = strokeMark.current
+      const pathEl = strokePath.current
+      const svgEl = inkSvg.current
+      if (!maskEl || !strokeEl || !pathEl || !svgEl) return
       const { p } = state
       const rest = restScale() * state.intro
       // Exponential zoom reads as constant speed to the eye.
@@ -49,10 +55,10 @@ export const PortalHero = ({ onIntroDone }: PortalHeroProps) => {
       const x = view.w / 2 + mouse.x * 18 * drift
       const y = view.h * 0.47 + mouse.y * 12 * drift
       const transform = `translate(${x} ${y}) scale(${scale}) translate(${-ax} ${-ay})`
-      maskMark.current!.setAttribute("transform", transform)
-      strokeMark.current!.setAttribute("transform", transform)
-      strokePath.current!.setAttribute("stroke-width", String(1.25 / scale))
-      inkSvg.current!.style.visibility = p > 0.995 ? "hidden" : "visible"
+      maskEl.setAttribute("transform", transform)
+      strokeEl.setAttribute("transform", transform)
+      pathEl.setAttribute("stroke-width", String(1.25 / scale))
+      svgEl.style.visibility = p > 0.995 ? "hidden" : "visible"
     }
 
     const onResize = () => {
@@ -115,7 +121,7 @@ export const PortalHero = ({ onIntroDone }: PortalHeroProps) => {
             duration: 1.7,
             ease: "power2.inOut",
             onUpdate: () => {
-              counter.current!.textContent = String(Math.round(count.v)).padStart(3, "0")
+              if (counter.current) counter.current.textContent = String(Math.round(count.v)).padStart(3, "0")
             },
           },
           0
@@ -152,10 +158,11 @@ export const PortalHero = ({ onIntroDone }: PortalHeroProps) => {
     }, el)
 
     return () => {
-      ctx.revert()
+      // Detach the per-frame and window hooks first so nothing renders mid-revert.
       gsap.ticker.remove(tick)
       window.removeEventListener("resize", onResize)
       window.removeEventListener("pointermove", onPointer)
+      ctx.revert()
     }
   }, [])
 
