@@ -179,7 +179,10 @@ export const PortalHero = ({ onIntroDone }: PortalHeroProps) => {
                 alt={shot.alt}
                 fill
                 priority
-                sizes="34vw"
+                // Each pane is a third of the width, but a 3:4 photo covering a pane 124% of the
+                // screen's height draws about 93vh wide, so size for whichever is larger.
+                sizes="max(34vw, 93vh)"
+                quality={85}
                 className="ls-hero__img"
                 style={{ objectPosition: shot.position }}
               />
