@@ -23,7 +23,7 @@ export interface Project {
 const INK = "#0B0B0A"
 const BONE = "#EDEDE9"
 
-// Newest first. Each project's own brand color is the only color the site uses.
+// What I'm building now, then newest first. Each project's own brand color is the only color the site uses.
 export const projects: Project[] = [
   {
     slug: "blaze",
@@ -33,13 +33,45 @@ export const projects: Project[] = [
     role: "Co-founder & CTO",
     blurb: "An AI-powered fintech platform moving money in 80+ currencies across 40+ countries. Y Combinator S24.",
     description:
-      "An AI-powered fintech platform built from zero, now moving money in 80+ currencies across 40+ countries. I built its AI CFO agent — 73 tools across banking, payables, payroll and accounting, with guardrails on every money movement and an eval harness that gates each release — and helped raise $1.2M, including Y Combinator's S24 batch.",
+      "An AI-powered fintech platform built from zero, now moving money in 80+ currencies across 40+ countries. I built its AI CFO agent — 86 tools across banking, payables, payroll and accounting, with guardrails on every money movement and an eval harness that runs on every agent change — and helped raise $1.2M, including Y Combinator's S24 batch.",
     tech: ["Vercel AI SDK", "MCP", "Claude", "Next.js", "NestJS", "PostgreSQL", "Kubernetes"],
-    image: "/images/blaze/feed.png",
+    image: "/images/blaze/story/home.jpg",
     device: "modern",
     href: "/work/blaze",
     bg: "#FAF000",
     fg: INK,
+  },
+  {
+    slug: "claire",
+    icon: "/images/claire/icon.svg",
+    title: "Claire",
+    years: "2025—Now",
+    role: "Founder",
+    blurb: "All your chats, one AI. WhatsApp, Telegram and Instagram in one inbox that keeps track of what you promised.",
+    description:
+      "An AI-native inbox for WhatsApp, Telegram and Instagram, on iOS, web and desktop. Ask questions across every conversation, draft replies that fit the relationship, and let Claire catch the promises you make before they slip. Open source and built in public.",
+    tech: ["Expo", "React Native", "Electron", "Bun", "Supabase", "Matrix", "Vercel AI SDK"],
+    image: "/images/claire/home.jpg",
+    device: "modern",
+    href: "/work/claire",
+    bg: "#DFFF64",
+    fg: INK,
+  },
+  {
+    slug: "vibed",
+    icon: "/images/vibed/icon.svg",
+    title: "Vibed",
+    years: "2026",
+    role: "Co-founder",
+    blurb: "An AI-first product studio taking founders from an app idea to an interactive prototype in 30 days.",
+    description:
+      "An AI-first product studio for non-technical founders. Vibed turns an app idea into a strategy, a scoped spec and a working Expo prototype in 30 days. Vibed Studio pairs a guided strategy interview with a chat builder that edits a live React Native preview.",
+    tech: ["Next.js", "Vite", "Expo", "React Native Web", "GSAP", "Vercel"],
+    image: "/images/vibed/phone.jpg",
+    device: "modern",
+    href: "/work/vibed",
+    bg: "#11110F",
+    fg: "#C8FF32",
   },
   {
     slug: "catching-feelings",
@@ -50,8 +82,8 @@ export const projects: Project[] = [
     blurb: "A compatibility game for couples and close friends, on web, iOS and Android.",
     description:
       "A compatibility game for couples and close friends. Both players get the same question at once, race a 30-second timer, and see how well they really know each other — across modes from Netflix & Chill to Love Languages. One monorepo ships the web app and the Expo mobile apps.",
-    tech: ["Next.js", "Expo", "React Native", "Realtime"],
-    video: "/images/catching-feelings/demo.mp4",
+    tech: ["Expo", "React Native", "Next.js", "Firebase", "Gemini"],
+    video: "/images/catching-feelings/welcome.mp4",
     device: "modern",
     href: "/work/catching-feelings",
     bg: "#3F215A",

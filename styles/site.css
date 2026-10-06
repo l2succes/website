@@ -246,17 +246,45 @@ html.ls-root body {
   position: absolute;
   inset: 0;
   will-change: transform;
+  /* Three working shots, cut like a contact sheet. Black and white until you point at one. */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  background: var(--ink);
 }
 .ls-hero__img {
   object-fit: cover;
-  object-position: 30% 40%;
 }
 .ls-hero__shade {
   position: absolute;
   inset: 0;
+  /* Above the panes, but hover reaches through to them. */
+  z-index: 2;
+  pointer-events: none;
   background: rgba(11, 11, 10, 0.32);
+  transition: background 0.9s var(--ease-out);
+}
+.ls-hero__pane {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+.ls-hero__paneInner {
+  position: absolute;
+  inset: -12% 0;
+  filter: grayscale(1) contrast(1.06);
+  transition: filter 0.9s var(--ease-out);
+}
+@media (hover: hover) {
+  .ls-hero__photo:has(.ls-hero__pane:hover) .ls-hero__shade {
+    background: rgba(11, 11, 10, 0.18);
+  }
+  .ls-hero__pane:hover .ls-hero__paneInner {
+    filter: none;
+  }
 }
 .ls-hero__greeting {
+  pointer-events: none;
   position: absolute;
   right: var(--gutter);
   bottom: calc(var(--gutter) * 1.4);
@@ -536,8 +564,10 @@ html.ls-root body {
 }
 .ls-phone {
   position: relative;
-  width: clamp(190px, 19vw, 300px);
-  padding: 3.2%;
+  /* Percent padding would resolve against the parent, so the bezel is sized off the phone's own width. */
+  --phone-w: clamp(190px, 19vw, 300px);
+  width: var(--phone-w);
+  padding: calc(var(--phone-w) * 0.032);
   border-radius: 13% / 6.2%;
   background: var(--ink);
   box-shadow: 0 50px 90px -30px rgba(0, 0, 0, 0.45);
@@ -563,7 +593,8 @@ html.ls-root body {
    with the phone itself whatever container it sits in. In units of the phone's width:
    bezels 17 top / 5.5 sides / 19 bottom around an 89 × 158.3 screen → 100 × 194.3. */
 .ls-phone--classic {
-  width: clamp(180px, 17.5vw, 280px);
+  /* Width still comes from --phone-w, so containers that resize phones resize this one too. */
+  --phone-w: clamp(180px, 17.5vw, 280px);
   aspect-ratio: 100 / 194.3;
   padding: 0;
   border-radius: 16% / 8.2%;
@@ -1093,7 +1124,7 @@ html.ls-root body {
 }
 .ls-card__phone {
   margin-top: clamp(36px, 4vw, 64px);
-  width: clamp(170px, 15vw, 250px);
+  --phone-w: clamp(170px, 15vw, 250px);
   transition: rotate 0.7s var(--ease-out), scale 0.7s var(--ease-out);
 }
 .ls-card:hover .ls-card__phone {
@@ -1211,12 +1242,640 @@ html.ls-root body {
   .ls-grid .ls-card[data-span] {
     grid-column: 1;
   }
+  .ls-card__media {
+    container-type: inline-size;
+  }
   .ls-card__phone {
-    width: 52%;
+    --phone-w: 52cqi;
   }
   .ls-skills__cols {
     grid-template-columns: 1fr;
     gap: 48px;
+  }
+}
+
+/* Case study template (/work/[slug]) --------------------------------- */
+
+.ls-cs {
+  background: var(--bone);
+  color: var(--ink);
+}
+.ls-study-label {
+  color: var(--graphite);
+  margin: 0;
+}
+
+/* Hero: the project's own color, edge to edge. */
+.ls-study-hero {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  padding: 92px var(--gutter) 7vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.ls-study-hero__top {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  opacity: 0.75;
+}
+.ls-study-back {
+  display: inline-flex;
+  gap: 8px;
+  padding-bottom: 2px;
+  border-bottom: 1px solid currentColor;
+}
+.ls-study-hero__body {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--gutter);
+  align-items: end;
+  padding-top: 6vh;
+}
+.ls-study-hero__text {
+  grid-column: 1 / span 8;
+  position: relative;
+  z-index: 1;
+}
+.ls-study-hero__title {
+  font-size: clamp(72px, 13vw, 260px);
+  margin: 0 0 0 -0.04em;
+}
+.ls-study-hero__tagline {
+  max-width: 24em;
+  margin-top: 4vh;
+  font-size: clamp(19px, 1.7vw, 28px);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+.ls-study-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px 44px;
+  margin: 5vh 0 0;
+  padding-top: 20px;
+  border-top: 1px solid currentColor;
+}
+.ls-study-meta div {
+  min-width: 0;
+}
+.ls-study-meta dt {
+  opacity: 0.6;
+  margin-bottom: 6px;
+}
+.ls-study-meta dd {
+  margin: 0;
+  font-size: clamp(15px, 1.05vw, 17px);
+}
+.ls-study-meta__links dd {
+  display: flex;
+  gap: 18px;
+}
+.ls-study-meta__links a {
+  border-bottom: 1px solid currentColor;
+}
+.ls-study-hero__phone {
+  grid-column: 9 / span 4;
+  justify-self: center;
+  align-self: center;
+  --phone-w: clamp(200px, 21vw, 360px);
+}
+
+/* Intro */
+.ls-study-intro {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 0 var(--gutter);
+  padding: 22vh var(--gutter) 16vh;
+}
+.ls-study-intro > .ls-study-label {
+  grid-column: 1 / span 3;
+  padding-top: 0.9em;
+}
+.ls-study-intro__body {
+  grid-column: 4 / span 9;
+}
+.ls-study-lede {
+  margin: 0;
+  font-size: clamp(28px, 3.5vw, 64px);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+.ls-study-intro__rest {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--gutter);
+  margin-top: 9vh;
+  max-width: 62em;
+}
+.ls-study-intro__rest p {
+  margin: 0;
+  font-size: clamp(16px, 1.2vw, 20px);
+  line-height: 1.55;
+  color: #3a3a36;
+}
+.ls-study-stats {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--gutter);
+  margin: 16vh 0 0;
+  padding: 0;
+  list-style: none;
+}
+.ls-study-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(11, 11, 10, 0.16);
+}
+.ls-study-stat__value {
+  font-size: clamp(64px, 8vw, 150px);
+  font-variant-numeric: tabular-nums;
+}
+.ls-study-stat .ls-mono {
+  color: var(--graphite);
+}
+
+/* Story: a sticky phone whose screen follows the chapter in view. */
+.ls-study-story {
+  padding: 18vh var(--gutter) 10vh;
+}
+.ls-study-story .ls-study-label {
+  color: inherit;
+  opacity: 0.7;
+}
+.ls-study-story__head h2 {
+  margin: 24px 0 0;
+  font-size: clamp(56px, 7vw, 132px);
+}
+.ls-study-story__body {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--gutter);
+}
+.ls-study-story__stage {
+  grid-column: 1 / span 5;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+}
+.ls-study-story__phone {
+  --phone-w: clamp(220px, 22vw, 340px);
+}
+.ls-study-story__screen {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transform: scale(1.04);
+  transition: opacity 0.6s var(--ease-out), transform 0.9s var(--ease-out);
+}
+.ls-study-story__screen.is-active {
+  opacity: 1;
+  transform: none;
+}
+.ls-study-story__screen img,
+.ls-study-story__screen video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+.ls-study-story__count {
+  opacity: 0.7;
+  font-variant-numeric: tabular-nums;
+}
+.ls-study-story__steps {
+  grid-column: 7 / span 6;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.ls-study-step {
+  min-height: 88vh;
+  display: flex;
+  align-items: center;
+  opacity: 0.35;
+  transition: opacity 0.6s var(--ease-out);
+}
+.ls-study-step.is-active {
+  opacity: 1;
+}
+.ls-study-step__phone {
+  display: none;
+}
+.ls-study-step__text > .ls-mono {
+  margin: 0;
+  opacity: 0.7;
+}
+.ls-study-step h3 {
+  margin: 18px 0 0;
+  font-size: clamp(40px, 4.4vw, 84px);
+  line-height: 0.95;
+}
+.ls-study-step__body {
+  margin: 24px 0 0;
+  max-width: 28em;
+  font-size: clamp(17px, 1.3vw, 22px);
+  line-height: 1.5;
+}
+@media (prefers-reduced-motion: reduce) {
+  .ls-study-story__screen,
+  .ls-study-step {
+    transition: none;
+  }
+}
+
+/* Features: a sticky heading beside numbered rows. */
+.ls-study-features {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--gutter);
+  padding: 6vh var(--gutter) 22vh;
+}
+.ls-study-features__aside {
+  grid-column: 1 / span 4;
+  align-self: start;
+  position: sticky;
+  top: 110px;
+}
+.ls-study-features__aside h2,
+.ls-study-gallery__head h2,
+.ls-study-eng__head h2 {
+  margin: 24px 0 0;
+  font-size: clamp(56px, 7vw, 132px);
+}
+.ls-study-features__list {
+  grid-column: 6 / span 7;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.ls-study-feature {
+  position: relative;
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: 8px 24px;
+  padding: 36px 0 44px;
+}
+.ls-study-feature__rule {
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 1px;
+  background: rgba(11, 11, 10, 0.2);
+  transform-origin: left;
+}
+.ls-study-feature__num {
+  grid-row: span 2;
+  padding-top: 0.6em;
+  color: var(--graphite);
+}
+.ls-study-feature h3 {
+  margin: 0;
+  font-family: var(--font-demibold), var(--font-sans), sans-serif;
+  font-weight: normal;
+  font-size: clamp(26px, 2.3vw, 40px);
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+}
+.ls-study-feature p {
+  margin: 10px 0 0;
+  max-width: 36em;
+  font-size: clamp(16px, 1.15vw, 19px);
+  line-height: 1.55;
+  color: #3a3a36;
+}
+
+/* Gallery: back into the project's color. */
+.ls-study-gallery {
+  padding: 18vh var(--gutter) 22vh;
+  overflow: hidden;
+}
+.ls-study-gallery__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: var(--gutter);
+  margin-bottom: 14vh;
+}
+.ls-study-gallery__head .ls-study-label {
+  color: inherit;
+  opacity: 0.7;
+  order: 2;
+}
+.ls-study-gallery__head h2 {
+  margin: 0;
+}
+.ls-study-gallery__grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 14vh var(--gutter);
+  align-items: center;
+}
+.ls-study-tile {
+  margin: 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+}
+.ls-study-tile--phone,
+.ls-study-tile--poster {
+  grid-column: span 4;
+}
+.ls-study-tile--desktop {
+  grid-column: span 8;
+}
+.ls-study-tile figcaption {
+  align-self: flex-start;
+  opacity: 0.7;
+}
+.ls-study-tile--phone figcaption {
+  align-self: center;
+}
+.ls-study-tile__phone {
+  --phone-w: clamp(180px, 19vw, 320px);
+}
+.ls-study-poster {
+  position: relative;
+  width: 100%;
+  max-width: 380px;
+  overflow: hidden;
+  border-radius: 14px;
+  box-shadow: 0 50px 90px -40px rgba(0, 0, 0, 0.5);
+}
+.ls-study-window {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 12px;
+  background: var(--ink);
+  box-shadow: 0 60px 110px -50px rgba(0, 0, 0, 0.55);
+}
+.ls-study-window__bar {
+  display: flex;
+  gap: 7px;
+  padding: 12px 14px;
+}
+.ls-study-window__bar span {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #3a3a36;
+}
+.ls-study-window__glass,
+.ls-study-poster {
+  position: relative;
+}
+.ls-study-window__glass {
+  overflow: hidden;
+  background: #222;
+}
+.ls-study-window__glass img,
+.ls-study-window__glass video,
+.ls-study-poster img,
+.ls-study-poster video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+/* Engineering: ink, like the rest of the studio. */
+.ls-study-eng {
+  background: var(--ink);
+  color: var(--bone);
+  padding: 20vh var(--gutter) 18vh;
+}
+.ls-study-eng .ls-study-label {
+  color: rgba(237, 237, 233, 0.55);
+}
+.ls-study-eng__head {
+  margin-bottom: 12vh;
+}
+.ls-study-eng__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0 var(--gutter);
+}
+.ls-study-eng__item {
+  padding: 32px 0 56px;
+  border-top: 1px solid rgba(237, 237, 233, 0.18);
+}
+.ls-study-eng__item header {
+  display: flex;
+  justify-content: space-between;
+  color: rgba(237, 237, 233, 0.55);
+}
+.ls-study-eng__note {
+  padding: 2px 10px;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+}
+.ls-study-eng__item h3 {
+  margin: 28px 0 0;
+  font-family: var(--font-demibold), var(--font-sans), sans-serif;
+  font-weight: normal;
+  font-size: clamp(26px, 2.4vw, 42px);
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  max-width: 14em;
+}
+.ls-study-eng__item p {
+  margin: 16px 0 0;
+  max-width: 34em;
+  font-size: clamp(16px, 1.15vw, 19px);
+  line-height: 1.6;
+  color: rgba(237, 237, 233, 0.72);
+}
+.ls-study-stack {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--gutter);
+  margin-top: 10vh;
+  padding-top: 28px;
+  border-top: 1px solid rgba(237, 237, 233, 0.18);
+}
+.ls-study-stack > .ls-mono {
+  grid-column: 1 / span 3;
+  margin: 0;
+  color: rgba(237, 237, 233, 0.55);
+}
+.ls-study-stack ul {
+  grid-column: 4 / span 9;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.ls-study-stack li {
+  padding: 8px 14px;
+  border: 1px solid rgba(237, 237, 233, 0.25);
+  border-radius: 999px;
+  text-transform: none;
+  letter-spacing: 0.02em;
+}
+
+/* Takeaway */
+.ls-study-takeaway {
+  padding: 22vh var(--gutter) 20vh;
+}
+.ls-study-takeaway blockquote {
+  margin: 4vh 0 0;
+  max-width: 16em;
+  font-size: clamp(40px, 5.6vw, 108px);
+  line-height: 0.98;
+}
+
+/* Next */
+.ls-study-next {
+  background: var(--bone);
+}
+.ls-study-next__panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 6vh;
+  min-height: 92vh;
+  padding: 12vh var(--gutter) 8vh;
+  overflow: hidden;
+}
+.ls-study-next__title {
+  font-size: clamp(80px, 16vw, 320px);
+  transition: letter-spacing 0.8s var(--ease-out);
+}
+.ls-study-next__panel:hover .ls-study-next__title {
+  letter-spacing: -0.02em;
+}
+.ls-study-next__meta {
+  display: flex;
+  gap: 10px;
+  opacity: 0.75;
+}
+
+@media (max-width: 1023px) {
+  .ls-study-hero__text {
+    grid-column: 1 / span 7;
+  }
+  .ls-study-hero__phone {
+    grid-column: 8 / span 5;
+  }
+  .ls-study-features__aside {
+    grid-column: 1 / -1;
+    position: static;
+  }
+  .ls-study-features__list {
+    grid-column: 1 / -1;
+  }
+  .ls-study-tile--phone,
+  .ls-study-tile--poster {
+    grid-column: span 6;
+  }
+  .ls-study-tile--desktop {
+    grid-column: 1 / -1;
+  }
+}
+@media (max-width: 767px) {
+  .ls-study-hero {
+    padding-top: 80px;
+  }
+  .ls-study-hero__body {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: stretch;
+    gap: 7vh;
+  }
+  .ls-study-hero__phone {
+    --phone-w: 44vw;
+  }
+  .ls-study-intro,
+  .ls-study-features {
+    display: block;
+  }
+  .ls-study-story__body {
+    display: block;
+  }
+  .ls-study-story__stage {
+    display: none;
+  }
+  .ls-study-step {
+    min-height: 0;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 36px;
+    padding: 9vh 0 3vh;
+    opacity: 1;
+  }
+  .ls-study-step__phone {
+    display: block;
+    align-self: center;
+    --phone-w: 62vw;
+  }
+  .ls-study-intro {
+    padding-top: 14vh;
+  }
+  .ls-study-intro > .ls-study-label {
+    margin-bottom: 28px;
+  }
+  .ls-study-intro__rest {
+    grid-template-columns: 1fr;
+  }
+  .ls-study-features__list {
+    margin-top: 8vh;
+  }
+  .ls-study-feature {
+    grid-template-columns: 1fr;
+  }
+  .ls-study-feature__num {
+    grid-row: auto;
+  }
+  .ls-study-gallery__head {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 9vh;
+  }
+  .ls-study-gallery__head .ls-study-label {
+    order: 0;
+  }
+  .ls-study-gallery__grid {
+    gap: 10vh 16px;
+  }
+  .ls-study-tile--phone,
+  .ls-study-tile--poster,
+  .ls-study-tile--desktop {
+    grid-column: 1 / -1;
+  }
+  .ls-study-tile__phone {
+    --phone-w: 62vw;
+  }
+  .ls-study-poster {
+    max-width: 78vw;
+  }
+  .ls-study-eng__grid {
+    grid-template-columns: 1fr;
+  }
+  .ls-study-stack {
+    display: block;
+  }
+  .ls-study-stack ul {
+    margin-top: 18px;
+  }
+  .ls-study-next__panel {
+    min-height: 70vh;
   }
 }
 
@@ -1954,7 +2613,7 @@ html.ls-root body {
   margin-top: 12%;
 }
 .ls-cs-phone {
-  width: clamp(220px, 22vw, 320px);
+  --phone-w: clamp(220px, 22vw, 320px);
 }
 .ls-cs-phones {
   display: flex;
@@ -1975,7 +2634,8 @@ html.ls-root body {
   margin-top: 6vh;
 }
 .ls-cs-payshot .ls-phone {
-  width: 100%;
+  /* The phone fills its wrapper, so a percentage bezel resolves against the right width. */
+  --phone-w: 100%;
   box-shadow: 0 40px 70px -30px rgba(0, 0, 0, 0.7);
 }
 
@@ -2303,11 +2963,11 @@ html.ls-root body {
   color: var(--mp-mango);
 }
 .ls-mp-shot {
-  width: clamp(200px, 18vw, 280px);
+  --phone-w: clamp(200px, 18vw, 280px);
   background: #000;
 }
 .ls-mp-gallery .ls-mp-shot {
-  width: clamp(180px, 16vw, 250px);
+  --phone-w: clamp(180px, 16vw, 250px);
 }
 
 .ls-mp-chapter {

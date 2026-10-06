@@ -16,7 +16,7 @@ const FILTERS = [
 ] as const
 type FilterId = (typeof FILTERS)[number]["id"]
 
-const isStarted = (p: Project) => /co-(founder|creator)/i.test(p.role)
+const isStarted = (p: Project) => /founder\b|creator/i.test(p.role)
 const matches = (p: Project, filter: FilterId) =>
   filter === "all" || (filter === "started" ? isStarted(p) : !isStarted(p))
 
@@ -161,7 +161,7 @@ const WorkPage: NextPage = () => {
   return (
     <SiteShell
       title="Work — Luc Succès"
-      description="Every product Luc Succès has built or helped build: Blaze, Catching Feelings, Seasons, Artsy, Spotify and more."
+      description="Every product Luc Succès has built or helped build: Blaze, Claire, Vibed, Catching Feelings, Seasons, Artsy, Spotify and more."
       path="/work"
     >
       <main ref={root} className="ls-workPage">

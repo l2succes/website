@@ -5,12 +5,19 @@ import { LS_BOX, LS_PATH, LS_PORTAL } from "../../lib/site/ls-path"
 
 const NAME = ["Luc", "Succès"]
 
+// Three moments at the desk, side by side behind the monogram.
+const SHOTS = [
+  { src: "/images/working/design.jpg", alt: "Luc designing Blaze screens in Figma", position: "50% 8%" },
+  { src: "/images/working/phone.jpg", alt: "Luc holding the Blaze app beside his laptop", position: "40% 55%" },
+  { src: "/images/working/code.jpg", alt: "Luc writing code at a café table", position: "62% 50%" },
+]
+
 interface PortalHeroProps {
   onIntroDone: () => void
 }
 
 // The LS monogram is cut out of an ink sheet. Scrolling zooms the camera through the
-// L's stem until the sheet is gone and the photo behind it fills the screen.
+// L's stem until the sheet is gone and the photos behind it fill the screen.
 export const PortalHero = ({ onIntroDone }: PortalHeroProps) => {
   const root = useRef<HTMLElement>(null)
   const inkSvg = useRef<SVGSVGElement>(null)
@@ -38,6 +45,12 @@ export const PortalHero = ({ onIntroDone }: PortalHeroProps) => {
     const coverScale = () => (Math.hypot(view.w, view.h) / 2 / LS_PORTAL.r) * 1.2
 
     const render = () => {
+      // Refs are cleared before effect cleanup runs on unmount; a late tween update must not touch them.
+      const maskEl = maskMark.current
+      const strokeEl = strokeMark.current
+      const pathEl = strokePath.current
+      const svgEl = inkSvg.current
+      if (!maskEl || !strokeEl || !pathEl || !svgEl) return
       const { p } = state
       const rest = restScale() * state.intro
       // Exponential zoom reads as constant speed to the eye.
@@ -49,10 +62,10 @@ export const PortalHero = ({ onIntroDone }: PortalHeroProps) => {
       const x = view.w / 2 + mouse.x * 18 * drift
       const y = view.h * 0.47 + mouse.y * 12 * drift
       const transform = `translate(${x} ${y}) scale(${scale}) translate(${-ax} ${-ay})`
-      maskMark.current!.setAttribute("transform", transform)
-      strokeMark.current!.setAttribute("transform", transform)
-      strokePath.current!.setAttribute("stroke-width", String(1.25 / scale))
-      inkSvg.current!.style.visibility = p > 0.995 ? "hidden" : "visible"
+      maskEl.setAttribute("transform", transform)
+      strokeEl.setAttribute("transform", transform)
+      pathEl.setAttribute("stroke-width", String(1.25 / scale))
+      svgEl.style.visibility = p > 0.995 ? "hidden" : "visible"
     }
 
     const onResize = () => {
@@ -115,7 +128,7 @@ export const PortalHero = ({ onIntroDone }: PortalHeroProps) => {
             duration: 1.7,
             ease: "power2.inOut",
             onUpdate: () => {
-              counter.current!.textContent = String(Math.round(count.v)).padStart(3, "0")
+              if (counter.current) counter.current.textContent = String(Math.round(count.v)).padStart(3, "0")
             },
           },
           0
@@ -142,6 +155,8 @@ export const PortalHero = ({ onIntroDone }: PortalHeroProps) => {
         .to(chars, { yPercent: -110, duration: 0.22, stagger: { each: 0.025, from: "edges" }, ease: "power2.in" }, 0)
         .to(".ls-hero__meta", { autoAlpha: 0, y: -24, duration: 0.15 }, 0)
         .fromTo(photo.current, { scale: 1.5 }, { scale: 1, duration: 1, ease: "power2.out" }, 0)
+        // The outer panes settle at their own speeds.
+        .fromTo(".ls-hero__paneInner", { yPercent: (i: number) => [-9, 0, 9][i % 3] }, { yPercent: 0, duration: 1, ease: "power2.out" }, 0)
         .fromTo(
           ".ls-hero__greeting .ls-line > span",
           { yPercent: 105 },
@@ -152,24 +167,35 @@ export const PortalHero = ({ onIntroDone }: PortalHeroProps) => {
     }, el)
 
     return () => {
-      ctx.revert()
+      // Detach the per-frame and window hooks first so nothing renders mid-revert.
       gsap.ticker.remove(tick)
       window.removeEventListener("resize", onResize)
       window.removeEventListener("pointermove", onPointer)
+      ctx.revert()
     }
   }, [])
 
   return (
     <section ref={root} className="ls-hero" aria-label="Introduction">
       <div ref={photo} className="ls-hero__photo">
-        <Image
-          src="/images/background.jpg"
-          alt="Luc looking out over rice terraces in Bali"
-          fill
-          priority
-          sizes="100vw"
-          className="ls-hero__img"
-        />
+        {SHOTS.map((shot) => (
+          <div key={shot.src} className="ls-hero__pane">
+            <div className="ls-hero__paneInner">
+              <Image
+                src={shot.src}
+                alt={shot.alt}
+                fill
+                priority
+                // Each pane is a third of the width, but a 3:4 photo covering a pane 124% of the
+                // screen's height draws about 93vh wide, so size for whichever is larger.
+                sizes="max(34vw, 93vh)"
+                quality={85}
+                className="ls-hero__img"
+                style={{ objectPosition: shot.position }}
+              />
+            </div>
+          </div>
+        ))}
         <div className="ls-hero__shade" />
       </div>
 
