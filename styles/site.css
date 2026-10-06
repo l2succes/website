@@ -558,14 +558,22 @@ html.ls-root body {
   object-fit: cover;
   object-position: top;
 }
-/* Home-button iPhone for 750×1334 captures: the screenshot fits the glass exactly. */
+/* Home-button iPhone for 750×1334 captures: the screenshot fits the glass exactly.
+   Laid out on the frame's own aspect ratio, so the bezels, speaker and home button scale
+   with the phone itself whatever container it sits in. In units of the phone's width:
+   bezels 17 top / 5.5 sides / 19 bottom around an 89 × 158.3 screen → 100 × 194.3. */
 .ls-phone--classic {
   width: clamp(180px, 17.5vw, 280px);
-  padding: 17% 5.5% 19%;
-  border-radius: 16% / 8%;
+  aspect-ratio: 100 / 194.3;
+  padding: 0;
+  border-radius: 16% / 8.2%;
 }
 .ls-phone--classic .ls-phone__screen {
-  aspect-ratio: 750 / 1334;
+  position: absolute;
+  inset: 8.75% 5.5% 9.78%;
+  width: auto;
+  height: auto;
+  aspect-ratio: auto;
   border-radius: 2px;
 }
 .ls-phone--classic::before,
@@ -576,15 +584,17 @@ html.ls-root body {
   translate: -50% 0;
   border: 1.5px solid #2b2b28;
 }
+/* Speaker, centred in the top bezel. */
 .ls-phone--classic::before {
-  top: 7.5%;
+  top: calc(4.375% - 2.5px);
   width: 16%;
   height: 0;
   border-width: 2.5px;
   border-radius: 4px;
 }
+/* Home button, centred in the bottom bezel (12.5 wide, 3.25 up from the edge). */
 .ls-phone--classic::after {
-  bottom: 4.4%;
+  bottom: 1.67%;
   width: 12.5%;
   aspect-ratio: 1;
   border-radius: 50%;
