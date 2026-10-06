@@ -317,14 +317,14 @@ html.ls-root body {
 .ls-hero__loader {
   position: absolute;
   left: 50%;
-  top: calc(47% + min(25vh, 25vw) + 28px);
+  top: calc(50% + min(25vh, 25vw) + 28px);
   translate: -50% 0;
   font-size: 12px;
   letter-spacing: 0.3em;
 }
 .ls-hero__meta {
   position: absolute;
-  top: 47%;
+  top: 50%;
   translate: 0 -50%;
   color: rgba(237, 237, 233, 0.62);
 }
@@ -339,7 +339,7 @@ html.ls-root body {
   top: auto;
   translate: none;
   left: 50%;
-  bottom: calc(15.2vw + var(--gutter) * 0.6);
+  bottom: calc(var(--gutter) * 0.9);
   transform: translateX(-50%);
   display: flex;
   align-items: center;
@@ -361,19 +361,16 @@ html.ls-root body {
 .ls-hero__name {
   position: absolute;
   left: var(--gutter);
-  right: var(--gutter);
-  bottom: calc(var(--gutter) * 0.5);
+  bottom: calc(var(--gutter) * 0.9);
   display: flex;
-  justify-content: space-between;
-  font-size: 17.4vw;
+  gap: 0.28em;
+  font-size: clamp(18px, 1.5vw, 26px);
   white-space: nowrap;
   margin: 0;
 }
 .ls-hero__word {
   display: block;
   overflow: hidden;
-  padding-top: 0.14em;
-  padding-bottom: 0.02em;
 }
 .ls-hero__char {
   display: inline-block;
