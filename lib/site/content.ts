@@ -11,6 +11,8 @@ export interface Project {
   image?: string
   video?: string
   icon?: string
+  /** Large brand mark for projects with no screenshots. */
+  logo?: string
   /** "classic" screenshots are 750×1334 home-button iPhone captures; "modern" are notched-phone captures. */
   device?: "classic" | "modern"
   href?: string
@@ -73,6 +75,8 @@ export const projects: Project[] = [
   },
   {
     slug: "seasons",
+    icon: "/images/seasons/icon.svg",
+    logo: "/images/seasons/mark.svg",
     title: "Seasons",
     years: "2019—2022",
     role: "Co-founder & CTO",
@@ -165,14 +169,16 @@ export const projects: Project[] = [
   },
   {
     slug: "yieldmo",
+    icon: "/images/yieldmo/icon.jpg",
+    logo: "/images/yieldmo/icon.jpg",
     title: "YieldMo",
     years: "2012—2013",
     role: "Founding engineer",
     description:
       "First frontend engineer. Built the frontend framework and a JavaScript ad SDK serving millions of impressions a day, and grew the frontend team from one to five.",
     tech: ["JavaScript", "HTML/CSS", "Python"],
-    bg: INK,
-    fg: BONE,
+    bg: "#FFFFFF",
+    fg: INK,
   },
 ]
 
