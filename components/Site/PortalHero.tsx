@@ -60,7 +60,7 @@ export const PortalHero = ({ onIntroDone }: PortalHeroProps) => {
       const ay = cy0 + (LS_PORTAL.y - cy0) * k
       const drift = 1 - Math.min(1, p * 4)
       const x = view.w / 2 + mouse.x * 18 * drift
-      const y = view.h * 0.47 + mouse.y * 12 * drift
+      const y = view.h * 0.5 + mouse.y * 12 * drift
       const transform = `translate(${x} ${y}) scale(${scale}) translate(${-ax} ${-ay})`
       maskEl.setAttribute("transform", transform)
       strokeEl.setAttribute("transform", transform)
