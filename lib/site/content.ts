@@ -16,6 +16,8 @@ export interface Project {
   /** "classic" screenshots are 750×1334 home-button iPhone captures; "modern" are notched-phone captures. */
   device?: "classic" | "modern"
   href?: string
+  /** Live store listings, only where the app is still in the stores. */
+  stores?: { ios?: string; android?: string }
   bg: string
   fg: string
 }
@@ -38,6 +40,10 @@ export const projects: Project[] = [
     image: "/images/blaze/story/home.jpg",
     device: "modern",
     href: "/work/blaze",
+    stores: {
+      ios: "https://apps.apple.com/us/app/blaze-global-payments/id6450962383",
+      android: "https://play.google.com/store/apps/details?id=com.blaze.blaze",
+    },
     bg: "#FAF000",
     fg: INK,
   },
@@ -130,6 +136,10 @@ export const projects: Project[] = [
     tech: ["React", "React Native", "GraphQL", "Node.js", "Rails"],
     image: "/images/artsy/artsy-1.png",
     device: "classic",
+    stores: {
+      ios: "https://apps.apple.com/us/app/artsy-buy-sell-fine-art/id703796080",
+      android: "https://play.google.com/store/apps/details?id=net.artsy.app",
+    },
     bg: "#FFFFFF",
     fg: INK,
   },
@@ -196,6 +206,10 @@ export const projects: Project[] = [
     tech: ["Objective-C", "JavaScript", "C++", "Python"],
     image: "/images/spotify/spotify-1.png",
     device: "classic",
+    stores: {
+      ios: "https://apps.apple.com/us/app/spotify-music-and-podcasts/id324684580",
+      android: "https://play.google.com/store/apps/details?id=com.spotify.music",
+    },
     bg: "#1ED760",
     fg: INK,
   },
@@ -213,6 +227,13 @@ export const projects: Project[] = [
     fg: INK,
   },
 ]
+
+/** Store links for a project, in display order. */
+export const storeLinks = (p: Project) =>
+  [
+    p.stores?.ios && { label: "App Store", href: p.stores.ios },
+    p.stores?.android && { label: "Google Play", href: p.stores.android },
+  ].filter((l): l is { label: string; href: string } => !!l)
 
 export const projectByName = (name: string) => projects.find((p) => p.title.toLowerCase() === name.toLowerCase())
 
