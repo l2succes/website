@@ -30,7 +30,7 @@ const mark = (fill, h) =>
 
 // The mark inside a thin rounded box, the same treatment the tiles give an app icon.
 const boxedMark = (fg, box, markH, ring) =>
-  `<div style="width:${box}px;height:${box}px;border:${ring}px solid ${fg};border-radius:${Math.round(box * 0.24)}px;display:flex;align-items:center;justify-content:center">${mark(fg, markH)}</div>`
+  `<div style="width:${box}px;height:${box}px;border:${ring}px solid ${fg};display:flex;align-items:center;justify-content:center">${mark(fg, markH)}</div>`
 
 const banner = (bg, fg, dim) => `<style>${base}
 body { width: 1280px; height: 400px; background: ${bg}; color: ${fg}; position: relative; overflow: hidden; }
