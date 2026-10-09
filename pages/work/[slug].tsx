@@ -5,7 +5,7 @@ import React, { useEffect, useRef, useState } from "react"
 import { SiteShell } from "../../components/Site/SiteShell"
 import { Phone } from "../../components/Site/Phone"
 import { gsap, MOTION_OK, ScrollTrigger } from "../../lib/site/motion"
-import { projects, Project } from "../../lib/site/content"
+import { projects, Project, storeLinks } from "../../lib/site/content"
 import { caseStudies, caseStudyBySlug, Media, StoryStep } from "../../lib/site/case-studies"
 
 const pad = (n: number) => String(n).padStart(2, "0")
@@ -329,7 +329,7 @@ const CaseStudyPage: NextPage<{ slug: string }> = ({ slug }) => {
                 <div className="ls-study-meta__links">
                   <dt className="ls-mono">Visit</dt>
                   <dd>
-                    {study.links.map((link) => (
+                    {[...study.links, ...storeLinks(project)].map((link) => (
                       <a key={link.href} href={link.href} target="_blank" rel="noopener noreferrer" data-cursor="Open">
                         {link.label} <span aria-hidden="true">↗</span>
                       </a>

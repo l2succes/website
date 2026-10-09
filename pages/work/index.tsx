@@ -5,7 +5,7 @@ import { Flip } from "gsap/Flip"
 import { SiteShell } from "../../components/Site/SiteShell"
 import { Phone } from "../../components/Site/Phone"
 import { gsap, MOTION_OK, ScrollTrigger, useIsomorphicLayoutEffect } from "../../lib/site/motion"
-import { projects, Project, skillGroups } from "../../lib/site/content"
+import { projects, Project, skillGroups, storeLinks } from "../../lib/site/content"
 
 if (typeof window !== "undefined") gsap.registerPlugin(Flip)
 
@@ -73,6 +73,15 @@ const Card = ({ project, span }: { project: Project; span: number }) => {
         <p className="ls-card__role ls-mono">{project.role}</p>
         <p className="ls-card__desc">{project.description}</p>
         {project.tech && <p className="ls-card__tech ls-mono">{project.tech.join(" · ")}</p>}
+        {storeLinks(project).length > 0 && (
+          <p className="ls-card__stores ls-mono">
+            {storeLinks(project).map((link) => (
+              <a key={link.href} href={link.href} target="_blank" rel="noopener noreferrer" data-cursor="Open">
+                {link.label} <span aria-hidden="true">↗</span>
+              </a>
+            ))}
+          </p>
+        )}
         {project.href && (
           <Link href={project.href} className="ls-card__cta ls-mono">
             Read the case study <span aria-hidden="true">→</span>
