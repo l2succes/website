@@ -28,15 +28,19 @@ body { font-family: "TT Norms", system-ui, sans-serif; -webkit-font-smoothing: a
 const mark = (fill, h) =>
   `<svg viewBox="292 192 458.2 665.9" height="${h}" style="display:block"><path d="${lsPath}" fill="${fill}"/></svg>`
 
+// The mark inside a thin rounded box, the same treatment the tiles give an app icon.
+const boxedMark = (fg, box, markH, ring) =>
+  `<div style="width:${box}px;height:${box}px;border:${ring}px solid ${fg};border-radius:${Math.round(box * 0.24)}px;display:flex;align-items:center;justify-content:center">${mark(fg, markH)}</div>`
+
 const banner = (bg, fg, dim) => `<style>${base}
 body { width: 1280px; height: 400px; background: ${bg}; color: ${fg}; position: relative; overflow: hidden; }
-.mark { position: absolute; left: 96px; top: 50%; transform: translateY(-50%); }
+.mark { position: absolute; left: 112px; top: 50%; transform: translateY(-50%); }
 .copy { position: absolute; left: 400px; top: 50%; transform: translateY(-50%); }
 h1 { font-weight: 600; font-size: 92px; letter-spacing: -.035em; line-height: .95; }
 p { margin-top: 22px; font-size: 30px; font-style: italic; color: ${dim}; letter-spacing: -.01em; }
 .meta { position: absolute; left: 400px; bottom: 44px; font-size: 14px; color: ${dim}; }
 </style>
-<div class="mark">${mark(fg, 240)}</div>
+<div class="mark">${boxedMark(fg, 216, 124, 3)}</div>
 <div class="copy"><h1>Luc Succes</h1><p>Engineer and founder. I build products.</p></div>
 <div class="meta mono">New York &nbsp;·&nbsp; lucsucces.com</div>`
 
@@ -58,7 +62,13 @@ p { position: absolute; left: 36px; right: 36px; bottom: 36px; font-size: 21px; 
 <img class="icon" src="${iconSrc(icon, iconSwap)}" ${iconBorder ? `style="box-shadow: 0 0 0 1.5px ${iconBorder}; padding: 10px"` : ""}><div class="years mono">${years}</div>
 <h2>${name}</h2><p>${line}</p>`
 
+const ogImage = `<style>${base}
+body { width: 1200px; height: 630px; background: ${INK}; display: flex; align-items: center; justify-content: center; }
+</style>${boxedMark(BONE, 380, 220, 4)}`
+
 const jobs = [
+  // The site's link-preview image, at its native 1200 × 630.
+  { file: "../../public/images/og-image.png", w: 1200, h: 630, dpr: 1, html: ogImage },
   { file: "banner-dark.png", w: 1280, h: 400, html: banner(INK, BONE, "rgba(237,237,233,.55)") },
   { file: "banner-light.png", w: 1280, h: 400, html: banner(BONE, INK, "rgba(11,11,10,.55)") },
   ...[
@@ -71,13 +81,13 @@ const jobs = [
 
 const browser = await chromium.launch({ channel: "chrome" })
 for (const j of jobs) {
-  const page = await browser.newPage({ viewport: { width: j.w, height: j.h }, deviceScaleFactor: 2 })
+  const page = await browser.newPage({ viewport: { width: j.w, height: j.h }, deviceScaleFactor: j.dpr ?? 2 })
   // file:// origin so the local fonts and images load.
   await page.goto(pathToFileURL(path.join(root, "package.json")).href)
   await page.setContent(j.html, { waitUntil: "load" })
   await page.evaluate(() => document.fonts.ready)
   await page.screenshot({ path: path.join(out, j.file) })
   await page.close()
-  console.log("wrote", j.file)
+  console.log("wrote", path.basename(j.file))
 }
 await browser.close()
