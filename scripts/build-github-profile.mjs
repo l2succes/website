@@ -52,6 +52,15 @@ const iconSrc = (icon, swap = {}) => {
   return `data:image/svg+xml;base64,${Buffer.from(svg).toString("base64")}`
 }
 
+// LinkedIn is 1584 × 396 and the profile photo covers the bottom-left, so the lockup sits right of center.
+const linkedinBanner = `<style>${base}
+body { width: 1584px; height: 396px; background: ${INK}; color: ${BONE}; position: relative; overflow: hidden; }
+.lockup { position: absolute; left: 480px; top: 50%; transform: translateY(-50%); display: flex; align-items: center; gap: 56px; }
+h1 { font-weight: 600; font-size: 88px; letter-spacing: -.035em; line-height: .95; }
+p { margin-top: 20px; font-size: 30px; font-style: italic; color: rgba(237,237,233,.55); letter-spacing: -.01em; }
+</style>
+<div class="lockup">${boxedMark(BONE, 176, 100, 3)}<div><h1>Luc Succes</h1><p>Engineer and founder. I build products.</p></div></div>`
+
 const tile = ({ bg, fg, icon, iconSwap, iconBorder, name, line, years }) => `<style>${base}
 body { width: 600px; height: 340px; background: ${bg}; color: ${fg}; position: relative; overflow: hidden; }
 .icon { position: absolute; left: 36px; top: 36px; width: 84px; height: 84px; border-radius: 20px; object-fit: cover; }
@@ -67,6 +76,7 @@ body { width: 1200px; height: 630px; background: ${INK}; display: flex; align-it
 </style>${boxedMark(BONE, 380, 220, 4)}`
 
 const jobs = [
+  { file: "../../linkedin/banner.png", w: 1584, h: 396, html: linkedinBanner },
   // The site's link-preview image, at its native 1200 × 630.
   { file: "../../public/images/og-image.png", w: 1200, h: 630, dpr: 1, html: ogImage },
   { file: "banner-dark.png", w: 1280, h: 400, html: banner(INK, BONE, "rgba(237,237,233,.55)") },
