@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react"
 import Link from "next/link"
 import { gsap, MOTION_OK } from "../../lib/site/motion"
-import { countWord, projects, Project } from "../../lib/site/content"
+import { projects, Project } from "../../lib/site/content"
 
 // Every company, in order. Hovering a row floats its product after the cursor.
 export const Timeline = () => {
@@ -46,9 +46,9 @@ export const Timeline = () => {
       <header className="ls-timeline__head">
         <p className="ls-mono">Timeline</p>
         <h2 className="ls-display">
-          Fourteen years,
+          Fourteen years
           <br />
-          <em className="ls-italic">{countWord(projects.length)}</em> teams.
+          of <em className="ls-italic">shipping.</em>
         </h2>
       </header>
 
