@@ -1,6 +1,7 @@
 import React from "react"
 import Head from "next/head"
 
+const OG_IMAGE = "https://lucsucces.com/images/og-image.png"
 const DEFAULT_TITLE = "Luc Succès - Software Engineer, Product Designer & Entrepreneur"
 const DEFAULT_DESCRIPTION =
   "Serial entrepreneur and full-stack engineer building Blaze. Expert in React, Next.js, TypeScript, product design, and startup strategy. Based in Mexico City."
@@ -25,11 +26,13 @@ export const SeoHead = ({ title = DEFAULT_TITLE, description = DEFAULT_DESCRIPTI
       <meta property="og:description" content={description} />
       <meta property="og:type" content="website" />
       <meta property="og:url" content={url} />
-      <meta property="og:image" content="https://lucsucces.com/images/profile-photo.jpg" />
+      <meta property="og:image" content={OG_IMAGE} />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content="https://lucsucces.com/images/profile-photo.jpg" />
+      <meta name="twitter:image" content={OG_IMAGE} />
       <link rel="canonical" href={url} />
       <link rel="icon" type="image/png" href="/images/ls-icon-solid.png" />
     </Head>

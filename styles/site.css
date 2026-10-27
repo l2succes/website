@@ -1181,6 +1181,16 @@ html.ls-root body {
   text-transform: none;
   letter-spacing: 0.02em;
 }
+.ls-card__stores {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  margin: 16px 0 0;
+}
+.ls-card__stores a {
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 2px;
+}
 .ls-card__cta {
   align-self: flex-start;
   display: inline-flex;
@@ -1329,7 +1339,8 @@ html.ls-root body {
 }
 .ls-study-meta__links dd {
   display: flex;
-  gap: 18px;
+  flex-wrap: wrap;
+  gap: 8px 18px;
 }
 .ls-study-meta__links a {
   border-bottom: 1px solid currentColor;
