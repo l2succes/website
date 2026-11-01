@@ -1,5 +1,5 @@
 ---
-title: "I rebuilt my friend's living room in 3D"
+title: "I rebuilt my friend's library in 3D"
 date: "2026-11-01"
 excerpt: "I missed Día de Muertos, stayed in on Halloween, and ended up turning my friend Austin's library into something you can walk through."
 ---
