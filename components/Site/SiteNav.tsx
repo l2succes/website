@@ -8,6 +8,7 @@ import { LS_PATH } from "../../lib/site/ls-path"
 const LINKS = [
   { label: "About", href: "/#about", section: "about" },
   { label: "Work", href: "/work" },
+  { label: "Writing", href: "/blog" },
   { label: "Resume", href: "/resume" },
   { label: "Contact", href: "#contact", section: "contact", everywhere: true },
 ]
@@ -56,7 +57,7 @@ export const SiteNav = ({ visible }: { visible: boolean }) => {
             <Link
               key={link.label}
               href={link.href}
-              aria-current={pathname === link.href ? "page" : undefined}
+              aria-current={pathname === link.href || pathname.startsWith(`${link.href}/`) ? "page" : undefined}
               onClick={(e) => {
                 if (!inPage) return
                 e.preventDefault()
