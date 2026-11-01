@@ -9,6 +9,10 @@ const nextConfig = {
         source: "/greenchip-proposal",
         destination: "/greenchip-proposal/index.html",
       },
+      {
+        source: "/austin-library",
+        destination: "/austin-library/index.html",
+      },
     ]
   },
 }
