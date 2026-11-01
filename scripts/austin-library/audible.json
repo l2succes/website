@@ -1,0 +1,1352 @@
+{
+"LT01": {
+"asin": "1250818656",
+"title": "The Bond King",
+"subtitle": "How One Man Made a Market, Built an Empire, and Lost It All",
+"authors": [
+"Mary Childs"
+],
+"mins": 676
+},
+"LT02": {
+"asin": "B004ABJHMW",
+"title": "The Smartest Guys in the Room",
+"subtitle": "The Amazing Rise and Scandalous Fall of Enron",
+"authors": [
+"Bethany McLean",
+"Peter Elkind"
+],
+"mins": 1350
+},
+"LT03": {
+"asin": "1663710228",
+"title": "Irrational Exuberance",
+"subtitle": "Revised and Expanded Third Edition",
+"authors": [
+"Robert J. Shiller"
+],
+"mins": 827
+},
+"LT04": null,
+"LT05": {
+"asin": "B0845ZYTXF",
+"title": "The Price We Pay",
+"subtitle": "What Broke American Health Care - and How to Fix It",
+"authors": [
+"Marty Makary MD"
+],
+"mins": 569
+},
+"LT06": null,
+"LT07": null,
+"LT08": {
+"asin": "B002V5BNU8",
+"title": "Panic!",
+"subtitle": "The Story of Modern Financial Insanity",
+"authors": [
+"Michael Lewis"
+],
+"mins": 421
+},
+"LT09": null,
+"LT10": {
+"asin": "1508296057",
+"title": "Lifespan",
+"subtitle": "Why We Age—and Why We Don't Have To",
+"authors": [
+"David Sinclair",
+"Matthew D. LaPlante"
+],
+"mins": 715
+},
+"LT11": {
+"asin": "B0D7QQ9BCG",
+"title": "Competitive Strategy",
+"subtitle": "Techniques for Analyzing Industries and Competitors",
+"authors": [
+"Michael E. Porter"
+],
+"mins": 931
+},
+"LT12": {
+"asin": "B002V5GMRM",
+"title": "Walt Disney",
+"subtitle": "The Triumph of the American Imagination",
+"authors": [
+"Neal Gabler"
+],
+"mins": 2000
+},
+"LT13": null,
+"LT14": {
+"asin": "1663700516",
+"title": "Brilliant, Crazy, Cocky",
+"subtitle": "How the Top 1% of Entrepreneurs Profit from Global Chaos",
+"authors": [
+"Sarah Lacy"
+],
+"mins": 521
+},
+"LT15": {
+"asin": "1508298629",
+"title": "My Friend Anna",
+"subtitle": "The True Story of a Fake Heiress",
+"authors": [
+"Rachel DeLoache Williams"
+],
+"mins": 547
+},
+"LT16": {
+"asin": "B09M2LZYW1",
+"title": "The Man from the Future",
+"subtitle": "The Visionary Life of John von Neumann",
+"authors": [
+"Ananyo Bhattacharya"
+],
+"mins": 716
+},
+"LT17": null,
+"LT18": {
+"asin": "B06XRJR5DM",
+"title": "The Complacent Class",
+"subtitle": "The Self-Defeating Quest for the American Dream",
+"authors": [
+"Tyler Cowen"
+],
+"mins": 459
+},
+"LT19": null,
+"LT20": null,
+"LT21": null,
+"LT22": {
+"asin": "B0B9FF2TJZ",
+"title": "The Price of Time",
+"subtitle": "The Real Story of Interest",
+"authors": [
+"Edward Chancellor"
+],
+"mins": 907
+},
+"LT23": {
+"asin": "1639291237",
+"title": "Cryptoassets",
+"subtitle": "The Innovative Investor's Guide to Bitcoin and Beyond",
+"authors": [
+"Chris Burniske",
+"Jack Tatar"
+],
+"mins": 651
+},
+"LT24": {
+"asin": "B074B29GQJ",
+"title": "Principles",
+"subtitle": "Life and Work",
+"authors": [
+"Ray Dalio"
+],
+"mins": 965
+},
+"LT25": {
+"asin": "B0DY2LSWD9",
+"title": "Blackwater",
+"subtitle": "The Rise of the World's Most Powerful Mercenary Army",
+"authors": [
+"Jeremy Scahill"
+],
+"mins": 873
+},
+"LT26": {
+"asin": "B0DNLNSK21",
+"title": "Summer of Our Discontent",
+"subtitle": "The Age of Certainty and the Demise of Discourse",
+"authors": [
+"Thomas Chatterton Williams"
+],
+"mins": 465
+},
+"LT27": {
+"asin": "0525642234",
+"title": "The Messy Middle",
+"subtitle": "Finding Your Way Through the Hardest and Most Crucial Part of Any Bold Venture",
+"authors": [
+"Scott Belsky"
+],
+"mins": 663
+},
+"LM01": {
+"asin": "B002V0Q6DW",
+"title": "Catching the Wolf of Wall Street",
+"subtitle": "More Incredible True Stories of Fortunes, Schemes, Parties, and Prison",
+"authors": [
+"Jordan Belfort"
+],
+"mins": 998
+},
+"LM02": {
+"asin": "B0D6NJW11B",
+"title": "Competitive Advantage",
+"subtitle": "Creating and Sustaining Superior Performance",
+"authors": [
+"Michael E. Porter"
+],
+"mins": 1282
+},
+"LM03": {
+"asin": "0593215753",
+"title": "How to Avoid a Climate Disaster",
+"subtitle": "The Solutions We Have and the Breakthroughs We Need",
+"authors": [
+"Bill Gates"
+],
+"mins": 431
+},
+"LM04": null,
+"LM05": {
+"asin": "B07FXQ8MZS",
+"title": "How the Internet Happened",
+"subtitle": null,
+"authors": [
+"Brian McCullough"
+],
+"mins": 809
+},
+"LM06": {
+"asin": "B09WRTNSPV",
+"title": "21st Century Monetary Policy",
+"subtitle": "The Federal Reserve from the Great Inflation to COVID-19",
+"authors": [
+"Ben S. Bernanke"
+],
+"mins": 964
+},
+"LM07": {
+"asin": "B005V0QI82",
+"title": "Steve Jobs",
+"subtitle": null,
+"authors": [
+"Walter Isaacson"
+],
+"mins": 1518
+},
+"LM08": {
+"asin": "0593102797",
+"title": "Secrets of Sand Hill Road",
+"subtitle": "Venture Capital and How to Get It",
+"authors": [
+"Scott Kupor",
+"Eric Ries - introduction"
+],
+"mins": 588
+},
+"LM09": {
+"asin": "B09XBVK64X",
+"title": "The Bogle Effect",
+"subtitle": "How John Bogle and Vanguard Turned Wall Street Inside Out and Saved Investors Trillions",
+"authors": [
+"Eric Balchunas"
+],
+"mins": 633
+},
+"LM10": null,
+"LM11": {
+"asin": "B07DJZBDK4",
+"title": "Who Is Michael Ovitz?",
+"subtitle": null,
+"authors": [
+"Michael Ovitz"
+],
+"mins": 714
+},
+"LM12": {
+"asin": "B0H9BZ6XJ9",
+"title": "The Billionaire Raj",
+"subtitle": "A Journey through India's New Gilded Age",
+"authors": [
+"James Crabtree"
+],
+"mins": 990
+},
+"LM13": {
+"asin": "0525499334",
+"title": "The Ride of a Lifetime",
+"subtitle": "Lessons Learned from 15 Years as CEO of the Walt Disney Company",
+"authors": [
+"Robert Iger"
+],
+"mins": 525
+},
+"LM14": {
+"asin": "B085PRLY2R",
+"title": "Kings of Crypto",
+"subtitle": null,
+"authors": [
+"Jeff John Roberts"
+],
+"mins": 346
+},
+"LM15": {
+"asin": "B00CICLLN8",
+"title": "Straight Flush",
+"subtitle": "The True Story of Six College Friends Who Dealt Their Way to a Billion-Dollar Online Poker Empire--and How it All Came Crashing Down…",
+"authors": [
+"Ben Mezrich"
+],
+"mins": 428
+},
+"LM16": {
+"asin": "B002UUKNUU",
+"title": "Next",
+"subtitle": "The Future Just Happened",
+"authors": [
+"Michael Lewis"
+],
+"mins": 359
+},
+"LM17": {
+"asin": "B00SVPQRRQ",
+"title": "The Age of Cryptocurrency",
+"subtitle": "How Bitcoin and Digital Money Are Challenging the Global Economic Order",
+"authors": [
+"Paul Vigna",
+"Michael J. Casey"
+],
+"mins": 857
+},
+"LM18": {
+"asin": "B00B5JNIZ4",
+"title": "The Soundtrack of My Life",
+"subtitle": null,
+"authors": [
+"Clive Davis"
+],
+"mins": 1353
+},
+"LM19": {
+"asin": "B07CJW64BF",
+"title": "When the Wolves Bite",
+"subtitle": "Two Billionaires, One Company, and an Epic Wall Street Battle",
+"authors": [
+"Scott Wapner"
+],
+"mins": 481
+},
+"LM20": {
+"asin": "B07KR5KZN4",
+"title": "Big Business",
+"subtitle": "A Love Letter to an American Anti-Hero",
+"authors": [
+"Tyler Cowen"
+],
+"mins": 433
+},
+"LM21": {
+"asin": "B0036IOYP0",
+"title": "The Making of a Blockbuster",
+"subtitle": null,
+"authors": [
+"Gail DeGeorge"
+],
+"mins": 324
+},
+"LM22": {
+"asin": "0062969765",
+"title": "The Cold Start Problem",
+"subtitle": "How to Start and Scale Network Effects",
+"authors": [
+"Andrew Chen"
+],
+"mins": 628
+},
+"LM23": null,
+"LM24": null,
+"LM25": null,
+"LM26": {
+"asin": "B0DXQH752D",
+"title": "1929",
+"subtitle": "Inside the Greatest Crash in Wall Street History--and How It Shattered a Nation",
+"authors": [
+"Andrew Ross Sorkin"
+],
+"mins": 810
+},
+"LM27": null,
+"LM28": {
+"asin": "B0CBSRY2RP",
+"title": "Witness to a Prosecution",
+"subtitle": "The Myth of Michael Milken",
+"authors": [
+"Richard Sandler"
+],
+"mins": 640
+},
+"LL01": {
+"asin": "B01B1ZA7DM",
+"title": "Making of the Atomic Bomb",
+"subtitle": "25th Anniversary Edition",
+"authors": [
+"Richard Rhodes"
+],
+"mins": 2236
+},
+"LL02": {
+"asin": "B0CDF4C97H",
+"title": "In This Economy?",
+"subtitle": "How Money & Markets Really Work",
+"authors": [
+"Kyla Scanlon",
+"Morgan Housel - introduction"
+],
+"mins": 578
+},
+"LL03": {
+"asin": "1549148621",
+"title": "The Cryptopians",
+"subtitle": "Idealism, Greed, Lies, and the Making of the First Big Cryptocurrency Craze",
+"authors": [
+"Laura Shin"
+],
+"mins": 913
+},
+"LL04": {
+"asin": "0062990187",
+"title": "The Infinite Machine",
+"subtitle": "How an Army of Crypto-hackers Is Building the Next Internet with Ethereum",
+"authors": [
+"Camila Russo"
+],
+"mins": 631
+},
+"LL05": {
+"asin": "B004964ZKM",
+"title": "The Master Switch",
+"subtitle": "The Rise and Fall of Information Empires",
+"authors": [
+"Tim Wu"
+],
+"mins": 851
+},
+"LL06": {
+"asin": "B0049Q53H6",
+"title": "All the Devils Are Here",
+"subtitle": "The Hidden History of the Financial Crisis",
+"authors": [
+"Bethany McLean",
+"Joe Nocera"
+],
+"mins": 929
+},
+"LL07": {
+"asin": "0063098253",
+"title": "Barbarians at the Gate",
+"subtitle": "The Fall of RJR Nabisco",
+"authors": [
+"Bryan Burrough",
+"John Helyar"
+],
+"mins": 1338
+},
+"LL08": {
+"asin": "B002V1NRNS",
+"title": "The Accidental Billionaires",
+"subtitle": "The Founding of Facebook: A Tale of Sex, Money, Genius and Betrayal",
+"authors": [
+"Ben Mezrich"
+],
+"mins": 439
+},
+"LL09": {
+"asin": "B007TLTIZG",
+"title": "The Idea Factory",
+"subtitle": "Bell Labs and the Great Age of American Innovation",
+"authors": [
+"Jon Gertner"
+],
+"mins": 1048
+},
+"LL10": null,
+"LL11": {
+"asin": "B0079KEF1O",
+"title": "Why Nations Fail",
+"subtitle": "The Origins of Power, Prosperity, and Poverty",
+"authors": [
+"Daron Acemoglu",
+"James A. Robinson"
+],
+"mins": 1075
+},
+"LL12": {
+"asin": "B074XDM8CG",
+"title": "Troublemakers",
+"subtitle": "Silicon Valley's Coming of Age",
+"authors": [
+"Leslie Berlin"
+],
+"mins": 1001
+},
+"LL13": {
+"asin": "B0G3YVV795",
+"title": "One Up on Wall Street",
+"subtitle": "How to Use What You Already Know to Make Money in the Market",
+"authors": [
+"Peter Lynch"
+],
+"mins": 586
+},
+"LL14": null,
+"LL15": null,
+"LL16": {
+"asin": "B00DZUGWX6",
+"title": "The Creature from Jekyll Island",
+"subtitle": "A Second Look at the Federal Reserve",
+"authors": [
+"G. Edward Griffin"
+],
+"mins": 1461
+},
+"LL17": {
+"asin": "B002VA9HZ6",
+"title": "Conspiracy of Fools",
+"subtitle": "A True Story",
+"authors": [
+"Kurt Eichenwald"
+],
+"mins": 1826
+},
+"LL18": null,
+"LL19": {
+"asin": "B002V1LGP4",
+"title": "Dreams and Shadows",
+"subtitle": "The Future of the Middle East",
+"authors": [
+"Robin Wright"
+],
+"mins": 1069
+},
+"LL20": {
+"asin": "1250203058",
+"title": "Loonshots",
+"subtitle": "How to Nurture the Crazy Ideas That Win Wars, Cure Diseases, and Transform Industries",
+"authors": [
+"Safi Bahcall"
+],
+"mins": 614
+},
+"LL21": {
+"asin": "B0BPDZTXWT",
+"title": "Creativity, Inc. (The Expanded Edition)",
+"subtitle": "Overcoming the Unseen Forces That Stand in the Way of True Inspiration",
+"authors": [
+"Ed Catmull",
+"Amy Wallace"
+],
+"mins": 1044
+},
+"LL22": null,
+"LL23": null,
+"LL24": null,
+"LL25": null,
+"LL26": {
+"asin": "B00F3HVNBU",
+"title": "Den of Thieves",
+"subtitle": null,
+"authors": [
+"James B. Stewart"
+],
+"mins": 1175
+},
+"RT01": {
+"asin": "B09KTGFVD9",
+"title": "How to Win Friends and Influence People",
+"subtitle": "Updated For the Next Generation of Leaders",
+"authors": [
+"Dale Carnegie",
+"Donna Dale Carnegie - preface"
+],
+"mins": 498
+},
+"RT02": {
+"asin": "B004J676X0",
+"title": "One Day in the Life of Ivan Denisovich",
+"subtitle": null,
+"authors": [
+"Aleksandr Solzhenitsyn"
+],
+"mins": 305
+},
+"RT03": {
+"asin": "B0HHKXZTRC",
+"title": "Zen and the Art of Motorcycle Maintenance",
+"subtitle": "An Inquiry into Values",
+"authors": [
+"Robert M. Pirsig"
+],
+"mins": 720
+},
+"RT04": {
+"asin": "B01FCTJAHC",
+"title": "The Soul of A New Machine",
+"subtitle": null,
+"authors": [
+"Tracy Kidder"
+],
+"mins": 543
+},
+"RT05": {
+"asin": "0063045206",
+"title": "The Gulag Archipelago Volume 2",
+"subtitle": "An Experiment in Literary Investigation",
+"authors": [
+"Aleksandr I. Solzhenitsyn"
+],
+"mins": 1650
+},
+"RT06": {
+"asin": "1984885154",
+"title": "The Mastermind",
+"subtitle": "Drugs. Empire. Murder. Betrayal.",
+"authors": [
+"Evan Ratliff"
+],
+"mins": 676
+},
+"RT07": {
+"asin": "B01865AOJW",
+"title": "SPQR",
+"subtitle": "A History of Ancient Rome",
+"authors": [
+"Mary Beard"
+],
+"mins": 1110
+},
+"RT08": {
+"asin": "B00YN9XROA",
+"title": "Breakfast of Champions",
+"subtitle": null,
+"authors": [
+"Kurt Vonnegut"
+],
+"mins": 387
+},
+"RT09": null,
+"RT10": null,
+"RT11": {
+"asin": "0593554272",
+"title": "The Code Book",
+"subtitle": "The Science of Secrecy from Ancient Egypt to Quantum Cryptography",
+"authors": [
+"Simon Singh"
+],
+"mins": 627
+},
+"RT12": {
+"asin": "B002V1BVK4",
+"title": "Brave New World",
+"subtitle": null,
+"authors": [
+"Aldous Huxley"
+],
+"mins": 480
+},
+"RT13": {
+"asin": "B002VA9OJA",
+"title": "Cat's Cradle",
+"subtitle": null,
+"authors": [
+"Kurt Vonnegut"
+],
+"mins": 431
+},
+"RT14": {
+"asin": "B072W7Z81D",
+"title": "The Road to Serfdom, the Definitive Edition",
+"subtitle": "Text and Documents",
+"authors": [
+"F. A. Hayek",
+"Bruce Caldwell - editor"
+],
+"mins": 705
+},
+"RT15": {
+"asin": "1984844458",
+"title": "Exhalation",
+"subtitle": "Stories",
+"authors": [
+"Ted Chiang"
+],
+"mins": 682
+},
+"RT16": null,
+"RT17": {
+"asin": "B07C9J2TQM",
+"title": "Finite and Infinite Games",
+"subtitle": null,
+"authors": [
+"James Carse"
+],
+"mins": 251
+},
+"RT18": {
+"asin": "B01CUKUMCI",
+"title": "Narconomics",
+"subtitle": "How to Run a Drug Cartel",
+"authors": [
+"Tom Wainwright"
+],
+"mins": 537
+},
+"RT19": {
+"asin": "B0D5K7KTDV",
+"title": "Slouching Towards Bethlehem",
+"subtitle": "Essays",
+"authors": [
+"Joan Didion"
+],
+"mins": 383
+},
+"RT20": null,
+"RT21": {
+"asin": "B002V0KK0C",
+"title": "Economics in One Lesson",
+"subtitle": null,
+"authors": [
+"Henry Hazlitt"
+],
+"mins": 415
+},
+"RT23": {
+"asin": "B0FJTH21JS",
+"title": "The Big Short: Inside the Doomsday Machine",
+"subtitle": null,
+"authors": [
+"Michael Lewis"
+],
+"mins": 583
+},
+"RT24": {
+"asin": "B002V1OF70",
+"title": "Dune",
+"subtitle": "Book One in the Dune Chronicles",
+"authors": [
+"Frank Herbert"
+],
+"mins": 1262
+},
+"RT25": {
+"asin": "B0D63FJ2ZK",
+"title": "1984",
+"subtitle": null,
+"authors": [
+"George Orwell"
+],
+"mins": 738
+},
+"RT26": {
+"asin": "B006FYJTZC",
+"title": "Human Action",
+"subtitle": "A Treatise on Economics",
+"authors": [
+"Ludwig von Mises"
+],
+"mins": 2864
+},
+"RT27": {
+"asin": "B004KARCHA",
+"title": "The Money Culture",
+"subtitle": null,
+"authors": [
+"Michael Lewis"
+],
+"mins": 412
+},
+"RT28": {
+"asin": "B002V8KN0G",
+"title": "City of Thieves",
+"subtitle": "A Novel",
+"authors": [
+"David Benioff"
+],
+"mins": 508
+},
+"RT29": null,
+"RT30": {
+"asin": "B006IWATDM",
+"title": "Understanding Michael Porter",
+"subtitle": "The Essential Guide to Competition and Strategy",
+"authors": [
+"Joan Magretta"
+],
+"mins": 364
+},
+"RT31": {
+"asin": "1980035261",
+"title": "Stay the Course",
+"subtitle": "The Story of Vanguard and the Index Revolution",
+"authors": [
+"John C. Bogle"
+],
+"mins": 665
+},
+"RT32": null,
+"RT33": null,
+"RT34": null,
+"RT35": {
+"asin": "1469074958",
+"title": "The Bogleheads' Guide to Investing",
+"subtitle": "Second Edition",
+"authors": [
+"Taylor Larimore",
+"Mel Lindauer",
+"Michael LeBoeuf",
+"John C. Bogle - Foreword"
+],
+"mins": 603
+},
+"RT36": {
+"asin": "B00F3HVNBU",
+"title": "Den of Thieves",
+"subtitle": null,
+"authors": [
+"James B. Stewart"
+],
+"mins": 1175
+},
+"RT37": null,
+"RM01": null,
+"RM02": {
+"asin": "B077Z8VWKM",
+"title": "The Internet of Money",
+"subtitle": null,
+"authors": [
+"Andreas M. Antonopoulos"
+],
+"mins": 256
+},
+"RM03": null,
+"RM04": {
+"asin": "B0D7F56TWG",
+"title": "The Evolution Of Cooperation",
+"subtitle": null,
+"authors": [
+"Robert Axelrod"
+],
+"mins": 360
+},
+"RM05": {
+"asin": "B002V1LMN0",
+"title": "The Company",
+"subtitle": "A Short History of a Revolutionary Idea [Modern Library Chronicles]",
+"authors": [
+"John Micklethwait",
+"Adrian Wooldridge"
+],
+"mins": 406
+},
+"RM06": {
+"asin": "B0036GRHLK",
+"title": "This Time Is Different",
+"subtitle": "Eight Centuries of Financial Folly",
+"authors": [
+"Carmen Reinhart",
+"Kenneth Rogoff"
+],
+"mins": 534
+},
+"RM07": null,
+"RM08": {
+"asin": "B00IS73TY6",
+"title": "Fragile by Design",
+"subtitle": "The Political Origins of Banking Crises and Scarce Credit",
+"authors": [
+"Charles W. Calomiris",
+"Stephen H. Haber"
+],
+"mins": 1221
+},
+"RM09": {
+"asin": "1635577179",
+"title": "This Is How They Tell Me the World Ends",
+"subtitle": "The Cyberweapons Arms Race",
+"authors": [
+"Nicole Perlroth"
+],
+"mins": 1112
+},
+"RM10": {
+"asin": "1541446410",
+"title": "What is Life?",
+"subtitle": "With Mind and Matter and Autobiographical Sketches",
+"authors": [
+"Erwin Schrödinger",
+"Roger Penrose - Foreword"
+],
+"mins": 368
+},
+"RM11": null,
+"RM12": {
+"asin": "B01AASV8WA",
+"title": "The Confidence Game",
+"subtitle": "Why We Fall for It . . . Every Time",
+"authors": [
+"Maria Konnikova"
+],
+"mins": 749
+},
+"RM13": {
+"asin": "B09PZDR46J",
+"title": "The Sun Also Rises",
+"subtitle": null,
+"authors": [
+"Ernest Hemingway"
+],
+"mins": 483
+},
+"RM14": {
+"asin": "B08Z4DVL45",
+"title": "Hackers & Painters",
+"subtitle": "Big Ideas from the Computer Age",
+"authors": [
+"Paul Graham"
+],
+"mins": 464
+},
+"RM15": {
+"asin": "B005EHN61O",
+"title": "Moneyball",
+"subtitle": "The Art of Winning an Unfair Game",
+"authors": [
+"Michael Lewis"
+],
+"mins": 626
+},
+"RM16": {
+"asin": "B0077D18ZO",
+"title": "The Laws of Simplicity",
+"subtitle": "Design, Technology, Business, Life",
+"authors": [
+"John Maeda"
+],
+"mins": 164
+},
+"RM17": {
+"asin": "B0GQCVT9PT",
+"title": "Just Keep Buying",
+"subtitle": "Proven ways to save money and build your wealth",
+"authors": [
+"Nick Maggiulli"
+],
+"mins": 382
+},
+"RM18": {
+"asin": "1515946894",
+"title": "An Introduction to Information Theory",
+"subtitle": "Symbols, Signals and Noise",
+"authors": [
+"John R. Pierce"
+],
+"mins": 612
+},
+"RM19": {
+"asin": "B005HR40BG",
+"title": "The Beginning of Infinity",
+"subtitle": "Explanations That Transform the World",
+"authors": [
+"David Deutsch"
+],
+"mins": 1200
+},
+"RM20": {
+"asin": "B002VA3B2Q",
+"title": "The Structure of Scientific Revolutions",
+"subtitle": null,
+"authors": [
+"Thomas S. Kuhn"
+],
+"mins": 614
+},
+"RM21": {
+"asin": "B06XGM1X1D",
+"title": "Alexander the Great",
+"subtitle": null,
+"authors": [
+"Philip Freeman"
+],
+"mins": 754
+},
+"RM22": {
+"asin": "1666117609",
+"title": "Crypto",
+"subtitle": "How the Code Rebels Beat the Government - Saving Privacy in the Digital Age",
+"authors": [
+"Steven Levy"
+],
+"mins": 842
+},
+"RM23": null,
+"RM24": null,
+"RM25": {
+"asin": "163929211X",
+"title": "The Four Pillars of Investing",
+"subtitle": "Lessons for Building a Winning Portfolio",
+"authors": [
+"William J. Bernstein"
+],
+"mins": 736
+},
+"RM26": {
+"asin": "B09VY7R1MF",
+"title": "No Red Lights",
+"subtitle": "Reflections on Life, 50 Years in Venture Capital, and Never Driving Alone",
+"authors": [
+"Alan J. Patricof"
+],
+"mins": 512
+},
+"RM27": {
+"asin": "B0036GRHAQ",
+"title": "Start-Up Nation",
+"subtitle": "The Story of Israel's Economic Miracle",
+"authors": [
+"Dan Senor",
+"Saul Singer"
+],
+"mins": 504
+},
+"RM28": {
+"asin": "B0036JPZMK",
+"title": "Fooling Some of the People All of the Time",
+"subtitle": "A Long Short Story",
+"authors": [
+"David Einhorn"
+],
+"mins": 800
+},
+"RM29": {
+"asin": "B07HJ9NHHM",
+"title": "I Am a Strange Loop",
+"subtitle": null,
+"authors": [
+"Douglas R Hofstadter"
+],
+"mins": 1007
+},
+"RM30": {
+"asin": "B008RBDMOK",
+"title": "Some Remarks",
+"subtitle": null,
+"authors": [
+"Neal Stephenson"
+],
+"mins": 696
+},
+"RM31": {
+"asin": "B0032IU5HU",
+"title": "My Inventions",
+"subtitle": "The Autobiography of Nikola Tesla",
+"authors": [
+"Nikola Tesla"
+],
+"mins": 193
+},
+"RM32": null,
+"RM33": null,
+"RM34": {
+"asin": "B07FSQ89K5",
+"title": "High Growth Handbook",
+"subtitle": null,
+"authors": [
+"Elad Gil"
+],
+"mins": 746
+},
+"RM35": {
+"asin": "B0B6Q8LD3J",
+"title": "Pieces of the Action",
+"subtitle": null,
+"authors": [
+"Vannevar Bush"
+],
+"mins": 870
+},
+"RM36": {
+"asin": "B09BDLRN6S",
+"title": "The Big Score",
+"subtitle": "The Billion-Dollar Story of Silicon Valley",
+"authors": [
+"Michael S. Malone"
+],
+"mins": 1208
+},
+"RM37": {
+"asin": "B09MWQC5GM",
+"title": "Where Is My Flying Car?",
+"subtitle": null,
+"authors": [
+"J. Storrs Hall"
+],
+"mins": 841
+},
+"RL01": {
+"asin": "B006P482NC",
+"title": "The Origins of Political Order: From Prehuman Times to the French Revolution",
+"subtitle": null,
+"authors": [
+"Francis Fukuyama"
+],
+"mins": 1354
+},
+"RL02": null,
+"RL03": {
+"asin": "B00EUS6Q7Y",
+"title": "Octopus",
+"subtitle": "Sam Israel, the Secret Market, and Wall Street's Wildest Con",
+"authors": [
+"Guy Lawson"
+],
+"mins": 677
+},
+"RL04": {
+"asin": "B074CMYY7X",
+"title": "The Gambler",
+"subtitle": "How Penniless Dropout Kirk Kerkorian Became the Greatest Deal Maker in Capitalist History",
+"authors": [
+"William C. Rempel"
+],
+"mins": 783
+},
+"RL05": null,
+"RL06": null,
+"RL07": {
+"asin": "B0036GTKVK",
+"title": "Virus of the Mind",
+"subtitle": "The New Science of the Meme",
+"authors": [
+"Richard Brodie"
+],
+"mins": 276
+},
+"RL08": null,
+"RL09": null,
+"RL10": null,
+"RL11": null,
+"RL12": {
+"asin": "B0FH5Q5N8Z",
+"title": "Discrimination and Disparities",
+"subtitle": null,
+"authors": [
+"Thomas Sowell"
+],
+"mins": 554
+},
+"RL13": null,
+"RL14": {
+"asin": "0062967584",
+"title": "What You Do Is Who You Are",
+"subtitle": "How to Create Your Business Culture",
+"authors": [
+"Ben Horowitz"
+],
+"mins": 372
+},
+"RL15": {
+"asin": "B0B3L2T9W5",
+"title": "The Creative Act",
+"subtitle": "A Way of Being",
+"authors": [
+"Rick Rubin"
+],
+"mins": 345
+},
+"RL16": {
+"asin": "197733105X",
+"title": "Devil Take the Hindmost",
+"subtitle": "A History of Financial Speculation",
+"authors": [
+"Edward Chancellor"
+],
+"mins": 809
+},
+"RL17": {
+"asin": "B005TKKCWC",
+"title": "Thinking, Fast and Slow",
+"subtitle": null,
+"authors": [
+"Daniel Kahneman"
+],
+"mins": 1202
+},
+"RL18": {
+"asin": "1662180403",
+"title": "The Old Man and the Sea",
+"subtitle": null,
+"authors": [
+"Ernest Hemingway"
+],
+"mins": 170
+},
+"RL19": {
+"asin": "B07GNTNXQW",
+"title": "The Fifth Risk",
+"subtitle": null,
+"authors": [
+"Michael Lewis"
+],
+"mins": 360
+},
+"RL20": {
+"asin": "1662196881",
+"title": "Reminiscences of a Stock Operator",
+"subtitle": null,
+"authors": [
+"Edwin Lefevre"
+],
+"mins": 753
+},
+"RL21": {
+"asin": "B01C4RPZ7O",
+"title": "How to Lie with Statistics",
+"subtitle": null,
+"authors": [
+"Darrell Huff"
+],
+"mins": 180
+},
+"RL22": null,
+"RL23": null,
+"RL24": {
+"asin": "B002V8OE06",
+"title": "When Genius Failed",
+"subtitle": "The Rise and Fall of Long-Term Capital Management",
+"authors": [
+"Roger Lowenstein"
+],
+"mins": 552
+},
+"RL25": {
+"asin": "B00B2S9K46",
+"title": "Ticket Masters",
+"subtitle": "The Rise of the Concert Industry and How the Public Got Scalped",
+"authors": [
+"Josh Baron",
+"Dean Budnick"
+],
+"mins": 1045
+},
+"RL26": {
+"asin": "B017RUZC4E",
+"title": "Hackers: Heroes of the Computer Revolution",
+"subtitle": "25th Anniversary Edition",
+"authors": [
+"Steven Levy"
+],
+"mins": 1223
+},
+"RL27": {
+"asin": "B00N346UYK",
+"title": "Influence",
+"subtitle": "Science and Practice, ePub, 5th Edition",
+"authors": [
+"Robert B. Cialdini"
+],
+"mins": 745
+},
+"RL28": {
+"asin": "B0G5JG3J3G",
+"title": "The Robber Barons",
+"subtitle": "The Classic Account of the Influential Capitalists Who Transformed America's Future",
+"authors": [
+"Matthew Josephson"
+],
+"mins": 1245
+},
+"RL29": {
+"asin": "B002UUKNUU",
+"title": "Next",
+"subtitle": "The Future Just Happened",
+"authors": [
+"Michael Lewis"
+],
+"mins": 359
+},
+"RL30": {
+"asin": "B005FRGT44",
+"title": "Ready Player One",
+"subtitle": null,
+"authors": [
+"Ernest Cline"
+],
+"mins": 940
+},
+"RL31": {
+"asin": "B002V0QJQ6",
+"title": "Tokyo Vice",
+"subtitle": "An American Reporter on the Police Beat in Japan",
+"authors": [
+"Jake Adelstein"
+],
+"mins": 635
+},
+"RL32": {
+"asin": "B0H9P37PQD",
+"title": "Beyond Good and Evil",
+"subtitle": "The Classic Friedrich Nietzsche Collection",
+"authors": [
+"Friedrich Nietzsche"
+],
+"mins": 538
+},
+"RL33": {
+"asin": "1663703779",
+"title": "Supermoney",
+"subtitle": null,
+"authors": [
+"Adam Smith"
+],
+"mins": 618
+},
+"RL34": {
+"asin": "1771561459",
+"title": "The Wealth of Nations",
+"subtitle": null,
+"authors": [
+"Adam Smith"
+],
+"mins": 2728
+},
+"RL35": {
+"asin": "B01MS2OJ2G",
+"title": "The Valley of the Gods",
+"subtitle": "A Silicon Valley Story",
+"authors": [
+"Alexandra Wolfe"
+],
+"mins": 376
+},
+"RL36": {
+"asin": "B078SDRSGX",
+"title": "Thinking in Bets",
+"subtitle": "Making Smarter Decisions When You Don't Have All the Facts",
+"authors": [
+"Annie Duke"
+],
+"mins": 410
+},
+"RL37": {
+"asin": "B0GWFQTDDD",
+"title": "Animal Farm",
+"subtitle": null,
+"authors": [
+"George Orwell"
+],
+"mins": 228
+},
+"RL38": {
+"asin": "0593459326",
+"title": "High Output Management",
+"subtitle": null,
+"authors": [
+"Andrew S. Grove"
+],
+"mins": 482
+},
+"RL39": null
+}
