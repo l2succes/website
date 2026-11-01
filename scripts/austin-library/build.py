@@ -33,7 +33,7 @@ for sh in data['shelves']:
         slug=r.get('slug')
         if slug and slug not in done: done[slug]=cover_ref(slug)
         o=opens.get(b['title'])
-        b['meta']={k:v for k,v in dict(pub=r.get('publisher'),pages=r.get('pages'),isbn=r.get('print_isbn13') or r.get('print_isbn10'),a10=r.get('print_isbn10'),genres=r.get('genres'),gb=r.get('gb_id'),pv=r.get('preview'),cv=done.get(slug),apple=r.get('apple_url'),opening=o and o['text'],openLabel=o and o['label'],free=o and o['free']).items() if v}
+        b['meta']={k:v for k,v in dict(pub=r.get('publisher'),pages=r.get('pages'),isbn=r.get('print_isbn13') or r.get('print_isbn10'),a10=r.get('print_isbn10'),genres=r.get('genres'),gb=r.get('gb_id'),pv=r.get('preview'),cv=done.get(slug),apple=r.get('apple_url'),gri=r.get('print_isbn10') or r.get('print_isbn13') or r.get('ebook_isbn'),opening=o and o['text'],openLabel=o and o['label'],free=o and o['free']).items() if v}
 lib=dict(site=SITE,data=data,atlas=b64('atlas'),decor={n:b64(n) for n in ['painting','nyc','meltclock','mantel','cup','mug']})
 t=open(HERE+'/index.tpl.html',encoding='utf-8').read()
 t=t.replace('__APP__',open(HERE+'/app.js',encoding='utf-8').read()).replace('__LIBRARY__',json.dumps(lib,ensure_ascii=False))
