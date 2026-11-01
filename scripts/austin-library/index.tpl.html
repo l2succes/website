@@ -59,14 +59,27 @@ body.reading #tools,body.reading #hint,body.reading #label{opacity:0;pointer-eve
 #filters small{font-size:11px;margin-left:4px;opacity:.72;font-variant-numeric:tabular-nums}
 .entry{border-bottom:1px solid rgba(244,236,220,.06)}
 .entry .row{border-bottom:0;padding-bottom:3px}
-.links{display:flex;flex-wrap:wrap;gap:4px 14px;padding:0 16px 9px 34px;font-size:12.5px}
+.links{display:flex;flex-wrap:wrap;align-items:center;gap:4px 14px;padding:0 16px 9px 62px;font-size:12.5px}
+.links button{font-size:12.5px;color:var(--ink-soft);padding-block:2px}
+.links button[aria-pressed="true"]{color:var(--brass);font-weight:600}
+#savedHelp{padding:12px 16px;border-bottom:1px solid var(--line);display:grid;gap:9px;font-size:13px;line-height:1.45;color:var(--ink-soft)}
+#savedHelp p{margin:0}
+#copySaved{justify-self:start;padding:7px 11px;font-size:13px;font-weight:500;border:1px solid var(--line);border-radius:5px;color:var(--ink)}
+#credits{margin:0;padding:10px 16px 12px;font-size:11px;line-height:1.4;color:var(--ink-faint);border-top:1px solid var(--line)}
+#saveBook[aria-pressed="true"]{background:var(--ink);color:#1c1610;border-color:var(--ink)}
+#sampler{position:fixed;inset:0;z-index:9;display:flex;flex-direction:column;background:var(--glass-solid);padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+#sampler header{display:flex;align-items:center;gap:14px;padding-block:10px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));border-bottom:1px solid var(--line)}
+#sampler h2{flex:1;min-width:0;margin:0;font:400 20px/1.15 var(--display);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#samplerOut{font-size:13px;color:var(--brass);white-space:nowrap}
+#closeSampler{font-size:13px;font-weight:500;padding:7px 11px;border:1px solid var(--line);border-radius:5px}
+#samplerFrame{flex:1;width:100%;border:0;background:#fff}
 .links a{color:var(--brass);text-decoration:none;padding-block:2px}
 .links a:hover{text-decoration:underline}
 #list{overflow:auto;flex:1;min-height:0;padding-bottom:24px;-webkit-overflow-scrolling:touch}
 #list h3{position:sticky;top:0;margin:0;padding:10px 16px 6px;font:600 11px var(--ui);letter-spacing:.09em;text-transform:uppercase;color:var(--brass);background:var(--glass-solid)}
-.row{display:grid;grid-template-columns:8px minmax(0,1fr);gap:10px;align-items:center;width:100%;text-align:left;padding:8px 16px;border-bottom:1px solid rgba(244,236,220,.06)}
+.row{display:grid;grid-template-columns:36px minmax(0,1fr);gap:10px;align-items:center;width:100%;text-align:left;padding:8px 16px;border-bottom:1px solid rgba(244,236,220,.06)}
 .row:hover,.row:focus-visible{background:rgba(244,236,220,.07)}
-.swatch{width:8px;height:32px;border-radius:1px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.14)}
+.swatch{width:36px;height:54px;border-radius:2px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.14);object-fit:cover;display:block}
 .row .t{font:400 15px/1.25 var(--text)}
 .row .a{display:block;font:400 12px/1.3 var(--ui);color:var(--ink-soft);margin-top:1px}
 .row.unknown .t{color:var(--ink-soft);font-style:italic}
@@ -84,6 +97,12 @@ body.reading #tools,body.reading #hint,body.reading #label{opacity:0;pointer-eve
 #closeNote:hover{background:#8d6a2c}
 #closeNote:focus-visible{outline-color:#8d6a2c}
 
+#fullView{display:none;color:var(--ink);text-decoration:none}
+body.embed #fullView{display:block}
+body.embed #openNote,body.embed #tally{display:none}
+body.embed #stage{touch-action:pan-y}
+body.embed #note{transition:none}
+
 #loading{position:fixed;inset:0;display:grid;place-items:center;background:#14110c;transition:opacity .9s;font:400 22px var(--display);color:var(--ink-soft);z-index:9;pointer-events:none;text-align:center;padding-inline:16px}
 
 @media (max-width:760px){
@@ -97,8 +116,11 @@ body.reading #tools,body.reading #hint,body.reading #label{opacity:0;pointer-eve
   #bar{left:12px;right:12px;width:auto;max-width:none;transform:translateY(16px);display:grid;grid-template-columns:repeat(6,1fr);bottom:calc(12px + env(safe-area-inset-bottom,0px))}
   #bar.on{transform:none}
   #bar .tool{grid-column:span 2}
-  #bar a.primary{grid-column:span 3;order:-1}
+  #bar a.primary{grid-column:span 3;order:-2}
   #bar.one-link a.primary{grid-column:span 6}
+  #saveBook,#sample{grid-column:span 3!important;order:-1}
+  #bar.no-sample #saveBook{grid-column:span 6!important}
+  #samplerOut{display:none}
   #sheet{position:fixed;left:0;right:0;bottom:0;padding-block:14px 120px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));background:var(--glass-solid);border-top:1px solid var(--line);transform:translateY(102%);transition:transform .35s;z-index:5;display:block;max-height:58%;overflow:auto;box-sizing:border-box}
   #sheet.on{transform:none}
   #sheet h2{font:400 22px/1.15 var(--display);margin:0}
@@ -143,6 +165,8 @@ body.reading #tools,body.reading #hint,body.reading #label{opacity:0;pointer-eve
   <button class="tool" id="viewRight">Right</button>
   <button class="tool" id="tod" aria-pressed="false">Daylight</button>
   <button class="tool" id="openNote">Note</button>
+  <a class="tool" id="fullView" href="/austin-library" target="_top">Full screen</a>
+  <button class="tool" id="openSaved">Saved</button>
   <button class="tool" id="openDrawer">Catalogue</button>
 </div>
 
@@ -161,10 +185,17 @@ body.reading #tools,body.reading #hint,body.reading #label{opacity:0;pointer-eve
 <div id="sheet" aria-live="polite"><h2 id="sheetTitle"></h2><p id="sheetMeta"></p><p id="sheetAbout"></p><p id="sheetWhere"></p></div>
 <div id="bar">
   <button class="tool" id="prev">Previous</button>
-  <a class="tool primary" id="amazon" target="_blank" rel="noopener">Buy or read on Amazon</a>
+  <button class="tool" id="saveBook" aria-pressed="false">Save</button>
+  <a class="tool primary" id="amazon" target="_blank" rel="noopener" title="Opens the book on Amazon, where Add to List puts it on your Wish List">Buy or add to Wish List</a>
   <a class="tool primary" id="audible" target="_blank" rel="noopener">Listen on Audible</a>
+  <a class="tool" id="sample" target="_blank" rel="noopener">Read a sample</a>
   <button class="tool" id="next">Next</button>
   <button class="tool" id="shut">Put back</button>
+</div>
+
+<div id="sampler" hidden role="dialog" aria-modal="true" aria-labelledby="samplerTitle">
+  <header><h2 id="samplerTitle"></h2><a id="samplerOut" target="_blank" rel="noopener">Open on Google Books</a><button id="closeSampler">Close</button></header>
+  <iframe id="samplerFrame" title="Book preview from Google Books" loading="lazy"></iframe>
 </div>
 
 <aside id="drawer" aria-label="Catalogue">
@@ -173,7 +204,12 @@ body.reading #tools,body.reading #hint,body.reading #label{opacity:0;pointer-eve
     <input id="search" type="search" placeholder="Search titles and authors" aria-label="Search titles and authors" autocomplete="off">
     <div id="filters" role="group" aria-label="Filter by category"></div>
   </header>
+  <div id="savedHelp" hidden>
+    <p>Saved in this browser only. Amazon has no button for adding a whole list, so open each book and choose Add to List.</p>
+    <button id="copySaved">Copy list</button>
+  </div>
   <div id="list"></div>
+  <p id="credits">Covers from Apple Books and Open Library. Details from Open Library. Samples from Google Books. Editions may differ from the copies on the shelf.</p>
 </aside>
 
 <script src="https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.min.js"></script>

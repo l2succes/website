@@ -1,6 +1,8 @@
 'use strict';
 const LIB = window.LIBRARY, $ = id => document.getElementById(id);
 const REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const EMBED = new URLSearchParams(location.search).has('embed');   // inside a blog post: the page around it keeps scrolling
+if (EMBED) document.body.classList.add('embed');
 
 /* ---------- world dimensions, metres, taken from the wide photo at 2 mm per pixel ---------- */
 const BAY = { left: [-1.77, -0.87], right: [0.87, 1.77] };
@@ -18,9 +20,15 @@ const partialN = books.filter(b => b.conf === 'partial').length;
 $('tally').textContent = `${books.length} books, ${books.length - unreadN - partialN} read clearly, ${partialN} partly, ${unreadN} unread`;
 const cleanAuthor = b => (b.author || '').replace(/\(.*?\)/g, '').split(/\s*(?:&|,| with )\s*/)[0].trim();
 const LINKS = {
-  amazon: b => 'https://www.amazon.com/s?i=stripbooks&k=' + encodeURIComponent([b.title, cleanAuthor(b)].filter(Boolean).join(' ')),
+  amazon: b => b.meta && b.meta.a10 ? 'https://www.amazon.com/dp/' + b.meta.a10 : 'https://www.amazon.com/s?i=stripbooks&k=' + encodeURIComponent([b.title, cleanAuthor(b)].filter(Boolean).join(' ')),
+  sample: b => b.meta && b.meta.gb ? 'https://books.google.com/books?id=' + b.meta.gb + '&lpg=PP1&pg=PP1&output=embed' : null,
+  sampleOut: b => b.meta && b.meta.gb ? 'https://books.google.com/books?id=' + b.meta.gb + '&printsec=frontcover' : null,
   audible: b => b.asin ? 'https://www.audible.com/pd/' + b.asin : null,
 };
+const SAVED_KEY = 'austin-library-saved';
+const saved = new Set((() => { try { return JSON.parse(localStorage.getItem(SAVED_KEY)) || []; } catch (e) { return []; } })());
+const persistSaved = () => { try { localStorage.setItem(SAVED_KEY, JSON.stringify([...saved])); } catch (e) {} };
+let renderCatalogue = () => {};
 buildCatalogue();
 
 if (!renderer) {
@@ -631,7 +639,7 @@ for (const s of LIB.data.shelves) {
 }
 function placeBook(m) {
   const u = m.userData;
-  m.position.z = u.home.z + u.offset + u.hover * 0.022;
+  m.position.z = u.home.z + u.offset + (u.saved || 0) + u.hover * 0.022;
   m.position.y = u.home.y + u.hover * 0.004;
   u.spine.emissiveIntensity = u.hover * 0.2;
 }
@@ -727,6 +735,7 @@ function setHover(m, cx, cy) {
   } else tip.style.opacity = 0;
 }
 canvas.addEventListener('pointerdown', e => {
+  state.engaged = true;
   canvas.setPointerCapture(e.pointerId);
   pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
   if (pointers.size === 1) state.drag = { x: e.clientX, y: e.clientY, sx: e.clientX, sy: e.clientY, moved: false };
@@ -770,8 +779,9 @@ function endPointer(e) {
 }
 canvas.addEventListener('pointerup', endPointer);
 canvas.addEventListener('pointercancel', endPointer);
-canvas.addEventListener('pointerleave', () => { if (!state.reading) setHover(null); });
+canvas.addEventListener('pointerleave', () => { state.engaged = false; if (!state.reading) setHover(null); });
 canvas.addEventListener('wheel', e => {
+  if (EMBED && !state.engaged) return;
   e.preventDefault(); if (state.reading) return;
   state.touched = true;
   const factor = Math.exp(e.deltaY * 0.0012), old = goal.radius;
@@ -810,7 +820,21 @@ function fitTitle(g, text, maxW, maxH, start, min, weight = '') {
 const lum = c => (0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2]) / 255;
 const bookColor = b => { const c = b.edge; return lum(c) > .94 ? [228, 222, 208] : c; };
 
-function coverCanvas(b) {
+const coverCache = new Map();
+function loadCover(b) {
+  const src = b.meta && b.meta.cv; if (!src) return Promise.resolve(null);
+  if (!coverCache.has(src)) coverCache.set(src, new Promise(res => { const i = new Image(); i.onload = () => res(i); i.onerror = () => res(null); i.src = src; }));
+  return coverCache.get(src);
+}
+function drawCover(g, img, x, y, w, h) {
+  const r = Math.max(w / img.width, h / img.height), sw = w / r, sh = h / r;
+  g.drawImage(img, (img.width - sw) / 2, (img.height - sh) / 2, sw, sh, x, y, w, h);
+}
+function coverCanvas(b, img) {
+  if (img) return canvasTex(768, 1100, (g, w, h) => {
+    drawCover(g, img, 0, 0, w, h);
+    const a = g.createLinearGradient(0, 0, 70, 0); a.addColorStop(0, 'rgba(0,0,0,.3)'); a.addColorStop(1, 'rgba(0,0,0,0)'); g.fillStyle = a; g.fillRect(0, 0, 70, h);
+  });
   return canvasTex(768, 1100, (g, w, h) => {
     const c = bookColor(b), ink = lum(c) > 0.55 ? '#1b1712' : '#f6efe0', soft = lum(c) > 0.55 ? 'rgba(27,23,18,.65)' : 'rgba(246,239,224,.7)';
     g.fillStyle = `rgb(${c})`; g.fillRect(0, 0, w, h);
@@ -831,7 +855,7 @@ const CONF = {
   partial: 'Partly legible. The details here are a best reading.',
   unread: 'Not legible in the photos.',
 };
-function pageCanvases(b) {
+function pageCanvases(b, img) {
   const PW = 1024, PH = 1448, paper = '#f4ecdb', ink = '#231c13', soft = '#6f6450', accent = '#8d6a2c', mx = 110;
   const bg = (g, gutterRight) => {
     g.fillStyle = paper; g.fillRect(0, 0, PW, PH);
@@ -845,7 +869,7 @@ function pageCanvases(b) {
     const caseName = b.case === 'left' ? 'Left case' : 'Right case';
     g.fillText(`${caseName}  ·  ${b.shelfName}  ·  Book ${b.pos} of ${b.count}`.toUpperCase(), mx, 110);
     g.fillStyle = ink;
-    const t = fitTitle(g, b.title || 'Unidentified book', PW - mx * 2, 560, 118, 46);
+    const t = fitTitle(g, b.title || 'Unidentified book', PW - mx * 2, 330, 104, 46);
     t.lines.forEach((l, i) => g.fillText(l, mx, 190 + i * t.lh));
     let y = 190 + t.lines.length * t.lh + 36;
     g.fillStyle = accent; g.fillRect(mx, y, 120, 3); y += 34;
@@ -854,6 +878,17 @@ function pageCanvases(b) {
     y += 10; g.font = `400 31px ${FONT.ui}`; g.fillStyle = soft;
     const line = [b.year, b.cat].filter(Boolean).join('  ·  ');
     if (line) g.fillText(line, mx, y);
+    y += 56;
+    // the real cover beside the catalogue record
+    const cw = 250, ch = 370;
+    if (img) { g.save(); g.shadowColor = 'rgba(40,25,10,.4)'; g.shadowBlur = 20; g.shadowOffsetY = 6; drawCover(g, img, mx, y, cw, ch); g.restore(); }
+    const m = b.meta || {}, dx = img ? mx + cw + 40 : mx, dw = PW - mx - dx; let dy = y + 4;
+    [['PUBLISHER', m.pub], ['PAGES', m.pages], ['ISBN', m.isbn], ['GENRES', m.genres && m.genres.join(', ')]].forEach(([k, v]) => {
+      if (!v) return;
+      g.font = `600 21px ${FONT.ui}`; g.fillStyle = accent; g.fillText(k, dx, dy); dy += 31;
+      g.font = `400 30px ${FONT.text}`; g.fillStyle = ink;
+      wrapText(g, v, dw).slice(0, 3).forEach(l => { g.fillText(l, dx, dy); dy += 39; }); dy += 16;
+    });
     // the real spine as it stands on the shelf
     const u = b.uv, W = atlasImg.naturalWidth, H = atlasImg.naturalHeight, sh = Math.min(PW - mx * 2, 804), ratio = (u[2] * W) / (u[3] * H), st = Math.max(30, Math.min(150, sh * ratio));
     g.font = `600 22px ${FONT.ui}`; g.fillStyle = soft; g.fillText('THE SPINE AS PHOTOGRAPHED', mx, PH - 150 - st - 40);
@@ -868,10 +903,16 @@ function pageCanvases(b) {
     g.fillStyle = accent; g.font = `600 25px ${FONT.ui}`; g.fillText('ABOUT THIS BOOK', mx, y); y += 60;
     g.fillStyle = ink; g.font = `400 50px ${FONT.text}`;
     wrapText(g, b.about || '', PW - mx * 2).forEach(l => { g.fillText(l, mx, y); y += 72; });
-    y += 70;
+    y += 44;
+    if (b.meta && b.meta.opening) {
+      g.fillStyle = accent; g.font = `600 25px ${FONT.ui}`; g.fillText('HOW IT OPENS', mx, y); y += 50;
+      g.fillStyle = ink; g.font = `italic 400 33px ${FONT.text}`;
+      wrapText(g, b.meta.opening, PW - mx * 2).forEach(l => { g.fillText(l, mx, y); y += 47; });
+      g.fillStyle = soft; g.font = `400 24px ${FONT.ui}`; g.fillText(b.meta.openLabel, mx, y + 6); y += 62;
+    }
     g.fillStyle = accent; g.font = `600 25px ${FONT.ui}`; g.fillText('WHERE IT STANDS', mx, y); y += 54;
     // that shelf in miniature, in the books' own colours
-    const shelf = LIB.data.shelves.find(s => s.id === b.shelf), span = shelf.span[1] - shelf.span[0], mw = PW - mx * 2, mh = 260, maxH = Math.max(...shelf.books.map(x => x.h));
+    const shelf = LIB.data.shelves.find(s => s.id === b.shelf), span = shelf.span[1] - shelf.span[0], mw = PW - mx * 2, mh = b.meta && b.meta.opening ? 130 : 260, maxH = Math.max(...shelf.books.map(x => x.h));
     shelf.books.forEach(x => {
       const bx = mx + (x.x0 - shelf.span[0]) / span * mw, bw = Math.max(3, (x.x1 - x.x0) / span * mw - 1.5), bh = x.h / maxH * mh;
       g.fillStyle = `rgb(${x.color})`; g.globalAlpha = x.id === b.id ? 1 : .55;
@@ -916,13 +957,13 @@ function curvedPage(W, H, flip) {
   g.computeVertexNormals();
   return g;
 }
-function buildReader(b) {
+function buildReader(b, img) {
   const u = b.mesh.userData, H = u.h, W = Math.min(u.d, H * .72), T = Math.max(u.w * .92, 0.014), c = 0.0028;
-  const coverMat = new THREE.MeshStandardMaterial({ map: coverCanvas(b), roughness: 0.55 });
+  const coverMat = new THREE.MeshStandardMaterial({ map: coverCanvas(b, img), roughness: 0.55 });
   const plain = new THREE.MeshStandardMaterial({ color: new THREE.Color().setRGB(...bookColor(b).map(v => v / 255), THREE.SRGBColorSpace), roughness: 0.6 });
   const endpaper = new THREE.MeshStandardMaterial({ color: 0xece2cb, roughness: 0.9 });
   const pagesMat = new THREE.MeshStandardMaterial({ map: pagesEdge, roughness: 0.92 });
-  const pg = pageCanvases(b);
+  const pg = pageCanvases(b, img);
   const rootG = new THREE.Group();
 
   // right half stays still: back cover and half the pages
@@ -967,12 +1008,38 @@ function readingPose(W, H) {
   return { d, up: d * v * (below / innerHeight) };
 }
 
+function refreshSaved() {
+  const n = saved.size;
+  $('openSaved').textContent = n ? `Saved ${n}` : 'Saved';
+  if (state.reading) { const on = saved.has(state.reading.id); $('saveBook').setAttribute('aria-pressed', on); $('saveBook').textContent = on ? 'Saved' : 'Save'; }
+  renderCatalogue();
+}
+function markOnShelf(b, on) {
+  const m = b.mesh; if (!m) return;
+  const u = m.userData;
+  if (on && !u.ribbon) {
+    u.ribbon = new THREE.Mesh(new THREE.BoxGeometry(Math.min(u.w * .7, .012), .07, .0015), new THREE.MeshStandardMaterial({ color: 0xc4932f, metalness: .4, roughness: .4 }));
+    u.ribbon.position.set(0, u.h - .03, .0065); u.ribbon.raycast = () => {}; m.add(u.ribbon);
+  }
+  if (u.ribbon) u.ribbon.visible = on;
+  gsap.to(u, { saved: on ? .018 : 0, duration: REDUCED ? 0 : .35, ease: 'power2.out', onUpdate() { placeBook(m); invalidate(); }, onComplete: reshadow });
+}
+function toggleSaved(b) {
+  if (saved.has(b.id)) saved.delete(b.id); else saved.add(b.id);
+  persistSaved(); markOnShelf(b, saved.has(b.id)); refreshSaved();
+}
 function setBar(b) {
   const known = b.conf !== 'unread' && b.title;
   $('amazon').hidden = !known; $('audible').hidden = !(known && b.asin);
+  const on = saved.has(b.id), free = b.meta && b.meta.free, sample = LINKS.sample(b);
+  $('saveBook').hidden = !known; $('saveBook').setAttribute('aria-pressed', on); $('saveBook').textContent = on ? 'Saved' : 'Save';
+  $('sample').hidden = !(free || sample);
+  if (free) { $('sample').href = free; $('sample').textContent = 'Read it free'; delete $('sample').dataset.embed; }
+  else if (sample) { $('sample').href = LINKS.sampleOut(b); $('sample').textContent = 'Read a sample'; if (LIB.site) $('sample').dataset.embed = '1'; }
+  $('bar').classList.toggle('no-sample', $('sample').hidden);
   if (known) { $('amazon').href = LINKS.amazon(b); if (b.asin) $('audible').href = LINKS.audible(b); }
   $('sheetTitle').textContent = b.title || 'Unidentified book';
-  $('sheetMeta').textContent = [b.author, b.year].filter(Boolean).join(', ');
+  $('sheetMeta').textContent = [b.author, b.year, b.meta && b.meta.pub, b.meta && b.meta.pages && `${b.meta.pages} pages`].filter(Boolean).join(', ');
   $('sheetAbout').textContent = b.about || '';
   $('sheetWhere').textContent = `${b.case === 'left' ? 'Left' : 'Right'} case, ${b.shelfName.toLowerCase()}, book ${b.pos} of ${b.count}` + (b.cat ? ` · ${b.cat}` : '');
   const short = innerWidth < 760;
@@ -999,7 +1066,8 @@ async function openBook(b) {
   goal.target.copy(rig.target); goal.radius = rig.radius; goal.az = rig.az; goal.el = rig.el;
   try { await Promise.race([document.fonts.load(`40px "Libre Caslon Display"`), new Promise(r => setTimeout(r, 400))]); } catch (e) {}
   const m = b.mesh, u = m.userData;
-  const R = buildReader(b);
+  const coverImg = await Promise.race([loadCover(b), new Promise(r => setTimeout(() => r(null), 1500))]);
+  const R = buildReader(b, coverImg);
   R.traverse(o => o.layers.set(READER_LAYER));
   scene.add(R);
   state.reading = b; document.body.classList.add('reading');
@@ -1083,11 +1151,21 @@ function flyToBook(b, done) {
   setTimeout(done, REDUCED ? 0 : 900);
 }
 
+$('saveBook').onclick = () => { if (state.reading) toggleSaved(state.reading); };
+$('sample').addEventListener('click', e => {
+  if (!$('sample').dataset.embed || !state.reading) return;
+  e.preventDefault();
+  $('samplerTitle').textContent = state.reading.title; $('samplerOut').href = LINKS.sampleOut(state.reading);
+  $('samplerFrame').src = LINKS.sample(state.reading); $('sampler').hidden = false; $('closeSampler').focus();
+});
+function closeSampler() { $('sampler').hidden = true; $('samplerFrame').removeAttribute('src'); }
+$('closeSampler').onclick = closeSampler;
 $('shut').onclick = () => { if (!state.busy) closeBook(); };
 $('prev').onclick = () => step(-1);
 $('next').onclick = () => step(1);
 addEventListener('keydown', e => {
   if (e.target.tagName === 'INPUT') { if (e.key === 'Escape') toggleDrawer(false); return; }
+  if (e.key === 'Escape' && !$('sampler').hidden) { closeSampler(); return; }
   if (e.key === 'Escape') { if ($('drawer').classList.contains('on')) toggleDrawer(false); else if (state.reading && !state.busy) closeBook(); }
   if (state.reading && e.key === 'ArrowLeft') step(-1);
   if (state.reading && e.key === 'ArrowRight') step(1);
@@ -1103,30 +1181,37 @@ $('viewRight').onclick = () => setView('right');
 let mood = 'golden';
 $('tod').onclick = () => { mood = mood === 'golden' ? 'day' : 'golden'; $('tod').setAttribute('aria-pressed', mood === 'day'); setMood(mood); };
 function toggleDrawer(on) { $('drawer').classList.toggle('on', on); if (on) setTimeout(() => $('search').focus({ preventScroll: true }), 60); }
-$('openDrawer').onclick = () => toggleDrawer(true);
+$('openDrawer').onclick = () => { showSavedOnly(false); toggleDrawer(true); };
+$('openSaved').onclick = () => { showSavedOnly(true); toggleDrawer(true); };
 $('closeDrawer').onclick = () => toggleDrawer(false);
 function buildCatalogue() {
   let activeCat = null;
+  const SAVED = '__saved';
+  window.showSavedOnly = on => { activeCat = on ? SAVED : null; render(); $('list').scrollTop = 0; };
   const tally = new Map();
   books.forEach(b => { if (b.cat) tally.set(b.cat, (tally.get(b.cat) || 0) + 1); });
-  const chips = [[null, 'All', books.length], ...[...tally].sort((x, y) => y[1] - x[1]).map(([c, n]) => [c, c, n])].map(([cat, label, n]) => {
+  const chips = [[null, 'All', books.length], [SAVED, 'Saved', saved.size], ...[...tally].sort((x, y) => y[1] - x[1]).map(([c, n]) => [c, c, n])].map(([cat, label, n]) => {
     const c = document.createElement('button'); c.textContent = label;
     const count = document.createElement('small'); count.textContent = n; c.append(count);
     c.onclick = () => { activeCat = cat; render(); $('list').scrollTop = 0; };
     $('filters').append(c);
-    return [cat, c];
+    return [cat, c, count];
   });
   const render = () => {
-    chips.forEach(([cat, c]) => c.setAttribute('aria-pressed', cat === activeCat));
+    chips.forEach(([cat, c, count]) => { c.setAttribute('aria-pressed', cat === activeCat); if (cat === SAVED) count.textContent = saved.size; });
+    $('savedHelp').hidden = activeCat !== SAVED || !saved.size;
     const q = $('search').value.trim().toLowerCase(), list = $('list'); list.replaceChildren();
     let shown = 0;
     for (const s of LIB.data.shelves) {
-      const rows = s.books.filter(b => (!activeCat || b.cat === activeCat) && (!q || [b.title, b.author, b.cat].join(' ').toLowerCase().includes(q)));
+      const rows = s.books.filter(b => (!activeCat || (activeCat === SAVED ? saved.has(b.id) : b.cat === activeCat)) && (!q || [b.title, b.author, b.cat].join(' ').toLowerCase().includes(q)));
       if (!rows.length) continue;
       const h = document.createElement('h3'); h.textContent = `${s.case === 'left' ? 'Left' : 'Right'} case, ${s.name.toLowerCase()}`; list.append(h);
       for (const b of rows) {
         const r = document.createElement('button'); r.className = 'row' + (b.conf === 'unread' ? ' unknown' : '');
-        const sw = document.createElement('span'); sw.className = 'swatch'; sw.style.background = `rgb(${b.color})`;
+        let sw;
+        if (b.meta && b.meta.cv) { sw = document.createElement('img'); sw.src = b.meta.cv; sw.alt = ''; sw.loading = 'lazy'; sw.decoding = 'async'; sw.onerror = () => { sw.removeAttribute('src'); sw.style.background = `rgb(${b.color})`; }; }
+        else sw = document.createElement('span');
+        sw.className = 'swatch'; sw.style.background = `rgb(${b.color})`;
         const t = document.createElement('span'); t.className = 't'; t.textContent = b.title || 'Unidentified book';
         if (b.conf !== 'clear') { const em = document.createElement('em'); em.textContent = b.conf === 'partial' ? 'partly read' : 'unread'; t.append(em); }
         const a = document.createElement('span'); a.className = 'a'; a.textContent = [[b.author, b.year].filter(Boolean).join(', ') || 'Spine not legible in the photos', b.cat].filter(Boolean).join(' · '); t.append(a);
@@ -1143,17 +1228,29 @@ function buildCatalogue() {
           const link = (label, href) => { const l = document.createElement('a'); l.textContent = label; l.href = href; l.target = '_blank'; l.rel = 'noopener'; l.setAttribute('aria-label', `${label}: ${b.title}`); links.append(l); };
           link('Amazon', LINKS.amazon(b));
           if (b.asin) link('Audible', LINKS.audible(b));
+          const fav = document.createElement('button'); const on = saved.has(b.id);
+          fav.textContent = on ? 'Saved' : 'Save'; fav.setAttribute('aria-pressed', on); fav.setAttribute('aria-label', `${on ? 'Remove from saved' : 'Save'}: ${b.title}`);
+          fav.onclick = () => { const top = $('list').scrollTop; toggleSaved(b); $('list').scrollTop = top; };
+          links.prepend(fav);
           entry.append(links);
         }
         list.append(entry); shown++;
       }
     }
-    if (!shown) { const e = document.createElement('p'); e.id = 'empty'; e.textContent = activeCat ? `No book in ${activeCat} matches that search.` : 'No book matches that search.'; list.append(e); }
+    if (!shown) { const e = document.createElement('p'); e.id = 'empty'; e.textContent = activeCat === SAVED && !saved.size ? 'Nothing saved yet. Press Save on any book and it will wait here.' : activeCat && activeCat !== SAVED ? `No book in ${activeCat} matches that search.` : 'No book matches that search.'; list.append(e); }
   };
-  $('search').oninput = render; render();
+  $('search').oninput = render; renderCatalogue = render; render();
+  $('copySaved').onclick = async () => {
+    const lines = books.filter(b => saved.has(b.id)).map(b => `${b.title}${b.author ? ' by ' + b.author : ''}\n${LINKS.amazon(b)}`).join('\n\n');
+    try { await navigator.clipboard.writeText(lines); $('copySaved').textContent = 'Copied'; }
+    catch (e) { const t = document.createElement('textarea'); t.value = lines; t.style.width = '100%'; t.rows = 6; $('savedHelp').append(t); t.select(); $('copySaved').textContent = 'Select and copy below'; }
+    setTimeout(() => { $('copySaved').textContent = 'Copy list'; }, 2500);
+  };
 }
 
 /* ---------- start ---------- */
+books.forEach(b => { if (saved.has(b.id)) { b.mesh.userData.saved = .018; markOnShelf(b, true); } });
+refreshSaved();
 addEventListener('resize', resize);
 state.view = innerHeight > innerWidth * 1.1 ? 'left' : 'room';
 resize();
@@ -1194,11 +1291,11 @@ const noteSeen = () => { try { return localStorage.getItem('note-read') === '1';
 function showNote(on) {
   $('note').classList.toggle('off', !on);
   if (on) $('closeNote').focus({ preventScroll: true });
-  else { try { localStorage.setItem('note-read', '1'); } catch (e) {} intro(); canvas.focus({ preventScroll: true }); }
+  else { if (!EMBED) try { localStorage.setItem('note-read', '1'); } catch (e) {} intro(); canvas.focus({ preventScroll: true }); }
 }
 $('closeNote').onclick = () => showNote(false);
 $('openNote').onclick = () => showNote(true);
 $('note').addEventListener('click', e => { if (e.target === $('note')) showNote(false); });
 addEventListener('keydown', e => { if (e.key === 'Escape' && !$('note').classList.contains('off')) showNote(false); });
-function begin() { prepare(); if (noteSeen()) showNote(false); else $('closeNote').focus({ preventScroll: true }); }
+function begin() { prepare(); if (noteSeen() || EMBED) showNote(false); else $('closeNote').focus({ preventScroll: true }); }
 if (document.readyState === 'complete') begin(); else addEventListener('load', begin);
