@@ -21,6 +21,7 @@ $('tally').textContent = `${books.length} books, ${books.length - unreadN - part
 const cleanAuthor = b => (b.author || '').replace(/\(.*?\)/g, '').split(/\s*(?:&|,| with )\s*/)[0].trim();
 const LINKS = {
   amazon: b => b.meta && b.meta.a10 ? 'https://www.amazon.com/dp/' + b.meta.a10 : 'https://www.amazon.com/s?i=stripbooks&k=' + encodeURIComponent([b.title, cleanAuthor(b)].filter(Boolean).join(' ')),
+  goodreads: b => b.meta && b.meta.gri ? 'https://www.goodreads.com/book/isbn/' + b.meta.gri : 'https://www.goodreads.com/search?q=' + encodeURIComponent([b.title, cleanAuthor(b)].filter(Boolean).join(' ')),
   sample: b => b.meta && b.meta.gb ? 'https://books.google.com/books?id=' + b.meta.gb + '&lpg=PP1&pg=PP1&output=embed' : null,
   sampleOut: b => b.meta && b.meta.gb ? 'https://books.google.com/books?id=' + b.meta.gb + '&printsec=frontcover' : null,
   audible: b => b.asin ? 'https://www.audible.com/pd/' + b.asin : null,
@@ -1032,6 +1033,7 @@ function setBar(b) {
   const known = b.conf !== 'unread' && b.title;
   $('amazon').hidden = !known; $('audible').hidden = !(known && b.asin);
   const on = saved.has(b.id), free = b.meta && b.meta.free, sample = LINKS.sample(b);
+  $('goodreads').hidden = !known; if (known) $('goodreads').href = LINKS.goodreads(b);
   $('saveBook').hidden = !known; $('saveBook').setAttribute('aria-pressed', on); $('saveBook').textContent = on ? 'Saved' : 'Save';
   $('sample').hidden = !(free || sample);
   if (free) { $('sample').href = free; $('sample').textContent = 'Read it free'; delete $('sample').dataset.embed; }
@@ -1154,10 +1156,12 @@ function flyToBook(b, done) {
 $('saveBook').onclick = () => { if (state.reading) toggleSaved(state.reading); };
 $('sample').addEventListener('click', e => {
   if (!$('sample').dataset.embed || !state.reading) return;
-  e.preventDefault();
-  $('samplerTitle').textContent = state.reading.title; $('samplerOut').href = LINKS.sampleOut(state.reading);
-  $('samplerFrame').src = LINKS.sample(state.reading); $('sampler').hidden = false; $('closeSampler').focus();
+  e.preventDefault(); openSampler(state.reading);
 });
+function openSampler(b) {
+  $('samplerTitle').textContent = b.title; $('samplerOut').href = LINKS.sampleOut(b);
+  $('samplerFrame').src = LINKS.sample(b); $('sampler').hidden = false; $('closeSampler').focus();
+}
 function closeSampler() { $('sampler').hidden = true; $('samplerFrame').removeAttribute('src'); }
 $('closeSampler').onclick = closeSampler;
 $('shut').onclick = () => { if (!state.busy) closeBook(); };
@@ -1228,6 +1232,12 @@ function buildCatalogue() {
           const link = (label, href) => { const l = document.createElement('a'); l.textContent = label; l.href = href; l.target = '_blank'; l.rel = 'noopener'; l.setAttribute('aria-label', `${label}: ${b.title}`); links.append(l); };
           link('Amazon', LINKS.amazon(b));
           if (b.asin) link('Audible', LINKS.audible(b));
+          link('Goodreads', LINKS.goodreads(b));
+          if (b.meta && b.meta.free) link('Read free', b.meta.free);
+          else if (LINKS.sample(b)) {
+            link('Sample', LINKS.sampleOut(b));
+            if (LIB.site) links.lastElementChild.onclick = e => { e.preventDefault(); openSampler(b); };
+          }
           const fav = document.createElement('button'); const on = saved.has(b.id);
           fav.textContent = on ? 'Saved' : 'Save'; fav.setAttribute('aria-pressed', on); fav.setAttribute('aria-label', `${on ? 'Remove from saved' : 'Save'}: ${b.title}`);
           fav.onclick = () => { const top = $('list').scrollTop; toggleSaved(b); $('list').scrollTop = top; };
