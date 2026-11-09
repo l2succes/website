@@ -1,3 +1,5 @@
+const TO_DAYANA_ORIGIN = "https://to-dayana.vercel.app"
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
@@ -12,6 +14,16 @@ const nextConfig = {
       {
         source: "/austin-library",
         destination: "/austin-library/index.html",
+      },
+      // A private letter, deployed as its own Vercel project (to-dayana) with
+      // basePath "/to-dayana" and served here (Next.js multi-zones).
+      {
+        source: "/to-dayana",
+        destination: `${TO_DAYANA_ORIGIN}/to-dayana`,
+      },
+      {
+        source: "/to-dayana/:path*",
+        destination: `${TO_DAYANA_ORIGIN}/to-dayana/:path*`,
       },
     ]
   },
