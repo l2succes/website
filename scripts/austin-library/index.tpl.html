@@ -117,8 +117,8 @@ body.embed #note{transition:none}
   #bar .tool{grid-column:span 2}
   #bar a.primary{grid-column:span 3;order:-2}
   #bar.one-link a.primary{grid-column:span 6}
-  #saveBook,#sample{grid-column:span 3!important;order:-1}
-  #bar.no-sample #saveBook{grid-column:span 6!important}
+  #goodreads,#sample,#saveBook{grid-column:span 2!important;order:-1;padding-inline:2px}
+  #bar.no-sample #goodreads,#bar.no-sample #saveBook{grid-column:span 3!important}
   #samplerOut{display:none}
   #sheet{position:fixed;left:0;right:0;bottom:0;padding-block:14px 120px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));background:var(--glass-solid);border-top:1px solid var(--line);transform:translateY(102%);transition:transform .35s;z-index:5;display:block;max-height:58%;overflow:auto;box-sizing:border-box}
   #sheet.on{transform:none}
@@ -187,6 +187,7 @@ body.embed #note{transition:none}
   <button class="tool" id="saveBook" aria-pressed="false">Save</button>
   <a class="tool primary" id="amazon" target="_blank" rel="noopener" title="Opens the book on Amazon, where Add to List puts it on your Wish List">Buy or add to Wish List</a>
   <a class="tool primary" id="audible" target="_blank" rel="noopener">Listen on Audible</a>
+  <a class="tool" id="goodreads" target="_blank" rel="noopener">Goodreads</a>
   <a class="tool" id="sample" target="_blank" rel="noopener">Read a sample</a>
   <button class="tool" id="next">Next</button>
   <button class="tool" id="shut">Put back</button>
@@ -194,7 +195,7 @@ body.embed #note{transition:none}
 
 <div id="sampler" hidden role="dialog" aria-modal="true" aria-labelledby="samplerTitle">
   <header><h2 id="samplerTitle"></h2><a id="samplerOut" target="_blank" rel="noopener">Open on Google Books</a><button id="closeSampler">Close</button></header>
-  <iframe id="samplerFrame" title="Book preview from Google Books" loading="lazy"></iframe>
+  <iframe id="samplerFrame" title="Book preview from Google Books"></iframe>
 </div>
 
 <aside id="drawer" aria-label="Catalogue">
