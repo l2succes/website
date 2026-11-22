@@ -1,3 +1,4 @@
+const CLOSET_ORIGIN = "https://luc-closet.agreeablemoss-eb6e0eb3.eastus.azurecontainerapps.io"
 const TO_DAYANA_ORIGIN = "https://to-dayana.vercel.app"
 
 /** @type {import('next').NextConfig} */
@@ -7,6 +8,9 @@ const nextConfig = {
   distDir: process.env.NEXT_DIST_DIR || ".next",
   async rewrites() {
     return [
+      // The wardrobe backend authenticates all pages, APIs and media.
+      { source: "/closet", destination: `${CLOSET_ORIGIN}/closet` },
+      { source: "/closet/:path*", destination: `${CLOSET_ORIGIN}/closet/:path*` },
       {
         source: "/greenchip-proposal",
         destination: "/greenchip-proposal/index.html",
